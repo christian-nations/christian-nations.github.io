@@ -1,0 +1,143 @@
+﻿@inherits LayoutComponentBase
+<style>
+    body{
+        margin:0;
+        padding:0;
+    }
+    span{
+        color:@SiteInfo.TextColor;
+        font-weight:bolder;
+    }
+    h2 h1 h3 h4 h5 h6 {
+        color: @SiteInfo.TextColor;
+    }
+</style>
+<Blazored.Modal.CascadingBlazoredModal>
+    <div>
+        <!-- ================ -->
+        <div @onclick="ScrollToTop" class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
+        <!-- page wrapper start -->
+        <!-- ================ -->
+        <div >
+            <!-- header-container start -->
+            <div class="header-container">
+                <header style="height:60px;" class="header fixed clea.dropdown-togglefix">
+                    <ChristianSongs.Blazor.Main.TopMenuHeader></ChristianSongs.Blazor.Main.TopMenuHeader>
+                </header>
+            </div>
+            <div style="display:grid;grid-template-rows:auto 1fr auto;">
+                <div>
+
+                </div>
+
+                <div style="margin-bottom:65px;">
+                    <article>
+                        @Body
+                    </article>
+                </div>
+                <div>
+                    <ChristianSongs.Blazor.Main.FooterView></ChristianSongs.Blazor.Main.FooterView>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</Blazored.Modal.CascadingBlazoredModal>
+@code {
+    public static MainLayout Current { get; private set; }
+    public static List<ProjectItem> Items = new List<ProjectItem>();
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        CookUpServices.EventChanged += async (s, e) =>
+        {
+            if (e)
+            {
+                await JS.InvokeVoidAsync("alert", "Summited to " + SiteInfo.Language.ToString() + "😊👍✅");
+                ChristianSongs.Blazor.Pages.Editors.SongViewerEditor.Item = new ProjectItem();
+            }
+            else
+            {
+                await JS.InvokeVoidAsync("alert", "Failed to submit 😌");
+                if (ChristianSongs.Blazor.Pages.Editors.SongViewerEditor.Item != null)
+                {
+                    var queryItem = Items.Where(p => p.Id == ChristianSongs.Blazor.Pages.Editors.SongViewerEditor.Item.Id).FirstOrDefault();
+                    if (queryItem != null)
+                    {
+                        Items.Remove(queryItem);
+                    }
+                }
+
+            }
+        };
+        Current = this;
+    }
+
+
+
+    public async void ShowAlert(string message)
+    {
+        await JS.InvokeVoidAsync("alert", message);
+    }
+    public async void ScrollToTop()
+    {
+        await JS.InvokeVoidAsync("OnScrollEvent");
+    }
+    IModalReference _dialog = null;
+    public IModalReference Dialog
+    {
+        get { return _dialog; }
+        private set
+        {
+            _dialog = value;
+        }
+    }
+    public void CloseDialog(bool state = false)
+    {
+        if (Dialog == null)
+            return;
+        Dialog.Close();
+        if (state)
+        {
+            this.StateHasChanged();
+        }
+        Dialog = null;
+    }
+    public void ShowTexViewer()
+    {
+        Dialog = modal.Show<Dialogs.TextViewerDialog>("Select Books");
+    }
+    public void ShowPrivacy()
+    {
+        Navigation.NavigateTo("privacy");
+    }
+    public void NavigateToAbout()
+    {
+        Navigation.NavigateTo("about");
+    }
+    public void NavigateToSubmitForm()
+    {
+        Navigation.NavigateTo($"song-editor/{SiteInfo.Language.ToString()}");
+    }
+    public void SelectLanguage(LanguageType language)
+    {
+        SiteInfo.Language = language;
+        StateHasChanged();
+        Navigation.NavigateTo($"/{language.ToString()}");
+    }
+    public void SelectSong(ProjectItem item)
+    {
+
+        StateHasChanged();
+        Navigation.NavigateTo($"/{SiteInfo.Language}/{item.Id}");
+    }
+
+    public async Task CopyTextToClipboard(string elementId)
+    {
+        await JS.InvokeVoidAsync("copyClipboard", elementId);
+    }
+    public void NavigateToDetails(ProjectItem item)
+    {
+        Navigation.NavigateTo($"details/{SiteInfo.Language}/{item.Id}");
+    }
+}

@@ -1,0 +1,158 @@
+﻿<style>
+    pre {
+        background-color: transparent;
+        line-height: normal;
+        border-width: 0;
+        font-size: 1em;
+    }
+    .song_Div span {
+        font-size: 1em;
+        font-weight: bolder;
+    }
+
+    .song_Div .c {
+        font-size: 1em;
+        color: @SiteInfo.AccentColor;
+        display: @show_chords;
+    }
+
+    .song_Div .title {
+        color: @SiteInfo.AccentColor;
+    }    
+   
+</style>
+<div >
+    <div style="display:grid; grid-template-columns:@autoSide auto 1fr; margin-top:15px;">
+        <div style="margin-top:15px;">
+        </div>
+        <div class="song_Div" id="printer_div" style="margin-top:8px;  zoom:100%;">
+            @if (Item != null)
+            {
+                <div style="margin-left:0px; ">
+                    <h3 style="text-align:left; color:@SiteInfo.AccentColor; font-weight:bolder; margin-bottom:0;">@Item.Title</h3>
+                </div>
+            }
+            <div>
+                @DataContent
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+   
+    @if (Item != null)
+    {
+        @if (Item.YoutubeUrl.IsValidString())
+        {
+            <div style="margin-left:10px;">
+                <ChristianSongs.Blazor.Items.PlayButton Item="@Item"></ChristianSongs.Blazor.Items.PlayButton>
+            </div>
+        }
+    }
+</div>
+@code {
+    MarkupString dataContent;
+
+    [Parameter]
+    public MarkupString DataContent
+    {
+        get{ return dataContent; }
+        set
+        {
+            if (value.Value.IsValidString())
+            {
+                dataContent = value;
+                StateHasChanged();
+            }
+        }
+    }
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+    }
+    ProjectItem _item = null;
+    [Parameter]
+    public ProjectItem Item
+    {
+        get{ return _item; }
+        set
+        {
+            if (value != null)
+            {
+                _item = value;
+
+                if (DirectLong == false)
+                {
+                    DataContent = (MarkupString)value.Data;
+                }
+                else
+                {
+                    if (Item.DataLong.IsValidString())
+                    {
+                        DataContent = (MarkupString)value.DataLong;
+                    }
+                    else
+                    {
+                        DataContent = (MarkupString)value.Data;
+                    }
+                }
+            }
+
+        }
+    }
+    public bool DirectLong { get; set; }
+    #region ShowChords
+    bool _showChords = false;
+    [Parameter]
+    public bool ShowChords
+    {
+        get{ return _showChords; }
+        set
+        {
+            _showChords = value;
+            if (value)
+            {
+                show_chords = "block;";
+            }
+            else
+            {
+                show_chords = "none;";
+            }
+        }
+    }
+
+    string show_chords = "none;";
+    #endregion
+    string autoSide = "1fr";
+    bool putCenter = true;
+    [Parameter]
+    public bool PutCenter
+    {
+        get{ return putCenter; }
+        set
+        {
+            putCenter = value;
+            if (value)
+            {
+                autoSide = "1fr";
+            }
+            else
+            {
+                autoSide = "auto";
+            }
+            StateHasChanged();
+        }
+    }
+    async void Print()
+    {
+        await JS.InvokeVoidAsync("printDiv", "printer_div");
+        //await JS.InvokeVoidAsync("printInvoke");
+    }
+    public void NavigateToDetails()
+    {
+        Navigation.NavigateTo($"details/{SiteInfo.Language}/{Item.Id}");
+    }
+    
+}

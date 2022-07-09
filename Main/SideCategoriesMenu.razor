@@ -1,0 +1,53 @@
+﻿
+
+<nav>
+    <ul class="nav nav-pills nav-stacked nav-small">
+        @if(Items?.Length > 0)
+        {
+            foreach (var item in Items)
+            {
+                <li>
+                    <a style="font-weight:bold; cursor:pointer; zoom:100%;">
+                        <span style="color:@SiteInfo.AccentColor;">@item</span>
+                        <span style="margin-left:8px; font-family:FontAwesome; color:@SiteInfo.AccentColor;">&#xf101;</span>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</nav>
+
+
+@code {
+    public string[] Items = null;
+
+    protected override void OnInitialized()
+    {
+
+        base.OnInitialized();
+        DataServiceProvider.ItemsLoaded += (s, e) =>
+        {
+            RenderItems();
+        };
+        RenderItems();
+    }
+    void RenderItems()
+    {
+        if (DataServiceProvider.ItemHasLoaded == false)
+        {
+            return;
+        }
+        Items = Enum.GetNames(typeof(LanguageType));
+        StateHasChanged();
+    }
+    void NavigateToCategory(Category categoryParam)
+    {
+        //"/category/{frameworkParameter}/{categoryParam}/"
+        Navigation.NavigateTo($"category/{SiteInfo.Language.ToString()}/{categoryParam.ToString()}");
+
+    }
+    void NavigateToCategory(ProjectItem categoryParam)
+    {
+       
+    }
+}

@@ -1,0 +1,221 @@
+﻿@page "/song-editor/{Language}"
+<style>
+    .input_data_editor{
+        width:98%; 
+       
+        margin-left:8px;
+        margin-right:80px;
+        box-sizing:border-box;
+        padding-left:8px;
+    }
+    .input_data_editor_title{
+         margin-top:8px;
+        margin-left:10px;
+        margin-bottom:-2px;
+        color:@SiteInfo.AccentColor;
+        font-weight:bolder;
+    }
+</style>
+
+<PageTitle>Song Editor</PageTitle>
+
+<div>
+    <div class="col-md-8" style="margin-left:50%; transform:translateX(-50%);">
+        <div class="card">
+            <div class="card-header">
+                <div style="position:relative; display:grid; grid-template-columns:1fr auto;">
+                    <h5>Worship Song Editor HTML</h5>
+                    <div style="margin-right:35px; margin-top:-5px; display:inline-flex;">
+                        <ChristianSongs.Blazor.Controls.ButtonSvg Path="M8.5,8.64L13.77,12L8.5,15.36V8.64M6.5,5V19L17.5,12" Clicked="ShowOutPutPreview"></ChristianSongs.Blazor.Controls.ButtonSvg>
+                    </div>
+                </div>
+                <div style="@showEditor">
+                    <span class="input_data_editor_title">Title</span>
+                    <input @bind-value="@Item.Title" class="input_data_editor" placeholder="Title" />
+               </div>
+            </div>
+            <div>
+                <div class="card-body mb-5" style="@showEditor">
+                    <Blazored.TextEditor.BlazoredTextEditor @ref=QuillHtml Placeholder="HTML worship song Editor...">
+
+                        @* <ToolbarContent>
+                        <select class="ql-header">
+                        <option selected=""></option>
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        </select>
+                        <span class="ql-formats">
+                        <button class="ql-bold"></button>
+                        <button class="ql-italic"></button>
+                        <button class="ql-underline"></button>
+                        <button class="ql-strike"></button>
+                        </span>
+                        <span class="ql-formats">
+                        <select class="ql-color"></select>
+                        <select class="ql-background"></select>
+                        </span>
+                        <span class="ql-formats">
+                        <button class="ql-list" value="ordered"></button>
+                        <button class="ql-list" value="bullet"></button>
+                        </span>
+                        <span class="ql-formats">
+                        <button class="ql-link"></button>
+                        </span>
+                        <span class="ql-formats">
+                        <button class="ql-video"></button>
+                        </span>
+
+                        </ToolbarContent>*@
+
+                        <EditorContent>
+                            @if (preContent != null)
+                            {
+                                @foreach (var item in preContent)
+                                {
+                                    if (item.IsValidString())
+                                    {
+                                        @item
+                                        <br />
+                                    }
+                                }
+                            }
+                        </EditorContent>
+                    </Blazored.TextEditor.BlazoredTextEditor>
+
+                </div>
+                <div class="card-body mb-5" style="@showPreview">
+                    <ChristianSongs.Blazor.Items.ItemView PutCenter="false" ShowChords="ShowChords" DataContent="@preview"></ChristianSongs.Blazor.Items.ItemView>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card" style="@showPreview">
+           
+            <div class="card-header">
+                Preview of worship song html
+            </div>
+
+        </div>
+        <div class="card" style="@showEditor">
+            <span class="input_data_editor_title">Artist</span>
+            <input @bind-value="@Item.Artist" class="input_data_editor" placeholder="Artist" />
+            <span class="input_data_editor_title">Youtube</span>
+            <input @bind-value="@Item.YoutubeUrl" class="input_data_editor" placeholder="Youtube Url" />
+            <div class="card-header">
+                Worship song html editor
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h6 style="color:forestgreen;">Help</h6>
+                    <div>
+                        <span>The </span><span style="font-weight:bolder; color:@SiteInfo.AccentColor;">@help</span><span> HTML element represents preformatted text which is to be presented exactly as written in the HTML file.</span>
+                    </div>
+                    <div>
+                        <span>The </span><span style="font-weight:bolder; color:@SiteInfo.AccentColor;">@helpSpan</span><span> HTML element is a generic inline container for phrasing content, which does not inherently represent anything.</span>
+                    </div>
+                    
+                    <h6 style="color:forestgreen;">You can Style Each Span</h6>
+                    <div>
+                        <span style="font-weight:bolder;">@startSpan </span> <span style="color:red; font-weight:bolder;">@spanStyle</span> <span style="font-weight:bolder;">@spanCenter</span> <span style="font-weight:bolder;"> @endSpan</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+</div>
+@code
+{
+    string showEditor = "display:block;";
+    string showPreview = "display:none;";
+    string help = "<pre>";
+    string helpSpan = "<span>";
+    string startSpan = "<span";
+    string spanCenter = ">This is a Word";
+    string endSpan = "</span>";
+    string spanStyle = "style=\"font-weight:bolder; color:gold; font-style:italic;\"";
+    string[] preContent;
+
+    public static ProjectItem Item { get; set; }
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Item = new ProjectItem();
+        preContent = DataServiceProvider.GetSamplePreContentArray();
+    }
+    
+    public Blazored.TextEditor.BlazoredTextEditor QuillHtml;
+
+
+    private MarkupString preview;
+    public string EditorContent { get; set; }
+    bool ShowChords { get; set; }
+    void ShowHideChords()
+    {
+        ShowChords = !ShowChords;
+        StateHasChanged();
+    }
+    private async void ShowOutPutPreview()
+    {
+        if (QuillHtml == null)
+            return;
+        EditorContent = await QuillHtml.GetText();
+
+        if (EditorContent.IsValidString())
+        {
+
+            preview = (MarkupString)EditorContent;
+            Item.Data = EditorContent;
+        }
+        else
+        {
+            preview = (MarkupString)"";
+        }
+        if (showEditor == "display:block;")
+        {
+            showEditor = "display:none;";
+            showPreview = "display:block;";
+        }
+        else
+        {
+            showEditor = "display:block;";
+            showPreview = "display:none;";
+        }
+        StateHasChanged();
+    }
+    public async void SubmitSong()
+    {
+        if(Item.IsValid() == false)
+        {
+            ChristianSongs.Blazor.Shared.MainLayout.Current.ShowAlert("Check required info! Title, YT and Song HTML...");
+            return;
+        }
+        ChristianSongs.Blazor.Shared.MainLayout.Items = await DataServiceProvider.GetItemsAsync();
+        var queryItem = ChristianSongs.Blazor.Shared.MainLayout.Items.Where(p=>p.Id == Item.Id).FirstOrDefault();
+        if(queryItem == null)
+        {
+            ChristianSongs.Blazor.Shared.MainLayout.Items.Add(Item);
+            DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(ChristianSongs.Blazor.Shared.MainLayout.Items), Item.Id);
+            Item = new ProjectItem();
+            StateHasChanged();
+        }
+        else
+        {
+            ChristianSongs.Blazor.Shared.MainLayout.Current.ShowAlert(Item.Id + " " + "is already exist");
+        }
+    }
+}
+
+@code {
+    [Parameter]
+    public string Language { get; set; }
+}

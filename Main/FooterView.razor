@@ -1,0 +1,28 @@
+﻿<style>
+    
+
+    #footer {
+        position: fixed;
+        padding: 10px 0px 0px 10px;
+        bottom: 0;
+        width: 100%;
+        /* Height of the footer*/
+        height: 40px;
+        background: @SiteInfo.BarBacgroundColor;
+    }
+</style>
+<div id="footer" class="subfooter dark-bg" style="height:60px; margin-bottom:0px;">    
+    <p class="text-center" style="font-size:15px; font-weight:bolder; color:@SiteInfo.TextColor;">
+        @DateTime.Now.Year Christians Worship Songs Collection. <a class="link-light"> </a>
+    </p>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+       
+    }
+  
+    
+}

@@ -1,0 +1,71 @@
+﻿<style>
+    .navbar-nav li {
+        display: inline;
+        width: fit-content;
+    }
+
+    ul {
+        width: fit-content;
+    }
+
+        ul li {
+            width: fit-content;
+        }
+</style>
+
+<div style="display:grid;grid-template-columns:auto 1fr auto">
+    <div>
+        <ul class="nav navbar-nav" style="display:inline; margin-top:3px;">
+            <li>
+                <svg style="margin-top:12px; margin-left:80px;" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24"
+                     viewBox="0 0 24 24">
+                    <path d="M18 7V3H12V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V11H18V8H14V7H18Z" />
+                </svg>
+            </li>
+            <li>
+                <a href="/" class="cta">Home</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+    </div>
+    <ul class="nav navbar-nav" style="display:inline; margin-top:3px; margin-right:80px;">
+        <li>
+            <select @onchange="DoStuff" style="border: none; margin-top:13px; color:@SiteInfo.TextColor; font-weight:bolder;">
+                @foreach (var item in Enum.GetNames(typeof(LanguageType)))
+                {
+                    <option value="@item" >@item</option>
+                }
+            </select>
+        </li>
+        <li style="visibility:visible">
+            <style type="text/css">
+                .cta {
+                    font-weight: 700;
+                    color: @SiteInfo.AccentColor !important;
+                    cursor: pointer;
+                }
+
+                    .cta:hover {
+                        color: @SiteInfo.AccentColor !important;
+                    }
+            </style>
+            <a @onclick="(()=>{ChristianSongs.Blazor.Shared.MainLayout.Current.NavigateToSubmitForm();})" class="cta">Submit Worship Song</a>
+        </li>
+    </ul>
+</div>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+    void DoStuff(ChangeEventArgs e)
+    {
+        var language = e.Value.ToString();
+        var languageType = RepoHelper.ConvertLanguage(language);
+        ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(languageType);
+    }
+}
