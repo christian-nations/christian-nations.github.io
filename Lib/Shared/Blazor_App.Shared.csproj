@@ -10,6 +10,7 @@
     <None Remove="Cookies\CookieManager.cshidden" />
     <None Remove="formatter.json" />
     <None Remove="Helpers\bad_words.txt" />
+    <None Remove="Host\Cebuano\data.json" />
     <None Remove="Host\English\data.json" />
     <None Remove="Host\Filipino\data.json" />
     <None Remove="Host\sample.txt" />
@@ -27,6 +28,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <EmbeddedResource Include="Data\bad_words.txt" />
+    <EmbeddedResource Include="Host\Cebuano\data.json" />
   </ItemGroup>
 
   <ItemGroup>

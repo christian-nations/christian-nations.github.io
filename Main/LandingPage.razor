@@ -1,8 +1,11 @@
 ﻿@page "/"
 
 <div>
-    <a href="worships/">Goto Woship Songs</a>   
+    <a @onclick="NavigateToWorshipSongs">Goto Woship Songs</a>   
 </div>
 @code {
-
+    public void NavigateToWorshipSongs()
+    {
+        Navigation.NavigateTo("worships/");
+    }
 }

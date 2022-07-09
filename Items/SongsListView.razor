@@ -25,7 +25,22 @@
 </div>
 
 @code {
-
+    List<ProjectItem> _totalItems = new List<ProjectItem>();
+    [Parameter]
+    public List<ProjectItem> TotalItems
+    {
+        get{ return _totalItems; }
+        set
+        {
+            _totalItems = value;
+            if(_totalItems.Count > 0)
+            {
+                ItemsArray = _totalItems.SplitList(35).ToList();
+                Items = ItemsArray[0];
+                StateHasChanged();
+            }
+        }
+    }
     public List<ProjectItem> Items { get; set; } = new List<ProjectItem>();
     public List<List<ProjectItem>> ItemsArray = new List<List<ProjectItem>>();
     protected override async void OnInitialized()
@@ -33,12 +48,9 @@
         base.OnInitialized();
         DataServiceProvider.ItemsLoaded += (s, e) =>
         {
-            ItemsArray = e.SplitList(35).ToList();
-            Items = ItemsArray[0];
+            TotalItems = e;
         };
-        var items = await DataServiceProvider.GetItemsAsync();
-        ItemsArray = items.SplitList(35).ToList();
-        Items = ItemsArray[0];
+       
     }
     int pageNumber = 0;
     void NextPage()

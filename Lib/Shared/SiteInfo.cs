@@ -56,7 +56,7 @@ namespace Blazor_App.Shared
     {
         English = 1,
         Filipino = 2,
-        //Cebuano = 3,      
+        Cebuano = 3,      
     }
 }
 

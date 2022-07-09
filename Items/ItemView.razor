@@ -51,10 +51,12 @@
         }
     }
     <div>
-        <SongsListView ></SongsListView>
+        <SongsListView TotalItems="Items"></SongsListView>
     </div>
 </div>
 @code {
+    [Parameter]
+    public List<ProjectItem> Items { get; set; } = new List<ProjectItem>();
     MarkupString dataContent;
 
     [Parameter]

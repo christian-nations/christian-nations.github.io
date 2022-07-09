@@ -116,16 +116,20 @@
     }
     public void NavigateToSubmitForm()
     {
-        Navigation.NavigateTo($"song-editor/{SiteInfo.Language.ToString()}");
+        Navigation.NavigateTo($"worships/song-editor/{SiteInfo.Language.ToString()}");
+    }
+    public void NavigateToWorshipSongs()
+    {
+        Navigation.NavigateTo("worships/");
     }
     public void SelectLanguage(LanguageType language)
     {
-        Navigation.NavigateTo($"/{language.ToString()}");
+        Navigation.NavigateTo($"worships/{language.ToString()}");
     }
     public void SelectSong(ProjectItem item)
     {
 
-        Navigation.NavigateTo($"/{SiteInfo.Language}/{item.Id}");
+        Navigation.NavigateTo($"worships/{SiteInfo.Language}/{item.Id}");
     }
 
     public async Task CopyTextToClipboard(string elementId)
