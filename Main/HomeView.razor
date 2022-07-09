@@ -1,6 +1,6 @@
-﻿@page "/"
-@page "/{Language}"
-@page "/{Language}/{SongId}"
+﻿@page "/worhips"
+@page "/worships/{Language}"
+@page "/worships/{Language}/{SongId}"
 <style>
     .blazored-typeahead {
         position: relative;
@@ -259,57 +259,63 @@
     }
 </style>
 <PageTitle>Christian Worship Songs</PageTitle>
-<div>
-    <div>
-        <div style="display:grid; grid-template-columns:1fr auto 1fr">
-            <div></div>
-            <div style="margin-top:5px;">
-                <h5 style="text-align:center;">Search Worship Songs</h5>
-                <div style="width:400px;">
+<ChristianSongs.Blazor.Shared.ShellView>
+    <Content>
+        <div>
+            <div>
+                <div style="display:grid; grid-template-columns:1fr auto 1fr">
+                    <div></div>
+                    <div style="margin-top:5px;">
+                        <h5 style="text-align:center;">Search Worship Songs</h5>
+                        <div style="width:400px;">
 
-                    <BlazoredTypeahead SearchMethod="GetPeopleLocal"
-                                       ConvertMethod="ConvertPerson"
-                                       @bind-Value="SelectedSongId"
-                                       placeholder="Search worship songs...">
-                        <SelectedTemplate Context="songId">
-                            @{
-                                var selectedSong = LoadSelectedPerson(songId);
+                            <BlazoredTypeahead SearchMethod="GetPeopleLocal"
+                                               ConvertMethod="ConvertPerson"
+                                               @bind-Value="SelectedSongId"
+                                               placeholder="Search worship songs...">
+                                <SelectedTemplate Context="songId">
+                                    @{
+                                        var selectedSong = LoadSelectedPerson(songId);
 
-                                <text>@selectedSong?.Title</text>
-                            }
-                        </SelectedTemplate>
-                        <ResultTemplate Context="song">
-                            @{
-                                var artist = song.Artist.IsValidString() ? " (Artist:" + song.Artist + ")" : "";
-                            }
-                            @song.Title @artist
-                        </ResultTemplate>
-                    </BlazoredTypeahead>
+                                        <text>@selectedSong?.Title</text>
+                                    }
+                                </SelectedTemplate>
+                                <ResultTemplate Context="song">
+                                    @{
+                                        var artist = song.Artist.IsValidString() ? " (Artist:" + song.Artist + ")" : "";
+                                    }
+                                    @song.Title @artist
+                                </ResultTemplate>
+                            </BlazoredTypeahead>
+                        </div>
+
+                    </div>
                 </div>
 
+
+            </div>
+            <div id="ad-slot-1">
+            </div>
+            <div style="display:grid; grid-template-columns:1fr auto 1fr">
+                <div>
+                </div>
+                <div>
+                    <div style="margin-left:35px;">
+                        <ChristianSongs.Blazor.Items.ItemView Item="@SelectedItem"></ChristianSongs.Blazor.Items.ItemView>
+
+                    </div>
+                </div>
+
+                <div>
+                </div>
+            </div>
+            <div id="ad-slot-2">
             </div>
         </div>
 
 
-    </div>
-    <div id="ad-slot-1">
-    </div>
-    <div style="display:grid; grid-template-columns:1fr auto 1fr">
-        <div>
-        </div>
-        <div>
-            <div style="margin-left:35px;">
-                <ChristianSongs.Blazor.Items.ItemView Item="@SelectedItem"></ChristianSongs.Blazor.Items.ItemView>
-
-            </div>
-        </div>
-
-        <div>
-        </div>
-    </div>
-    <div id="ad-slot-2">
-    </div>
-</div>
+    </Content>
+</ChristianSongs.Blazor.Shared.ShellView>
 @code {
     string _songId = "";
     [Parameter]
@@ -330,7 +336,7 @@
         set
         {
             _language = value;
-            if(SongId.IsValidString() == false)
+            if (SongId.IsValidString() == false)
             {
                 UpdateByParameters();
             }
@@ -357,26 +363,32 @@
     }
     void SelectSong(string songId)
     {
-        var item = ChristianSongs.Blazor.Shared.MainLayout.Items.Where(p => p.Id == songId).FirstOrDefault();
+        var item = Items.Where(p => p.Id == songId).FirstOrDefault();
         if (item != null)
         {
-            SelectedItem = item;
-            //ChristianSongs.Blazor.Shared.MainLayout.Current.SelectSong(item);
-            StateHasChanged();
+
+            ChristianSongs.Blazor.Shared.ShellView.Current.SelectSong(item);
+
         }
     }
     private async Task<IEnumerable<ProjectItem>> GetPeopleLocal(string searchText)
     {
-        return await Task.FromResult(ChristianSongs.Blazor.Shared.MainLayout.Items.Where(x => x.GetQueryContent().Contains(searchText.ToLower())).ToList());
+        return await Task.FromResult(Items.Where(x => x.GetQueryContent().Contains(searchText.ToLower())).ToList());
     }
 
     private string ConvertPerson(ProjectItem person) => person?.Id;
 
-    private ProjectItem LoadSelectedPerson(string id) => ChristianSongs.Blazor.Shared.MainLayout.Items.FirstOrDefault(p => p.Id == id);
+    private ProjectItem LoadSelectedPerson(string id) => Items.FirstOrDefault(p => p.Id == id);
     #endregion
+    public List<ProjectItem> Items = new List<ProjectItem>();
     protected override void OnInitialized()
     {
         base.OnInitialized();
+        DataServiceProvider.ItemsLoaded += (ww, e) =>
+        {
+            Items = e;
+            StateHasChanged();
+        };
         UpdateByParameters();
 
     }
@@ -396,15 +408,22 @@
             if (SiteInfo.Language != language)
             {
                 SiteInfo.Language = language;
-                ChristianSongs.Blazor.Shared.MainLayout.Items = await DataServiceProvider.GetItemsAsync();
+                Items = await DataServiceProvider.GetItemsAsync();
             }
 
         }
+        if (Items.Count == 0)
+        {
+            Items = await DataServiceProvider.GetItemsAsync();
+        }
         if (SongId.IsValidString())
         {
-            if (ChristianSongs.Blazor.Shared.MainLayout.Items.Count > 0)
+            if (Items.Count > 0)
             {
-                var item = ChristianSongs.Blazor.Shared.MainLayout.Items.Where(p => p.Id == SongId).FirstOrDefault();
+                var items = await DataServiceProvider.GetItemsAsync();
+                //Matt+Redman-10%2c000+Reasons+(Bless+the+Lord)
+
+                var item = items.Where(p => p.Id == Uri.EscapeDataString(SongId)).FirstOrDefault();
                 if (item != null)
                 {
                     SelectedItem = item;
@@ -414,8 +433,8 @@
         }
         else
         {
-            ChristianSongs.Blazor.Shared.MainLayout.Items = await DataServiceProvider.GetItemsAsync();
-            SelectedItem = ChristianSongs.Blazor.Shared.MainLayout.Items.FirstOrDefault();
+            Items = await DataServiceProvider.GetItemsAsync();
+            SelectedItem = Items.FirstOrDefault();
             contentData = (MarkupString)SelectedItem.Data;
         }
         StateHasChanged();

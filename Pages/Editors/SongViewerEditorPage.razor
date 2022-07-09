@@ -1,0 +1,10 @@
+﻿@page "/worships/song-editor/{Language}"
+<ChristianSongs.Blazor.Shared.ShellView>
+    <Content>
+        <SongViewerEditor Language="@Language"></SongViewerEditor>
+    </Content>
+</ChristianSongs.Blazor.Shared.ShellView>
+@code{
+    [Parameter]
+    public string Language { get; set; }
+}

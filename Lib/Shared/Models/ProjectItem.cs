@@ -76,7 +76,8 @@ namespace Blazor_App.Shared.Models
             {
                 Id = Title;
             }
-            Id = HttpUtility.UrlEncode(Id);
+            //Id = HttpUtility.UrlEncode(Id);
+            Id = Uri.EscapeDataString(Id);
             return Id;
         }
         public string GetEncodedId()

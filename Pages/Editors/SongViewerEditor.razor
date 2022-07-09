@@ -1,4 +1,4 @@
-﻿@page "/song-editor/{Language}"
+﻿
 <style>
     .input_data_editor{
         width:98%; 
@@ -146,13 +146,14 @@
     string[] preContent;
 
     public static ProjectItem Item { get; set; }
+    public List<ProjectItem> Items = new List<ProjectItem>();
     protected override void OnInitialized()
     {
         base.OnInitialized();
         Item = new ProjectItem();
         preContent = DataServiceProvider.GetSamplePreContentArray();
     }
-    
+
     public Blazored.TextEditor.BlazoredTextEditor QuillHtml;
 
 
@@ -196,21 +197,23 @@
     {
         if(Item.IsValid() == false)
         {
-            ChristianSongs.Blazor.Shared.MainLayout.Current.ShowAlert("Check required info! Title, YT and Song HTML...");
+            ChristianSongs.Blazor.Shared.ShellView.Current.ShowAlert("Check required info! Title, YT and Song HTML...");
             return;
         }
-        ChristianSongs.Blazor.Shared.MainLayout.Items = await DataServiceProvider.GetItemsAsync();
-        var queryItem = ChristianSongs.Blazor.Shared.MainLayout.Items.Where(p=>p.Id == Item.Id).FirstOrDefault();
+        Items = await DataServiceProvider.GetItemsAsync();
+        var queryItem = Items.Where(p=>p.Id == Item.Id).FirstOrDefault();
         if(queryItem == null)
         {
-            ChristianSongs.Blazor.Shared.MainLayout.Items.Add(Item);
-            DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(ChristianSongs.Blazor.Shared.MainLayout.Items), Item.Id);
+            if (Items == null)
+                Items = new List<ProjectItem>();
+            Items.Add(Item);
+            DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(Items), Item.Id);
             Item = new ProjectItem();
             StateHasChanged();
         }
         else
         {
-            ChristianSongs.Blazor.Shared.MainLayout.Current.ShowAlert(Item.Id + " " + "is already exist");
+            ChristianSongs.Blazor.Shared.ShellView.Current.ShowAlert(Item.Id + " " + "is already exist");
         }
     }
 }

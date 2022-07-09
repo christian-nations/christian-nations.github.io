@@ -1,0 +1,58 @@
+﻿<style>
+
+</style>
+<div>
+    <h3>@SiteInfo.Language.ToString() Worship Songs</h3>
+    <ul style="color:@SiteInfo.AccentColor;">
+        @foreach (var item in Items)
+        {
+            <li @onclick="(()=>{ ChristianSongs.Blazor.Shared.ShellView.Current.SelectSong(item);})" style="color:@SiteInfo.AccentColor; cursor:pointer;">
+                <span style="color:@SiteInfo.AccentColor; font-weight:bolder;"> @item.Title</span>
+            </li>
+        }
+    </ul>
+    <div style="display:grid; grid-template-columns:1fr auto 1fr">
+        <div></div>
+        <div style="display:inline-flex; gap:4px;">
+            <span>◄</span>
+            <a @onclick="@PreviousPage" style="color:@SiteInfo.AccentColor; cursor:pointer; font-weight:bolder;">Previous</a>
+            <span>│</span>
+            <a @onclick="@NextPage" style="color:@SiteInfo.AccentColor; cursor:pointer; font-weight:bolder;">Next</a>
+            <span>►</span>
+        </div>
+        <div></div>
+    </div>
+</div>
+
+@code {
+
+    public List<ProjectItem> Items { get; set; } = new List<ProjectItem>();
+    public List<List<ProjectItem>> ItemsArray = new List<List<ProjectItem>>();
+    protected override async void OnInitialized()
+    {
+        base.OnInitialized();
+        DataServiceProvider.ItemsLoaded += (s, e) =>
+        {
+            ItemsArray = e.SplitList(35).ToList();
+            Items = ItemsArray[0];
+        };
+        var items = await DataServiceProvider.GetItemsAsync();
+        ItemsArray = items.SplitList(35).ToList();
+        Items = ItemsArray[0];
+    }
+    int pageNumber = 0;
+    void NextPage()
+    {
+        this.Items = this.ItemsArray.SkipWhile(x => x != this.Items).Skip(1).DefaultIfEmpty(this.ItemsArray[0]).FirstOrDefault();
+       
+        pageNumber = ItemsArray.IndexOf(this.Items) + 1;
+        StateHasChanged();
+    }
+    void PreviousPage()
+    {
+        this.Items = this.ItemsArray.TakeWhile(x => x != this.Items).DefaultIfEmpty(this.ItemsArray[this.ItemsArray.Count - 1]).FirstOrDefault();
+       
+        pageNumber = ItemsArray.IndexOf(this.Items) + 1;
+        StateHasChanged();
+    }
+}
