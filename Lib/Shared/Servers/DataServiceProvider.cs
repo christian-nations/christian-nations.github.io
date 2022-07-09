@@ -175,11 +175,11 @@ namespace Blazor_App.Shared.Servers
         {
             if (raw)
             {
-                return $"https://raw.githubusercontent.com/christian-nations/worships/main/Lib/Shared/Host/{language}/data.json";
+                return $"https://raw.githubusercontent.com/christian-nations/christian-nations.github.io/main/Lib/Shared/Host/{language}/data.json";
             }
             else
             {
-                return $"https://github.com/christian-nations/worships/blob/main/Lib/Shared/Host/{language}/data.json";
+                return $"https://github.com/christian-nations/christian-nations.github.io/blob/main/Lib/Shared/Host/{language}/data.json";
             }
         }
         public static void UpdateToServer(LanguageType language, string serialize, string message)
