@@ -32,7 +32,7 @@
     </div>
     <ul class="nav navbar-nav" style="display:inline; margin-top:3px; margin-right:80px;">
         <li>
-            <select @onchange="GotoLanguage" style="border: none; margin-top:13px; color:@SiteInfo.TextColor; font-weight:bolder;">
+            <select value="@SiteInfo.Language.ToString()" @onchange="GotoLanguage"  style="border: none; margin-top:13px; color:@SiteInfo.TextColor; font-weight:bolder;">
                 @foreach (var item in Enum.GetNames(typeof(LanguageType)))
                 {
                     <option value="@item" >@item</option>
@@ -51,7 +51,7 @@
                         color: @SiteInfo.AccentColor !important;
                     }
             </style>
-            <a @onclick="(()=>{ChristianSongs.Blazor.Shared.ShellView.Current.NavigateToSubmitForm();})" class="cta">Submit Worship Song</a>
+            <a @onclick="(()=>{ChristianSongs.Blazor.Shared.MainLayout.Current.NavigateToSubmitForm();})" class="cta">Submit Worship Song</a>
         </li>
     </ul>
 </div>
@@ -66,6 +66,6 @@
     {
         var language = e.Value.ToString();
         var languageType = RepoHelper.ConvertLanguage(language);
-        ChristianSongs.Blazor.Shared.ShellView.Current.SelectLanguage(languageType);
+        ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(languageType);
     }
 }

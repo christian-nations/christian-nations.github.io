@@ -50,9 +50,12 @@
             </div>
         }
     }
-    <div>
-        <SongsListView TotalItems="Items"></SongsListView>
-    </div>
+    @if (ShowList)
+    {
+        <div>
+            <SongsListView TotalItems="Items"></SongsListView>
+        </div>
+    }
 </div>
 @code {
     [Parameter]
@@ -72,6 +75,8 @@
             }
         }
     }
+    [Parameter]
+    public bool ShowList { get; set; } = true;
     protected override void OnInitialized()
     {
         base.OnInitialized();
