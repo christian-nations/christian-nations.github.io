@@ -214,7 +214,9 @@
             if (Items == null)
                 Items = new List<ProjectItem>();
             Items.Add(Item);
-            DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(Items), Item.Id);
+            ProjectItemData projectItemData = new ProjectItemData();
+            projectItemData.Items = Items;
+            DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(projectItemData), Item.Title);
             Item = new ProjectItem();
             StateHasChanged();
         }
