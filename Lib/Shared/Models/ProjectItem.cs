@@ -66,9 +66,14 @@ namespace Blazor_App.Shared.Models
             }
             return query.ToLower();
         }
-        string UpdateId()
+        void UpdateId()
         {
-            if(Artist.IsValidString())
+            Id = GetId();
+            Id = Uri.EscapeDataString(Id);
+        }
+        string GetId()
+        {
+            if (Artist.IsValidString())
             {
                 Id = Artist + "-" + Title;
             }
@@ -76,17 +81,12 @@ namespace Blazor_App.Shared.Models
             {
                 Id = Title;
             }
-            //Id = HttpUtility.UrlEncode(Id);
-            Id = Uri.EscapeDataString(Id);
             return Id;
         }
         public string GetEncodedId()
         {
-            return HttpUtility.UrlEncode(this.UpdateId());
+            return Uri.EscapeDataString(this.GetId());
         }
-        public string GetDecodedId()
-        {
-            return HttpUtility.UrlDecode(this.UpdateId());
-        }
+        
     }
 }
