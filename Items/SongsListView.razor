@@ -6,7 +6,7 @@
     <ul style="color:@SiteInfo.AccentColor;">
         @foreach (var item in Items)
         {
-            <li @onclick="(()=>{ ChristianSongs.Blazor.Shared.ShellView.Current.SelectSong(item);})" style="color:@SiteInfo.AccentColor; cursor:pointer;">
+            <li @onclick="(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectSong(item);})" style="color:@SiteInfo.AccentColor; cursor:pointer;">
                 <span style="color:@SiteInfo.AccentColor; font-weight:bolder;"> @item.Title</span>
             </li>
         }
