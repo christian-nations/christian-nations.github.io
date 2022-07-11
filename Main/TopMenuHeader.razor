@@ -60,7 +60,7 @@
                             </a>
                         </div>
 
-                        <div class="site-slogan" style="margin-left:8px; vertical-align:middle;" b-sqgpggpbft="">
+                        <div class="site-slogan" style="margin-left:8px; vertical-align:middle; font-weight:bold;" b-sqgpggpbft="">
                             @SiteInfo.Language.ToString()<!--!--> Worship Songs
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                                                     @foreach (var item in Enum.GetNames(typeof(LanguageType)))
                                                     {
                                                         <li>
-                                                            <a @onclick="@(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(RepoHelper.ConvertLanguage(item));})">@item</a>
+                                                            <a style="font-weight:bold;" @onclick="@(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(RepoHelper.ConvertLanguage(item));})">@item</a>
                                                         </li>
                                                     }
                                                 </ul>

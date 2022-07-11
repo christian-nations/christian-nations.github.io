@@ -6,11 +6,11 @@ namespace Blazor_App.Shared
     {
 
         //coderbasket
-        public const string SiteName = "Coder Basket";
-        public const string SiteUrlShort = "coderbasket.com";
-        public const string SiteUrl = "https://coderbasket.github.io/";
+        public const string SiteName = "Christian Nations";
+        public const string SiteUrlShort = "christian-nations";
+        public const string SiteUrl = "https://christian-nations.github.io/";
         public const string SiteFullUrl = SiteUrl;
-        public const string Email = "coderbasketcontact@gmail.com";
+        public const string Email = "amazingview4@gmail.com";
 
         //Social
         public static string Twitter = "https://twitter.com/" + SiteUrlShort.Replace(".com", "");
