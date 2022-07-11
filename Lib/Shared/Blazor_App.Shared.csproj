@@ -7,19 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Cookies\CookieManager.cshidden" />
     <None Remove="formatter.json" />
     <None Remove="Helpers\bad_words.txt" />
     <None Remove="Host\Cebuano\data.json" />
     <None Remove="Host\English\data.json" />
     <None Remove="Host\Filipino\data.json" />
+    <None Remove="Host\Spanish\data.json" />
     <None Remove="Host\French\data.json" />
     <None Remove="Host\sample.txt" />
     <None Remove="Servers\sample.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Cookies\CookieManager.cshidden" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +31,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Host\English\data.json" />
     <EmbeddedResource Include="Host\Filipino\data.json" />
+    <EmbeddedResource Include="Host\Spanish\data.json" />
     <EmbeddedResource Include="Host\French\data.json" />
     <EmbeddedResource Include="Host\sample.txt" />
     <EmbeddedResource Include="Servers\sample.txt" />

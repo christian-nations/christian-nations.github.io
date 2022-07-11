@@ -58,6 +58,7 @@ namespace Blazor_App.Shared
         Filipino = 2,
         Cebuano = 3,
         French = 4,
+        Spanish = 5,
     }
 }
 

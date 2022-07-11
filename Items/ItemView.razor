@@ -58,7 +58,7 @@
             </div>
         }
     }
-    @if (ShowList)
+    @if (ShowList && Items.Count >= 35)
     {
         <div>
             <SongsListView TotalItems="Items"></SongsListView>
