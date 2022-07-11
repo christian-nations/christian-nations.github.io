@@ -15,6 +15,11 @@
         color: @SiteInfo.AccentColor;
         font-weight: bolder;
     }
+    .title_headr{
+        font-weight:bolder;
+        font-size:25px;
+        color:@SiteInfo.AccentColor;
+    }
 </style>
 
 <PageTitle>Song Editor</PageTitle>
@@ -32,6 +37,9 @@
                 <div style="@showEditor">
                     <span class="input_data_editor_title">Title</span>
                     <input @bind-value="@Item.Title" class="input_data_editor" placeholder="Title" />
+                </div>
+                <div style="@showPreview">
+                    <span class="title_headr">@Item.Title</span>
                 </div>
             </div>
             <div>
@@ -104,7 +112,7 @@
                     <ChristianSongs.Blazor.Items.PlayButton Item="Item"></ChristianSongs.Blazor.Items.PlayButton>
                 }
             </div>
-            <button @onclick="SubmitSong">Submit</button>
+            <button @onclick="SubmitSong">Submit to @SiteInfo.Language.ToString()</button>
         </div>
         <div class="card" style="@showEditor">
             <span class="input_data_editor_title">Artist</span>

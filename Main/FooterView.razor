@@ -2,18 +2,22 @@
     
 
     #footer {
-        position: fixed;
+       
         padding: 10px 0px 0px 10px;
         bottom: 0;
         width: 100%;
         /* Height of the footer*/
-        height: 40px;
+        height: fit-content;
         background: @SiteInfo.BarBacgroundColor;
+        color: @SiteInfo.TextColor;
     }
 </style>
-<div id="footer" class="subfooter dark-bg" style="height:60px; margin-bottom:0px;">    
+<div id="footer" class="subfooter dark-bg">    
     <p class="text-center" style="font-size:15px; font-weight:bolder; color:@SiteInfo.TextColor;">
         @DateTime.Now.Year Christians Worship Songs Collection. <a class="link-light"> </a>
+    </p>
+    <p>
+        <a> About</a>
     </p>
 </div>
 

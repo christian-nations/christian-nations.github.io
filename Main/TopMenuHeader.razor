@@ -11,56 +11,114 @@
         ul li {
             width: fit-content;
         }
+
+    .navbar-nav li {
+        display: inline;
+        width: fit-content;
+    }
+
+        .navbar-nav li .a_item {
+            display: inline;
+            width: fit-content;
+            height: fit-content;
+            max-height: 30px;
+            vertical-align: middle;
+        }
+
+    .a_item {
+        display: inline;
+        width: fit-content;
+        height: fit-content;
+        max-height: 30px;
+        vertical-align: middle;
+    }
+    ul {
+        width: fit-content;
+    }
+
+        ul li {
+            width: fit-content;
+        }
+
+            ul li a:hover + .hiddenMenu,
+            .hiddenMenu:hover {
+                display: block;
+            }
 </style>
+<div style="z-index:3000; background-color:@SiteInfo.BarBacgroundColor; opacity:10;" class="header-container" b-sqgpggpbft="">
+    
+    <header class="header fixed clea.dropdown-togglefix" b-sqgpggpbft="">
+        <div class="container" b-sqgpggpbft="">
+            <div class="row" b-sqgpggpbft="">
+                <div class="col-md-3" b-sqgpggpbft="" >
+                    <div class="header-left clearfix" b-sqgpggpbft="" style="display:inline-flex;">
+                        <!--!--><div id="logo" class="logo" b-sqgpggpbft="">
+                            <a href="/" b-sqgpggpbft="">
+                                <div b-sqgpggpbft="" style="margin-top:50%; transform:translateY(-50%);">
+                                    <img width="30" height="30" src="/img/codericon.svg" href="~/img/codericon.svg" b-sqgpggpbft="">
+                                </div>
+                            </a>
+                        </div>
 
-<div style="display:grid;grid-template-columns:auto 1fr auto">
-    <div>
-        <ul class="nav navbar-nav" style="display:inline; margin-top:3px;">
-            <li>
-                <svg style="margin-top:12px; margin-left:80px;" xmlns="http://www.w3.org/2000/svg"
-                     xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24"
-                     viewBox="0 0 24 24">
-                    <path d="M18 7V3H12V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V11H18V8H14V7H18Z" />
-                </svg>
-            </li>
-            <li>
-                <a href="/" class="cta">Home</a>
-            </li>
-        </ul>
-    </div>
-    <div>
-    </div>
-    <ul class="nav navbar-nav" style="display:inline; margin-top:3px; margin-right:80px;">
-        <li>
-            <select value="@SiteInfo.Language.ToString()" @onchange="GotoLanguage"  style="border: none; margin-top:13px; color:@SiteInfo.TextColor; font-weight:bolder;">
-                @foreach (var item in Enum.GetNames(typeof(LanguageType)))
-                {
-                    <option value="@item" >@item</option>
-                }
-            </select>
-        </li>
-        <li style="visibility:visible">
-            <style type="text/css">
-                .cta {
-                    font-weight: 700;
-                    color: @SiteInfo.AccentColor !important;
-                    cursor: pointer;
-                }
+                        <div class="site-slogan" style="margin-left:8px; vertical-align:middle;" b-sqgpggpbft="">
+                            @SiteInfo.Language.ToString()<!--!--> Worship Songs
+                        </div>
+                    </div>
+                </div><!--!-->
+                <div class="col-md-9" b-sqgpggpbft="">
+                    <div class="header-right clearfix" b-sqgpggpbft="">
+                        <div class="main-navigation  animated" b-sqgpggpbft="">
+                            <!--!--><nav class="navbar navbar-default" role="navigation">
+                                <div class="container-fluid">
+                                    <!--!--><div style="width:fit-content; float:left; margin-right:auto; margin-left:10px;" class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+                                    @*Expandable*@
+                                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
 
-                    .cta:hover {
-                        color: @SiteInfo.AccentColor !important;
-                    }
-            </style>
-            <a @onclick="(()=>{ChristianSongs.Blazor.Shared.MainLayout.Current.NavigateToSubmitForm();})" class="cta">Submit Worship Song</a>
-        </li>
-    </ul>
+                                        <ul class="nav navbar-nav" style="display:inline; max-height:30px; ">
+                                            <!--!-->
+                                            <li style="position:relative; width:fit-content;" class="dropdown">
+                                                <a style="font-weight:bolder;" class="a_item" href="#" role="button" aria-haspopup="true" aria-expanded="false">@SiteInfo.Language.ToString()</a><!--!-->
+                                                <ul style="position:absolute; margin-top:-25px;" class="dropdown-menu hiddenMenu">
+                                                    @foreach (var item in Enum.GetNames(typeof(LanguageType)))
+                                                    {
+                                                        <li>
+                                                            <a @onclick="@(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(RepoHelper.ConvertLanguage(item));})">@item</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+
+                                            </li><!--!-->
+                                          @*  <li><a class="a_item" href="/">Home</a></li>*@
+                                            <li style="visibility:visible; color:@SiteInfo.AccentColor;">
+                                                <a class="a_item" style="color:@SiteInfo.AccentColor; font-weight:bolder;" @onclick="(()=>{ChristianSongs.Blazor.Shared.MainLayout.Current.NavigateToSubmitForm();})">Submit Worship Song</a>
+                                            </li><!--!-->
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 </div>
-
 @code {
-
+    string showMobileHeader = "display:none;";
+    string showDestopHeader = "display:block;";
+    bool IsMediumSize = false;
     protected override void OnInitialized()
     {
         base.OnInitialized();
+        IsMediumSize = ChristianSongs.Blazor.Shared.MainLayout.Current.Mobile;
     }
     void GotoLanguage(ChangeEventArgs e)
     {
@@ -68,4 +126,5 @@
         var languageType = RepoHelper.ConvertLanguage(language);
         ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(languageType);
     }
+
 }
