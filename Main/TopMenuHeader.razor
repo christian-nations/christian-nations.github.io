@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="site-slogan" style="margin-left:8px; vertical-align:middle; font-weight:bold;" b-sqgpggpbft="">
-                            @SiteInfo.Language.ToString()<!--!--> Worship Songs
+                            @_selectedLanguage<!--!--> Worship Songs
                         </div>
                     </div>
                 </div><!--!-->
@@ -83,13 +83,13 @@
 
                                         <ul class="nav navbar-nav" style="display:inline; max-height:30px; ">
                                             <!--!-->
-                                            <li style="position:relative; width:fit-content;" class="dropdown">
-                                                <a style="font-weight:bolder;" class="a_item" href="#" role="button" aria-haspopup="true" aria-expanded="false">@SiteInfo.Language.ToString()</a><!--!-->
-                                                <ul style="position:absolute; margin-top:-25px;" class="dropdown-menu hiddenMenu">
+                                            <li style="position:relative; width:fit-content; font-weight:bolder;" class="">
+                                                <a style="font-weight:bolder;" class="a_item">@_selectedLanguage▾</a><!--!-->
+                                                <ul style="position:absolute; margin-top:-25px; color:@SiteInfo.TextColor;" class="dropdown-menu hiddenMenu">
                                                     @foreach (var item in Enum.GetNames(typeof(LanguageType)))
                                                     {
                                                         <li>
-                                                            <a style="font-weight:bold;" @onclick="@(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(RepoHelper.ConvertLanguage(item));})">@item</a>
+                                                            <a style="font-weight:bold;" @onclick="@(()=>{GotoLanguage(item);})">@item</a>
                                                         </li>
                                                     }
                                                 </ul>
@@ -120,11 +120,13 @@
         base.OnInitialized();
         IsMediumSize = ChristianSongs.Blazor.Shared.MainLayout.Current.Mobile;
     }
-    void GotoLanguage(ChangeEventArgs e)
+    void GotoLanguage(string language)
     {
-        var language = e.Value.ToString();
+
+        _selectedLanguage = language;
         var languageType = RepoHelper.ConvertLanguage(language);
         ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(languageType);
+        StateHasChanged();
     }
-
+    string _selectedLanguage = SiteInfo.Language.ToString();
 }

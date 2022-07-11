@@ -165,8 +165,12 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        Item = new ProjectItem();
+        if(Item == null)
+        {
+            Item = new ProjectItem();
+        }
         preContent = DataServiceProvider.GetSamplePreContentArray();
+        StateHasChanged();
     }
 
     public Blazored.TextEditor.BlazoredTextEditor QuillHtml;
