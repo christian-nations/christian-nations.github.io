@@ -13,6 +13,7 @@
     <None Remove="Host\Cebuano\data.json" />
     <None Remove="Host\English\data.json" />
     <None Remove="Host\Filipino\data.json" />
+    <None Remove="Host\French\data.json" />
     <None Remove="Host\sample.txt" />
     <None Remove="Servers\sample.txt" />
   </ItemGroup>
@@ -34,6 +35,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Host\English\data.json" />
     <EmbeddedResource Include="Host\Filipino\data.json" />
+    <EmbeddedResource Include="Host\French\data.json" />
     <EmbeddedResource Include="Host\sample.txt" />
     <EmbeddedResource Include="Servers\sample.txt" />
   </ItemGroup>
