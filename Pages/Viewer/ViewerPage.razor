@@ -1,0 +1,85 @@
+﻿@page "/worships/viewer/{language}/{songId}"
+@if(SelectedItem != null)
+{
+    <PageTitle>@SelectedItem.Title</PageTitle>
+}
+<div>
+    <div style="display:grid; grid-template-columns:1fr auto 1fr">
+        <div></div>
+        <div>
+            @if(SelectedItem != null)
+            {
+                <ChristianSongs.Blazor.Items.ItemView Item="SelectedItem" AsViewer="true"></ChristianSongs.Blazor.Items.ItemView>
+            }
+        </div>
+        <div></div>
+    </div>
+</div>
+@code {
+    string _songId = "";
+    [Parameter]
+    public string SongId
+    {
+        get { return _songId; }
+        set
+        {
+            _songId = value;
+            FindSongParameter();
+        }
+    }
+    string _language = "";
+    [Parameter]
+    public string Language
+    {
+        get { return _language; }
+        set
+        {
+            _language = value;
+            if (SongId.IsValidString() == false)
+            {
+                FindSongParameter();
+            }
+        }
+    }
+    List<ProjectItem> Items = new List<ProjectItem>();
+    public ProjectItem SelectedItem { get; set; }
+    #region Parameter
+    bool processing = false;
+    public async void FindSongParameter()
+    {
+        if (processing)
+            return;
+        processing = true;
+        if (Language.IsValidString())
+        {
+            var language = RepoHelper.ConvertLanguage(Language);
+            if (SiteInfo.Language != language)
+            {
+                SiteInfo.Language = language;
+                Items = await DataServiceProvider.GetItemsAsync();
+            }
+
+        }
+        if (Items.Count == 0)
+        {
+            Items = await DataServiceProvider.GetItemsAsync();
+        }
+        if (SongId.IsValidString())
+        {
+            if (Items.Count > 0)
+            {
+                var items = await DataServiceProvider.GetItemsAsync();
+               
+                var item = items.Where(p => p.Id == Uri.EscapeDataString(SongId)).FirstOrDefault();
+                if (item != null)
+                {
+                    SelectedItem = item;                 
+                }
+            }
+        }
+        
+        StateHasChanged();
+        processing = false;
+    }
+    #endregion
+}

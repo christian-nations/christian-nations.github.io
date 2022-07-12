@@ -1,5 +1,4 @@
-﻿
-<style>
+﻿<style>
     .input_data_editor {
         width: 98%;
         margin-left: 8px;
@@ -21,9 +20,6 @@
         color:@SiteInfo.AccentColor;
     }
 </style>
-
-<PageTitle>Song Editor</PageTitle>
-
 <div>
     <div class="col-md-8" style="margin-left:50%; transform:translateX(-50%);">
         <div class="card">
@@ -92,17 +88,13 @@
                             }
                         </EditorContent>
                     </Blazored.TextEditor.BlazoredTextEditor>
-
                 </div>
                 <div class="card-body mb-5" style="@showPreview">
                     <ChristianSongs.Blazor.Items.ItemView ShowList="false" PutCenter="false" ShowChords="ShowChords" DataContent="@preview"></ChristianSongs.Blazor.Items.ItemView>
                 </div>
             </div>
-
         </div>
-
         <div class="card" style="@showPreview">
-
             <div class="card-header">
                 Preview of worship song html
             </div>
@@ -119,11 +111,9 @@
             <input @bind-value="@Item.Artist" class="input_data_editor" placeholder="Artist" />
             <span class="input_data_editor_title">Youtube</span>
             <input @bind-value="@Item.YoutubeUrl" class="input_data_editor" placeholder="Youtube Url" />
-
             <div class="card-header">
                 Worship song html editor
             </div>
-
         </div>
         <div class="card">
             <div class="card-header">
@@ -142,11 +132,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </div>
 @code
 {
@@ -225,14 +212,17 @@
         {
             if (Items == null)
             {
-                Items = new List<ProjectItem>();
+                Items = await DataServiceProvider.GetItemsAsync();
             }
-            Items.Add(Item);
-            ProjectItemData projectItemData = new ProjectItemData();
-            projectItemData.Items = Items;
-            DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(projectItemData), Item.Title);
-            Item = new ProjectItem();
-            StateHasChanged();
+            if (Items != null)
+            {
+                Items.Add(Item);
+                ProjectItemData projectItemData = new ProjectItemData();
+                projectItemData.Items = Items;
+                DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(projectItemData), Item.Title);
+                Item = new ProjectItem();
+                StateHasChanged();
+            }
         }
         else
         {

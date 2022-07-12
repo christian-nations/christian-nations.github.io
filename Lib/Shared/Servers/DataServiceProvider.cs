@@ -145,9 +145,19 @@ namespace Blazor_App.Shared.Servers
             var url = GetHostUrl(SiteInfo.Language);
             var txt = await CookUpServices.DownloadstringAsync(url);
             if (string.IsNullOrEmpty(txt) || string.IsNullOrWhiteSpace(txt))
-                return _items;
-            var projectItemData = Newtonsoft.Json.JsonConvert.DeserializeObject<ProjectItemData>(txt);
-            _items = projectItemData.Items;
+            {
+                _items = await GetItemsAsync();
+            }
+            else
+            {
+                var projectItemData = Newtonsoft.Json.JsonConvert.DeserializeObject<ProjectItemData>(txt);
+                _items = projectItemData.Items;
+                if (_items != null && _items.Count > 0)
+                {
+                    _currentItems[SiteInfo.Language] = _items;
+                    ItemsLoaded?.Invoke(_items, _items);
+                }
+            }
             return _items;
         }
         public static ProjectItemData GetProjectItemData()
