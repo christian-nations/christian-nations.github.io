@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "Blazor_App.Shared.dll": "sha256-t+TrLePGpkZSPxkoi6w01Tebh7+Pqta\/CUFB9dotjFc=",
+      "Blazor_App.Shared.dll": "sha256-KgNB43Ir0BtyFFk9FdsvMsYHg62UjQd6d1EdHX0H+74=",
       "Blazored.Modal.dll": "sha256-yoXX75RsqCVb+q2v0ZS7Hd6lW+OeSPHHPyJBk\/AyYMg=",
       "Blazored.TextEditor.dll": "sha256-LMdQYoLtnpSSOLOfcqsF2EuS6o8aor5meBsPL8T8PWM=",
       "Blazored.Typeahead.dll": "sha256-YNakk\/GmzitY7JWE\/2LWemYjE+ufhSnWzOQM36VuU5Q=",
