@@ -5,18 +5,16 @@
         border-width: 0;
         font-size: 1em;
         font-weight:bolder;
+        color:@SiteInfo.TextColor;
     }
-    .song_Div span {
+    
+    .song_Div span, p, div, br{
         font-size: 1em;
         font-weight: bolder;
-        font-weight: bolder;
+        color: @SiteInfo.TextColor;
+
     }
 
-    .song_Div span p br {
-        font-size: 1em;
-        font-weight: bolder;
-        font-weight: bolder;
-    }
     .song_Div .c {
         font-size: 1em;
         color: @SiteInfo.AccentColor;
@@ -36,7 +34,7 @@
         <div class="song_Div" id="printer_div" style="margin-top:8px;  zoom:100%;">
             @if (Item != null)
             {
-                <div style="margin-left:0px; ">
+                <div style="margin-left:0px; margin-bottom:15px;">
                     <h3 style="text-align:left; color:@SiteInfo.AccentColor; font-weight:bolder; margin-bottom:0;">@Item.Title</h3>
                 </div>
             }
