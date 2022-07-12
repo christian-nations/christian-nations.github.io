@@ -45,7 +45,7 @@ namespace Blazor_App.Shared.Servers
             var items = await GetItemsAsync();
             return items.Where(p => p.Id == slug).FirstOrDefault();
         }
-        public static async Task<List<ProjectItem>> GetItemsAsync(bool fromServer = false, bool refresh = false)
+        public static async Task<List<ProjectItem>> GetItemsAsync(bool refresh = false)
         {
             List<ProjectItem> _items = null;
             if (refresh == false)
@@ -59,7 +59,7 @@ namespace Blazor_App.Shared.Servers
             if (processing)
                 return _items;
             processing = true;
-            _items = await GetFromServerAsync(fromServer);
+            _items = await GetFromServerAsync();
             if (_items != null && _items.Count > 0)
             {
                 _items = _items.Shuffle().ToList();
@@ -119,12 +119,10 @@ namespace Blazor_App.Shared.Servers
             });
             processing = false;
         }
-        private static async Task<List<ProjectItem>> GetFromServerAsync(bool fromServer)
+        private static async Task<List<ProjectItem>> GetFromServerAsync()
         {
            
-            List<ProjectItem> _items = null;
-            if (fromServer)
-                hostedJson = true;
+            List<ProjectItem> _items = null;           
             if (hostedJson)
             {
                 var url = GetHostUrl(SiteInfo.Language);
@@ -138,6 +136,18 @@ namespace Blazor_App.Shared.Servers
             {
                 _items = GetProjectItemData().Items;
             }
+            return _items;
+        }
+        public static async Task<List<ProjectItem>> GetFromCloudServerAsync()
+        {
+
+            List<ProjectItem> _items = null;
+            var url = GetHostUrl(SiteInfo.Language);
+            var txt = await CookUpServices.DownloadstringAsync(url);
+            if (string.IsNullOrEmpty(txt) || string.IsNullOrWhiteSpace(txt))
+                return _items;
+            var projectItemData = Newtonsoft.Json.JsonConvert.DeserializeObject<ProjectItemData>(txt);
+            _items = projectItemData.Items;
             return _items;
         }
         public static ProjectItemData GetProjectItemData()
