@@ -11,17 +11,20 @@
             </li>
         }
     </ul>
-    <div style="display:grid; grid-template-columns:1fr auto 1fr">
-        <div></div>
-        <div style="display:inline-flex; gap:4px;">
-            <span>◄</span>
-            <a @onclick="@PreviousPage" style="color:@SiteInfo.AccentColor; cursor:pointer; font-weight:bolder;">Previous</a>
-            <span>│</span>
-            <a @onclick="@NextPage" style="color:@SiteInfo.AccentColor; cursor:pointer; font-weight:bolder;">Next</a>
-            <span>►</span>
+    @if (TotalItems.Count >= 35)
+    {
+        <div style="display:grid; grid-template-columns:1fr auto 1fr">
+            <div></div>
+            <div style="display:inline-flex; gap:4px;">
+                <span>◄</span>
+                <a @onclick="@PreviousPage" style="color:@SiteInfo.AccentColor; cursor:pointer; font-weight:bolder;">Previous</a>
+                <span>│</span>
+                <a @onclick="@NextPage" style="color:@SiteInfo.AccentColor; cursor:pointer; font-weight:bolder;">Next</a>
+                <span>►</span>
+            </div>
+            <div></div>
         </div>
-        <div></div>
-    </div>
+    }
 </div>
 
 @code {
@@ -43,7 +46,7 @@
     }
     public List<ProjectItem> Items { get; set; } = new List<ProjectItem>();
     public List<List<ProjectItem>> ItemsArray = new List<List<ProjectItem>>();
-    protected override async void OnInitialized()
+    protected override void OnInitialized()
     {
         base.OnInitialized();
         DataServiceProvider.ItemsLoaded += (s, e) =>
