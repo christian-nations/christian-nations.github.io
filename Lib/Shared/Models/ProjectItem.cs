@@ -87,6 +87,11 @@ namespace Blazor_App.Shared.Models
         {
             return Uri.EscapeDataString(this.GetId());
         }
-        
+        public string GetArtist()
+        {
+            if(Artist.IsValidString())
+                return "by " + this.Artist;
+            return "";
+        }
     }
 }

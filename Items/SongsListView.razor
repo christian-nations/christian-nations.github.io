@@ -7,7 +7,7 @@
         @foreach (var item in Items)
         {
             <li @onclick="(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectSong(item);})" style="color:@SiteInfo.AccentColor; cursor:pointer;">
-                <span style="color:@SiteInfo.AccentColor; font-weight:bolder;"> @item.Title</span>
+                <span style="color:@SiteInfo.AccentColor; font-weight:bolder;"> @item.Title</span> <span style="color:@SiteInfo.TextColor;"> @item.GetArtist()</span>
             </li>
         }
     </ul>
