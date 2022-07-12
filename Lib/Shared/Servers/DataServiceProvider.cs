@@ -45,7 +45,7 @@ namespace Blazor_App.Shared.Servers
             var items = await GetItemsAsync();
             return items.Where(p => p.Id == slug).FirstOrDefault();
         }
-        public static async Task<List<ProjectItem>> GetItemsAsync(bool refresh = false)
+        public static async Task<List<ProjectItem>> GetItemsAsync(bool fromServer = false, bool refresh = false)
         {
             List<ProjectItem> _items = null;
             if (refresh == false)
@@ -59,7 +59,7 @@ namespace Blazor_App.Shared.Servers
             if (processing)
                 return _items;
             processing = true;
-            _items = await GetFromServerAsync();
+            _items = await GetFromServerAsync(fromServer);
             if (_items != null && _items.Count > 0)
             {
                 _items = _items.Shuffle().ToList();
@@ -119,10 +119,12 @@ namespace Blazor_App.Shared.Servers
             });
             processing = false;
         }
-        private static async Task<List<ProjectItem>> GetFromServerAsync()
+        private static async Task<List<ProjectItem>> GetFromServerAsync(bool fromServer)
         {
            
             List<ProjectItem> _items = null;
+            if (fromServer)
+                hostedJson = true;
             if (hostedJson)
             {
                 var url = GetHostUrl(SiteInfo.Language);

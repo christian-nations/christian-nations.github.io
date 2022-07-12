@@ -219,7 +219,7 @@
             ChristianSongs.Blazor.Shared.MainLayout.Current.ShowAlert("Check required info! Title, YT and Song HTML 😴...");
             return;
         }
-        Items = await DataServiceProvider.GetItemsAsync();
+        Items = await DataServiceProvider.GetItemsAsync(fromServer:true);
         var queryItem = Items.Where(p => p.Id == Item.Id).FirstOrDefault();
         if (queryItem == null)
         {

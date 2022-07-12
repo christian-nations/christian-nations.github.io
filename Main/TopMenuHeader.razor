@@ -15,25 +15,31 @@
     .navbar-nav li {
         display: inline;
         width: fit-content;
+      
     }
 
         .navbar-nav li .a_item {
-            display: inline;
+           
             width: fit-content;
             height: fit-content;
-            max-height: 30px;
+           
             vertical-align: middle;
+                
         }
 
     .a_item {
-        display: inline;
         width: fit-content;
         height: fit-content;
-        max-height: 30px;
+        
         vertical-align: middle;
+       
     }
     ul {
         width: fit-content;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+       
     }
 
         ul li {
@@ -51,21 +57,21 @@
         <div class="container" b-sqgpggpbft="">
             <div class="row" b-sqgpggpbft="">
                 <div class="col-md-3" b-sqgpggpbft="" >
-                    <div class="header-left clearfix" b-sqgpggpbft="" style="display:inline-flex;">
+                    <div class="header-left clearfix" b-sqgpggpbft="">
                         <!--!--><div id="logo" class="logo" b-sqgpggpbft="">
                             <a href="/" b-sqgpggpbft="">
-                                <div b-sqgpggpbft="" style="margin-top:50%; transform:translateY(-50%);">
+                                <div b-sqgpggpbft="" >
                                     <img width="30" height="30" src="/img/codericon.svg" href="~/img/codericon.svg" b-sqgpggpbft="">
                                 </div>
                             </a>
                         </div>
 
-                        <div class="site-slogan" style="margin-left:8px; vertical-align:middle; font-weight:bold;" b-sqgpggpbft="">
+                        <div class="site-slogan" style="vertical-align:middle; font-weight:bold;" b-sqgpggpbft="">
                             @_selectedLanguage<!--!--> Worship Songs
                         </div>
                     </div>
                 </div><!--!-->
-                <div class="col-md-9" b-sqgpggpbft="">
+                <div class="col-md-9" b-sqgpggpbft="" >
                     <div class="header-right clearfix" b-sqgpggpbft="">
                         <div class="main-navigation  animated" b-sqgpggpbft="">
                             <!--!--><nav class="navbar navbar-default" role="navigation">
@@ -79,13 +85,13 @@
                                         </button>
                                     </div>
                                     @*Expandable*@
-                                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                                    <div  class="collapse navbar-collapse" id="navbar-collapse-1">
 
-                                        <ul class="nav navbar-nav" style="display:inline; max-height:30px; ">
+                                        <ul class="nav navbar-nav" style="display:inline;">
                                             <!--!-->
                                             <li style="position:relative; width:fit-content; font-weight:bolder;" class="">
                                                 <a style="font-weight:bolder;" class="a_item">@_selectedLanguage▾</a><!--!-->
-                                                <ul style="position:absolute; margin-top:-25px; color:@SiteInfo.TextColor;" class="dropdown-menu hiddenMenu">
+                                                <ul style="position:absolute; color:@SiteInfo.TextColor;" class="dropdown-menu hiddenMenu">
                                                     @foreach (var item in Enum.GetNames(typeof(LanguageType)))
                                                     {
                                                         <li>
@@ -95,11 +101,10 @@
                                                 </ul>
 
                                             </li><!--!-->
-                                          @*  <li><a class="a_item" href="/">Home</a></li>*@
+                                            @*<li><a class="a_item" href="/">Home</a></li>*@
                                             <li style="visibility:visible; color:@SiteInfo.AccentColor;">
                                                 <a class="a_item" style="color:@SiteInfo.AccentColor; font-weight:bolder;" @onclick="(()=>{ChristianSongs.Blazor.Shared.MainLayout.Current.NavigateToSubmitForm();})">Submit Worship Song</a>
                                             </li><!--!-->
-
                                         </ul>
                                     </div>
                                 </div>
