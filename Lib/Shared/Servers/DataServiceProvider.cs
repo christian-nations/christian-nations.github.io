@@ -138,10 +138,20 @@ namespace Blazor_App.Shared.Servers
             }
             return _items;
         }
+        static bool cloudItemsSet = false;
         public static async Task<List<ProjectItem>> GetFromCloudServerAsync()
         {
 
+            
             List<ProjectItem> _items = null;
+            if (cloudItemsSet)
+            {
+                _items = await GetItemsAsync();
+                if(_items != null && _items.Count > 0)
+                {
+                    return _items;
+                }
+            }
             var url = GetHostUrl(SiteInfo.Language);
             var txt = await CookUpServices.DownloadstringAsync(url);
             if (string.IsNullOrEmpty(txt) || string.IsNullOrWhiteSpace(txt))
@@ -156,6 +166,7 @@ namespace Blazor_App.Shared.Servers
                 {
                     _currentItems[SiteInfo.Language] = _items;
                     ItemsLoaded?.Invoke(_items, _items);
+                    cloudItemsSet = true;
                 }
             }
             return _items;
