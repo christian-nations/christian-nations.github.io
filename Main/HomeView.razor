@@ -389,13 +389,15 @@
         DataServiceProvider.ItemsLoaded += (ww, e) =>
         {
             Items = e;
+            SelectedItem = Items.FirstOrDefault();
+            contentData = (MarkupString)SelectedItem.Data;
             StateHasChanged();
         };
         UpdateByParameters();
 
     }
     MarkupString contentData { get; set; }
-    public ProjectItem SelectedItem { get; set; }
+    public static ProjectItem SelectedItem { get; set; }
 
     #region Parameter
     bool processing = false;
@@ -435,9 +437,16 @@
         }
         else
         {
-            Items = await DataServiceProvider.GetItemsAsync();
-            SelectedItem = Items.FirstOrDefault();
-            contentData = (MarkupString)SelectedItem.Data;
+            if (SelectedItem != null)
+            {
+                contentData = (MarkupString)SelectedItem.Data;
+            }
+            else
+            {
+                Items = await DataServiceProvider.GetItemsAsync();
+                SelectedItem = Items.FirstOrDefault();
+                contentData = (MarkupString)SelectedItem.Data;
+            }
         }
         StateHasChanged();
         processing = false;

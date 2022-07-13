@@ -75,8 +75,20 @@
     }
 </div>
 @code {
+    List<ProjectItem> _items = new List<ProjectItem>();
     [Parameter]
-    public List<ProjectItem> Items { get; set; } = new List<ProjectItem>();
+    public List<ProjectItem> Items
+    {
+        get{ return _items; }
+        set
+        {
+            if (value != null)
+            {
+                _items = value;
+                StateHasChanged();
+            }
+        }
+    }
     MarkupString dataContent;
 
     [Parameter]
