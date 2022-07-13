@@ -436,7 +436,7 @@
         else
         {
             Items = await DataServiceProvider.GetItemsAsync();
-            SelectedItem = Items.PickRandom();
+            SelectedItem = Items.FirstOrDefault();
             contentData = (MarkupString)SelectedItem.Data;
         }
         StateHasChanged();

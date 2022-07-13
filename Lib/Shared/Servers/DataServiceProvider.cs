@@ -112,7 +112,6 @@ namespace Blazor_App.Shared.Servers
                 if (_items != null && _items.Count > 0)
                 {
                     ItemHasLoaded = true;
-                    _items = _items.Shuffle().ToList();
                     _currentItems[SiteInfo.Language] = _items;
                     ItemsLoaded?.Invoke(SiteInfo.Language, _items);
                 }
@@ -130,6 +129,8 @@ namespace Blazor_App.Shared.Servers
                 if (string.IsNullOrEmpty(txt) || string.IsNullOrWhiteSpace(txt))
                     return _items;
                 var projectItemData = Newtonsoft.Json.JsonConvert.DeserializeObject<ProjectItemData>(txt);
+
+                projectItemData.Items = projectItemData.Items.Shuffle().ToList();
                 _items = projectItemData.Items;
             }
             else
