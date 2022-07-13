@@ -901,8 +901,9 @@
     {
         Navigation.NavigateTo("about");
     }
-    public void NavigateToSubmitForm()
+    public void NavigateToSubmitForm(ProjectItem item = null)
     {
+        ChristianSongs.Blazor.Pages.Editors.SongViewerEditor.Item = item;
         Navigation.NavigateTo($"worships/song-editor/{SiteInfo.Language.ToString()}");
     }
     public void NavigateToWorshipSongs()

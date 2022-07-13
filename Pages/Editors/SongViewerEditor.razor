@@ -14,14 +14,15 @@
         color: @SiteInfo.AccentColor;
         font-weight: bolder;
     }
-    .title_headr{
-        font-weight:bolder;
-        font-size:25px;
-        color:@SiteInfo.AccentColor;
+
+    .title_headr {
+        font-weight: bolder;
+        font-size: 25px;
+        color: @SiteInfo.AccentColor;
     }
 </style>
 <div>
-    <div class="col-md-8" style="margin-left:50%; transform:translateX(-50%);">
+    <div class="col-md-8" style="margin-left:50%; transform:translateX(-50%); max-width:800px;">
         <div class="card">
             <div class="card-header">
                 <div style="position:relative; display:grid; grid-template-columns:1fr auto;">
@@ -75,22 +76,29 @@
                         </ToolbarContent>*@
 
                         <EditorContent>
-                            @if (preContent != null)
+                            @if (Item == null || Item.IsValid() == false)
                             {
-                                @foreach (var item in preContent)
+                                @if (preContent != null)
                                 {
-                                    if (item.IsValidString())
+                                    @foreach (var item in preContent)
                                     {
-                                        @item
-                                        <br/>
+                                        if (item.IsValidString())
+                                        {
+                                            @item
+                                            <br />
+                                        }
                                     }
                                 }
+                            }
+                            else
+                            {
+                                @EditorContent
                             }
                         </EditorContent>
                     </Blazored.TextEditor.BlazoredTextEditor>
                 </div>
                 <div class="card-body mb-5" style="@showPreview">
-                    <ChristianSongs.Blazor.Items.ItemView ShowList="false" PutCenter="false" ShowChords="ShowChords" DataContent="@preview"></ChristianSongs.Blazor.Items.ItemView>
+                    <ChristianSongs.Blazor.Items.ItemView AsViewer="true" ShowList="false" PutCenter="false" ShowChords="ShowChords" DataContent="@preview"></ChristianSongs.Blazor.Items.ItemView>
                 </div>
             </div>
         </div>
@@ -152,11 +160,23 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        if(Item == null)
+        if (Item == null)
         {
             Item = new ProjectItem();
+            preContent = DataServiceProvider.GetSamplePreContentArray();
         }
-        preContent = DataServiceProvider.GetSamplePreContentArray();
+        else
+        {
+            if (Item.IsValid())
+            {
+                EditorContent = Item.Data;
+                preview = (MarkupString)EditorContent;
+            }
+            else
+            {
+                preContent = DataServiceProvider.GetSamplePreContentArray();
+            }
+        }
         StateHasChanged();
     }
 
@@ -210,7 +230,7 @@
         var queryItem = Items.Where(p => p.Id == Item.Id).FirstOrDefault();
         if (queryItem == null)
         {
-            if (Items == null)
+            if (Items == null || Items.Count == 0)
             {
                 Items = await DataServiceProvider.GetItemsAsync();
             }
@@ -226,7 +246,21 @@
         }
         else
         {
-            ChristianSongs.Blazor.Shared.MainLayout.Current.ShowAlert(Item.Title + " " + "is already exist 😊...");
+            var artist = Item.Artist.IsValidString() ? " by " + Item.Artist : string.Empty;
+            bool confirmed = await JS.InvokeAsync<bool>("confirm", $"This \"{Item.Title}{artist}\" already exist!, Do you want to update this worship song?");
+            if (confirmed)
+            {
+                if (Items == null || Items.Count == 0)
+                {
+                    Items = await DataServiceProvider.GetItemsAsync();
+                }
+                Item.CopyDataTo(queryItem);
+                ProjectItemData projectItemData = new ProjectItemData();
+                projectItemData.Items = Items;
+                DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(projectItemData), Item.Title);
+                Item = new ProjectItem();
+                StateHasChanged();
+            }
         }
     }
 }

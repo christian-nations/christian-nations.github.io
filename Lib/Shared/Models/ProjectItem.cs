@@ -46,6 +46,7 @@ namespace Blazor_App.Shared.Models
         public LanguageType Language { get; set; } = SiteInfo.Language;
         public List<Category> Categories { get; set; } = new List<Category>() { Category.LOVE };
         public string SubmittedBy { get; set; }
+        public List<Comment> Comments { get; set; }
        
         public bool IsValid()
         {
@@ -92,6 +93,46 @@ namespace Blazor_App.Shared.Models
             if(Artist.IsValidString())
                 return "by " + this.Artist;
             return "";
+        }
+        public void CopyDataTo(ProjectItem item)
+        {
+            item.Title = this.Title;
+            if (Data.IsValidString())
+            {
+                if (item.Data != this.Data)
+                {
+                    item.Data = this.Data;
+                }
+            }
+            item.Artist = this.Artist;
+            item.Language = this.Language;
+            item.YoutubeUrl = this.YoutubeUrl;
+            item.Categories = this.Categories;
+            item.Tags = this.Tags;
+            item.ExternalUrl = this.ExternalUrl;
+            item.SubmittedBy = this.SubmittedBy;
+            item.Notes = this.Notes;
+            item.Comments = this.Comments;
+        }
+        public void CopyDataFrom(ProjectItem item)
+        {
+            this.Title = item.Title;
+            if (item.Data.IsValidString())
+            {
+                if (this.Data != item.Data)
+                {
+                    this.Data = item.Data;
+                }
+            }
+            this.Artist = item.Artist;
+            this.Language = item.Language;
+            this.YoutubeUrl = item.YoutubeUrl;
+            this.Categories = item.Categories;
+            this.Tags = item.Tags;
+            this.ExternalUrl = item.ExternalUrl;
+            this.SubmittedBy = item.SubmittedBy;
+            this.Notes = item.Notes;
+            this.Comments = item.Comments;
         }
     }
 }

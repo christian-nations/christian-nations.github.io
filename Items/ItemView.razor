@@ -52,6 +52,10 @@
             <div>
                 @DataContent
             </div>
+            @if(AsViewer == false)
+            {
+                <h4 @onclick="NavigateToEdit" style="text-align:right; margin-right:25px; cursor:pointer;">✏️</h4>
+            }
         </div>
         <div>
 
@@ -73,6 +77,7 @@
             <SongsListView TotalItems="Items"></SongsListView>
         </div>
     }
+    
 </div>
 @code {
     List<ProjectItem> _items = new List<ProjectItem>();
@@ -208,9 +213,9 @@
         await JS.InvokeVoidAsync("printDiv", "printer_div");
         //await JS.InvokeVoidAsync("printInvoke");
     }
-    public void NavigateToDetails()
+    public void NavigateToEdit()
     {
-        Navigation.NavigateTo($"details/{SiteInfo.Language}/{Item.Id}");
+        ChristianSongs.Blazor.Shared.MainLayout.Current.NavigateToSubmitForm(this.Item);
     }
     
 }
