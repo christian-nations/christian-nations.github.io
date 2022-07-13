@@ -236,6 +236,7 @@
             }
             if (Items != null)
             {
+                Item.Categories = Item.Categories.Distinct().ToList();
                 Items.Add(Item);
                 ProjectItemData projectItemData = new ProjectItemData();
                 projectItemData.Items = Items;
