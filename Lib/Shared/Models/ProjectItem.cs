@@ -14,7 +14,7 @@ namespace Blazor_App.Shared.Models
     {
         public ProjectItem()
         {
-            
+
         }
         public string Id { get; set; }
         string title = "";
@@ -40,14 +40,14 @@ namespace Blazor_App.Shared.Models
         public string Data { get; set; }
         public string DataLong { get; set; }
         public string Notes { get; set; }
-        public string[] Tags { get; set; } = new string[] {"hillsong" };
+        public string[] Tags { get; set; } = new string[] { "hillsong" };
         public string YoutubeUrl { get; set; }
         public string ExternalUrl { get; set; }
         public LanguageType Language { get; set; } = SiteInfo.Language;
         public List<Category> Categories { get; set; } = new List<Category>() { Category.LOVE };
         public string SubmittedBy { get; set; }
         public List<Comment> Comments { get; set; }
-       
+
         public bool IsValid()
         {
             if (Title.IsValidString() == false)
@@ -90,13 +90,14 @@ namespace Blazor_App.Shared.Models
         }
         public string GetArtist()
         {
-            if(Artist.IsValidString())
+            if (Artist.IsValidString())
                 return "by " + this.Artist;
             return "";
         }
         public void CopyDataTo(ProjectItem item)
         {
-            item.Title = this.Title;
+            if (this.Title.IsValidString())
+                item.Title = this.Title;
             if (Data.IsValidString())
             {
                 if (item.Data != this.Data)
@@ -104,15 +105,22 @@ namespace Blazor_App.Shared.Models
                     item.Data = this.Data;
                 }
             }
-            item.Artist = this.Artist;
-            item.Language = this.Language;
-            item.YoutubeUrl = this.YoutubeUrl;
+            if (this.Artist.IsValidString())
+                item.Artist = this.Artist;
+            if (this.YoutubeUrl.IsValidString())
+                item.YoutubeUrl = this.YoutubeUrl;
+
             item.Categories = this.Categories;
-            item.Tags = this.Tags;
-            item.ExternalUrl = this.ExternalUrl;
-            item.SubmittedBy = this.SubmittedBy;
-            item.Notes = this.Notes;
-            item.Comments = this.Comments;
+            if (this.ExternalUrl.IsValidString())
+                item.ExternalUrl = this.ExternalUrl;
+            if (this.SubmittedBy.IsValidString())
+                item.SubmittedBy = this.SubmittedBy;
+            if (this.Notes.IsValidString())
+                item.Notes = this.Notes;
+            if(this.Comments?.Count > 0)
+            {
+                item.Comments = this.Comments;
+            }
         }
         public void CopyDataFrom(ProjectItem item)
         {

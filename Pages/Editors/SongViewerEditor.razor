@@ -248,19 +248,23 @@
         else
         {
             var artist = Item.Artist.IsValidString() ? " by " + Item.Artist : string.Empty;
-            bool confirmed = await JS.InvokeAsync<bool>("confirm", $"This \"{Item.Title}{artist}\" already exist!, Do you want to update this worship song?");
+            bool confirmed = await JS.InvokeAsync<bool>("confirm", $"This ({Item.Title}{artist}) already exist, Do you want to update this worship song?");
             if (confirmed)
             {
-                if (Items == null || Items.Count == 0)
+                try
                 {
-                    Items = await DataServiceProvider.GetItemsAsync();
+                    if (Items == null || Items.Count == 0)
+                    {
+                        Items = await DataServiceProvider.GetItemsAsync();
+                    }
+                    Item.CopyDataTo(queryItem);
+                    ProjectItemData projectItemData = new ProjectItemData();
+                    projectItemData.Items = Items;
+                    DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(projectItemData), Item.Title);
+                    Item = new ProjectItem();
+                    StateHasChanged();
                 }
-                Item.CopyDataTo(queryItem);
-                ProjectItemData projectItemData = new ProjectItemData();
-                projectItemData.Items = Items;
-                DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(projectItemData), Item.Title);
-                Item = new ProjectItem();
-                StateHasChanged();
+                catch { }
             }
         }
     }
