@@ -55,18 +55,20 @@
                         <div class="footer-content">
                             <div class="logo-footer">
                                 <div>
-                                    <img width="30" height="30" src="/img/codericon.svg"
-                                         href="~/img/codericon.svg" />
-
+                                    <svg style="zoom:150%;" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24"
+                                         viewBox="0 0 24 24">
+                                        <path fill="@SiteInfo.AccentColor" d="M21,3V15.5A3.5,3.5 0 0,1 17.5,19A3.5,3.5 0 0,1 14,15.5A3.5,3.5 0 0,1 17.5,12C18.04,12 18.55,12.12 19,12.34V6.47L9,8.6V17.5A3.5,3.5 0 0,1 5.5,21A3.5,3.5 0 0,1 2,17.5A3.5,3.5 0 0,1 5.5,14C6.04,14 6.55,14.12 7,14.34V6L21,3Z" />
+                                    </svg>
                                 </div>
 
                             </div>
                             <p>
                                 Find all the latest Christian songs, from different genre like praises and hymnal christian songs. (Ps. 47:1 Col. 3:1, Eph. 5:19)
-                           
+
                             </p>
                             <p style="color:@SiteInfo.AccentColor;">
-                                NOTE: DO NOT USE DISCO LIGHTS DURING SINGING A WORSHIP SONG IN CHURCHES &amp; REVIEW LYRICS ALWAYS.
+                                NO DISCO LIGHTS IN CHURCHES &amp; REVIEW LYRICS.
                             </p>
 
                         </div>
@@ -103,7 +105,7 @@
                                 <ul style="display:block;" class="nav nav-pills nav-stacked">
                                     <li><a href="/">Home</a></li>
                                     <li><a href="https://www.buymeacoffee.com/nextsupportlab" target="_blank">Donate</a></li>
-                                   
+
                                 </ul>
                             </nav>
                         </div>
@@ -140,8 +142,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p class="text-center" style="color:gray;">
-                            Copyright &copy; @DateTime.Now.Year @SiteInfo.SiteName by <a class="link-light"
-                                                                                         href="@SiteInfo.SiteFullUrl">coderbasket.com</a>. All
+                            Copyright &copy; @DateTime.Now.Year <a class="link-light"
+                                                                   href="@SiteInfo.SiteFullUrl">@SiteInfo.SiteName</a>. All
                             Rights Reserved
                         </p>
                     </div>
@@ -161,7 +163,7 @@
        {
            RenderItems();
        };
-       RenderItems();
+        RenderItems();
     }
     bool rendering = false;
     async void RenderItems()
@@ -174,7 +176,7 @@
         var _snippets = await DataServiceProvider.GetItemsAsync();
         if (_snippets?.Count > 0)
         {
-            
+
             categoriesFinal = Enum.GetNames(typeof(LanguageType)).ToList();
             StateHasChanged();
         }

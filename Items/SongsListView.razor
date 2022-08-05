@@ -4,23 +4,28 @@
 <div style="display:grid; grid-template-columns:auto 1fr 1fr">
     <div>
         <h3>@SiteInfo.Language.ToString() Worship Songs</h3>
-        <ul style="color:@SiteInfo.AccentColor; list-style:none;">
-            @foreach (var item in Items)
-            {
-                <li @onclick="(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectSong(item);})" style="color:@SiteInfo.AccentColor; cursor:pointer;">
-                    <span style="color:@SiteInfo.AccentColor; font-weight:bold; font-family:Gentium Plus;">
-                        @item.Title
-                    </span>
-                    @if (item.Artist.IsValidString())
-                    {
-                        <span style="color:navajowhite; border-color:@SiteInfo.AccentColor; border: 1px solid @SiteInfo.AccentColor; border-radius:5px; font-size:12px; margin-left:8px; padding-left:4px; padding-right:4px; font-style:italic; background-color:gray;"> @item.GetArtist()</span>
-                    }
-                </li>
+        <ul style="color:@SiteInfo.AccentColor; list-style:none; padding-left:0">
+            @{
+                int counter = 1;
+                foreach (var item in Items)
+                {
+                        <li @onclick="(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectSong(item);})" style="color:@SiteInfo.AccentColor; cursor:pointer;">
+                            <span style="color:navajowhite; border-color:@SiteInfo.AccentColor; border: 1px solid @SiteInfo.AccentColor; border-radius:10px; font-size:9px; margin-left:0px; padding:3px;  font-style:italic; background-color:gray; margin-bottom:3px;"> @counter</span>
+                            <span style="color:@SiteInfo.AccentColor; font-weight:bold; font-family:Gentium Plus;">
+                                @item.Title
+                            </span>
+                            @if (item.Artist.IsValidString())
+                        {
+                                <span style="color:navajowhite; border-color:@SiteInfo.AccentColor; border: 1px solid @SiteInfo.AccentColor; border-radius:5px; font-size:12px; margin-left:8px; padding-left:4px; padding-right:4px; font-style:italic; background-color:gray;"> @item.GetArtist()</span>
+                        }
+                        </li>
+                    counter++;
+                }
             }
         </ul>
         @if (TotalItems.Count > limitCount)
         {
-            <div style="display:grid; grid-template-columns:auto 1fr 1fr">
+            <div style="display:grid; grid-template-columns:auto 1fr 1fr;margin-left:0px;">
                 <div></div>
                 <div style="display:inline-flex; gap:4px;">
                     <style>

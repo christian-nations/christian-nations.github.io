@@ -4,16 +4,15 @@
         line-height: normal;
         border-width: 0;
         font-size: 1em;
-        font-weight:bolder;
-        color:@SiteInfo.TextColor;
+        font-weight: bolder;
+        color: @SiteInfo.TextColor;
     }
-    
-    .song_Div span, p, div, br{
+
+    .song_Div span, p, div, br {
         font-size: 1em;
         font-weight: bolder;
         color: @SiteInfo.TextColor;
         font-family: Georgia, 'Times New Roman', Times, serif;
-
     }
 
     .song_Div .c {
@@ -25,15 +24,14 @@
     .song_Div .title {
         color: @SiteInfo.AccentColor;
         font-weight: bolder;
-    }    
-   
+    }
 </style>
-<div >
+<div>
     <div style="display:grid; grid-template-columns:@autoSide auto 1fr; margin-top:15px;">
         <div style="margin-top:15px;">
         </div>
         <div class="song_Div" id="printer_div" style="margin-top:8px;  zoom:100%;">
-            <div >
+            <div>
                 @if (Item != null)
                 {
                     if (AsViewer)
@@ -53,16 +51,19 @@
             <div>
                 @DataContent
             </div>
-            @if(AsViewer == false)
+            @if (AsViewer == false)
             {
-                <h4 @onclick="NavigateToEdit" style="text-align:right; margin-right:25px; cursor:pointer;">✏️</h4>
+                <div style="display:flex; margin-top:20px;">
+                    <div style="height:1px; min-width:350px; background-color:gray;"></div>
+                    <h4 @onclick="NavigateToEdit" style="text-align:right; margin-right:25px; cursor:pointer;  margin-top:-10px;">✏️</h4>
+                </div>
+
             }
         </div>
         <div>
-
         </div>
     </div>
-   
+
     @if (ShowYoutube && Item != null)
     {
         @if (Item.YoutubeUrl.IsValidString())
@@ -78,14 +79,14 @@
             <SongsListView TotalItems="Items"></SongsListView>
         </div>
     }
-    
+
 </div>
 @code {
     List<ProjectItem> _items = new List<ProjectItem>();
     [Parameter]
     public List<ProjectItem> Items
     {
-        get{ return _items; }
+        get { return _items; }
         set
         {
             if (value != null)
@@ -100,7 +101,7 @@
     [Parameter]
     public MarkupString DataContent
     {
-        get{ return dataContent; }
+        get { return dataContent; }
         set
         {
             if (value.Value.IsValidString())
@@ -114,7 +115,7 @@
     [Parameter]
     public bool AsViewer
     {
-        get{ return _asViewer; }
+        get { return _asViewer; }
         set
         {
             _asViewer = value;
@@ -140,7 +141,7 @@
     [Parameter]
     public ProjectItem Item
     {
-        get{ return _item; }
+        get { return _item; }
         set
         {
             if (value != null)
@@ -172,7 +173,7 @@
     [Parameter]
     public bool ShowChords
     {
-        get{ return _showChords; }
+        get { return _showChords; }
         set
         {
             _showChords = value;
@@ -194,7 +195,7 @@
     [Parameter]
     public bool PutCenter
     {
-        get{ return putCenter; }
+        get { return putCenter; }
         set
         {
             putCenter = value;
@@ -218,5 +219,5 @@
     {
         ChristianSongs.Blazor.Shared.MainLayout.Current.NavigateToSubmitForm(this.Item);
     }
-    
+
 }
