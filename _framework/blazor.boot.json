@@ -7,11 +7,11 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "Blazor_App.Shared.dll": "sha256-7tZj6WBhajVpqnjRynErqTdjEY6ujZVA45Ay547BRb4=",
+      "Blazor_App.Shared.dll": "sha256-oZsNPlCB+EK+NyGCeMd3jZfVgC9D6NiMBL+cNvsMCgs=",
       "Blazored.Modal.dll": "sha256-yoXX75RsqCVb+q2v0ZS7Hd6lW+OeSPHHPyJBk\/AyYMg=",
       "Blazored.TextEditor.dll": "sha256-LMdQYoLtnpSSOLOfcqsF2EuS6o8aor5meBsPL8T8PWM=",
       "Blazored.Typeahead.dll": "sha256-YNakk\/GmzitY7JWE\/2LWemYjE+ufhSnWzOQM36VuU5Q=",
-      "ChristianSongs.Blazor.dll": "sha256-P5G5gd6hetTSQBl4aGovLt0uyIY9EO90MHnZjg1iYpk=",
+      "ChristianSongs.Blazor.dll": "sha256-34AykipZmHylZdHPCI2MoaYGYmrF6Czx4dJPZjMp7ys=",
       "Microsoft.AspNetCore.Components.dll": "sha256-aNDH4zuYQ0sky0x+CnCL2H94a013FagKIo16K4l\/Wc0=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-UtAeKLaxBYJHYgwxAEtDsizmcaMl4ysZAvDOb88TY+g=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-PUm6IuqPIP6hL8wZ0ZQYWz6HR2HTudO1jnYifPRwS7k=",
