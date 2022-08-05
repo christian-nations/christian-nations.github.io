@@ -1,0 +1,44 @@
+﻿<style>
+    
+
+    #footer {
+       
+        padding: 10px 0px 0px 10px;
+        bottom: 0;
+        width: 100%;
+        /* Height of the footer*/
+        height: fit-content;
+        background: @SiteInfo.BarBacgroundColor;
+        color: @SiteInfo.TextColor;
+    }
+
+        #footer .link-light{
+            color:@SiteInfo.AccentColor;
+            font-weight:bolder;
+        }
+</style>
+<div id="footer" class="subfooter dark-bg" style="margin-bottom:8px;">    
+    <p class="text-center" style="font-size:15px; font-weight:bolder; color:@SiteInfo.TextColor;">
+        <a href="/about" class="link-light">About </a>
+    </p>
+    <p class="text-center" style="font-size:15px; font-weight:bolder; color:@SiteInfo.TextColor;">
+        <a href="mailto:amazingview4@gmail.com" class="link-light">Contact Us</a>
+    </p>
+    <p class="text-center" style="font-size:15px; font-weight:bolder; color:@SiteInfo.TextColor;">
+        <a href="/privacy" class="link-light">Privacy</a>
+    </p>
+    <p class="text-center" style="font-size:15px; font-weight:bolder; color:@SiteInfo.TextColor;">
+        @DateTime.Now.Year Christians Worship Songs Collection. <a class="link-light"> </a>
+    </p>
+    
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+       
+    }
+  
+    
+}

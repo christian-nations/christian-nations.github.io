@@ -13,7 +13,7 @@
     </ul>
     @if (TotalItems.Count > limitCount)
     {
-        <div style="display:grid; grid-template-columns:1fr auto 1fr">
+        <div style="display:grid; grid-template-columns:auto 1fr 1fr">
             <div></div>
             <div style="display:inline-flex; gap:4px;">
                 <span>◄</span>
@@ -24,6 +24,76 @@
             </div>
             <div></div>
         </div>
+        <style>
+            @@media (min-width: 831px) .pagination {
+                font-size: 0.85rem;
+            }
+
+            .pagination {
+                color: var(--btn-patinator-text-color);
+                font-family: 'Lato', sans-serif;
+            }
+
+            @@media (min-width: 992px) .pl-lg-2, .px-lg-2 {
+                padding-left: .5rem !important;
+            }
+
+            .mb-5, .my-5 {
+                margin-bottom: 3rem !important;
+            }
+
+            .mt-4, .my-4 {
+                margin-top: 1.5rem !important;
+            }
+
+            .align-items-center {
+                -ms-flex-align: center !important;
+                align-items: center !important;
+            }
+
+            .pagination {
+                display: -ms-flexbox;
+                display: flex;
+                padding-left: 0;
+                list-style: none;
+                border-radius: .25rem;
+            }
+
+            dl, ol, ul {
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+
+            *, ::after, ::before {
+                box-sizing: border-box;
+            }
+
+            user agent stylesheet
+            ul {
+                display: block;
+                list-style-type: disc;
+                margin-block-start: 1em;
+                margin-block-end: 1em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                padding-inline-start: 40px;
+            }
+        </style>
+        <ul class="pagination align-items-center mt-4 mb-5 pl-lg-2">
+            <li @onclick="@PreviousPage" class="page-item">
+                <a aria-label="previous-page">
+                    <i class="FontAwesome fa fa-angle-left"></i>
+                </a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link btn-box-shadow" href="/">1</a>
+            </li>
+            <li @onclick="@NextPage" class="page-item">
+                <a aria-label="next-page">
+                    <i class="FontAwesome fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
     }
 </div>
 
@@ -33,11 +103,11 @@
     [Parameter]
     public List<ProjectItem> TotalItems
     {
-        get{ return _totalItems; }
+        get { return _totalItems; }
         set
         {
             _totalItems = value;
-            if(_totalItems.Count > 0)
+            if (_totalItems.Count > 0)
             {
                 ItemsArray = _totalItems.SplitList(limitCount).ToList();
                 Items = ItemsArray[0];
@@ -54,20 +124,20 @@
         {
             TotalItems = e;
         };
-       
+
     }
     int pageNumber = 0;
     void NextPage()
     {
         this.Items = this.ItemsArray.SkipWhile(x => x != this.Items).Skip(1).DefaultIfEmpty(this.ItemsArray[0]).FirstOrDefault();
-       
+
         pageNumber = ItemsArray.IndexOf(this.Items) + 1;
         StateHasChanged();
     }
     void PreviousPage()
     {
         this.Items = this.ItemsArray.TakeWhile(x => x != this.Items).DefaultIfEmpty(this.ItemsArray[this.ItemsArray.Count - 1]).FirstOrDefault();
-       
+
         pageNumber = ItemsArray.IndexOf(this.Items) + 1;
         StateHasChanged();
     }

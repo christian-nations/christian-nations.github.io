@@ -298,12 +298,19 @@
             </div>
             <div id="ad-slot-1">
             </div>
-            <div style="display:grid; grid-template-columns:1fr auto 1fr">
+            <div style="display:grid; grid-template-columns:auto 1fr 1fr">
                 <div>
                 </div>
                 <div>
-                    <div style="margin-left:35px;">
-                        <ChristianSongs.Blazor.Items.ItemView Items="Items" Item="@SelectedItem"></ChristianSongs.Blazor.Items.ItemView>
+                    <style>
+                        @@media (max-width: 660px){
+                            .pages_nation {
+                                margin-left: 20px !important;
+                            }
+                        }
+                    </style>
+                    <div class="pages_nation" style="margin-left:100px;">
+                        <ChristianSongs.Blazor.Items.ItemView PutCenter="false" Items="Items" Item="@SelectedItem"></ChristianSongs.Blazor.Items.ItemView>
 
                     </div>
                 </div>
