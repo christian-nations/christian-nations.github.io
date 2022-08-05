@@ -1,100 +1,143 @@
 ﻿<style>
 
 </style>
-<div>
-    <h3>@SiteInfo.Language.ToString() Worship Songs</h3>
-    <ul style="color:@SiteInfo.AccentColor;">
-        @foreach (var item in Items)
-        {
-            <li @onclick="(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectSong(item);})" style="color:@SiteInfo.AccentColor; cursor:pointer;">
-                <span style="color:@SiteInfo.AccentColor; font-weight:bolder;"> @item.Title</span> <span style="color:@SiteInfo.TextColor;"> @item.GetArtist()</span>
-            </li>
-        }
-    </ul>
-    @if (TotalItems.Count > limitCount)
-    {
-        <div style="display:grid; grid-template-columns:auto 1fr 1fr">
-            <div></div>
-            <div style="display:inline-flex; gap:4px;">
-                <span>◄</span>
-                <a @onclick="@PreviousPage" style="color:@SiteInfo.AccentColor; cursor:pointer; font-weight:bolder;">Previous</a>
-                <span>│</span>
-                <a @onclick="@NextPage" style="color:@SiteInfo.AccentColor; cursor:pointer; font-weight:bolder;">Next</a>
-                <span>►</span>
-            </div>
-            <div></div>
-        </div>
-        <style>
-            @@media (min-width: 831px) .pagination {
-                font-size: 0.85rem;
+<div style="display:grid; grid-template-columns:auto 1fr 1fr">
+    <div>
+        <h3>@SiteInfo.Language.ToString() Worship Songs</h3>
+        <ul style="color:@SiteInfo.AccentColor; list-style:none;">
+            @foreach (var item in Items)
+            {
+                <li @onclick="(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectSong(item);})" style="color:@SiteInfo.AccentColor; cursor:pointer;">
+                    <span style="color:@SiteInfo.AccentColor; font-weight:bold; font-family:Gentium Plus;">
+                        @item.Title
+                    </span>
+                    @if (item.Artist.IsValidString())
+                    {
+                        <span style="color:navajowhite; border-color:@SiteInfo.AccentColor; border: 1px solid @SiteInfo.AccentColor; border-radius:5px; font-size:12px; margin-left:8px; padding-left:4px; padding-right:4px; font-style:italic; background-color:gray;"> @item.GetArtist()</span>
+                    }
+                </li>
             }
-
-            .pagination {
-                color: var(--btn-patinator-text-color);
-                font-family: 'Lato', sans-serif;
-            }
-
-            @@media (min-width: 992px) .pl-lg-2, .px-lg-2 {
-                padding-left: .5rem !important;
-            }
-
-            .mb-5, .my-5 {
-                margin-bottom: 3rem !important;
-            }
-
-            .mt-4, .my-4 {
-                margin-top: 1.5rem !important;
-            }
-
-            .align-items-center {
-                -ms-flex-align: center !important;
-                align-items: center !important;
-            }
-
-            .pagination {
-                display: -ms-flexbox;
-                display: flex;
-                padding-left: 0;
-                list-style: none;
-                border-radius: .25rem;
-            }
-
-            dl, ol, ul {
-                margin-top: 0;
-                margin-bottom: 1rem;
-            }
-
-            *, ::after, ::before {
-                box-sizing: border-box;
-            }
-
-            user agent stylesheet
-            ul {
-                display: block;
-                list-style-type: disc;
-                margin-block-start: 1em;
-                margin-block-end: 1em;
-                margin-inline-start: 0px;
-                margin-inline-end: 0px;
-                padding-inline-start: 40px;
-            }
-        </style>
-        <ul class="pagination align-items-center mt-4 mb-5 pl-lg-2">
-            <li @onclick="@PreviousPage" class="page-item">
-                <a aria-label="previous-page">
-                    <i class="FontAwesome fa fa-angle-left"></i>
-                </a>
-            </li>
-            <li class="page-item active">
-                <a class="page-link btn-box-shadow" href="/">1</a>
-            </li>
-            <li @onclick="@NextPage" class="page-item">
-                <a aria-label="next-page">
-                    <i class="FontAwesome fa fa-angle-right"></i>
-                </a>
-            </li>
         </ul>
-    }
+        @if (TotalItems.Count > limitCount)
+        {
+            <div style="display:grid; grid-template-columns:auto 1fr 1fr">
+                <div></div>
+                <div style="display:inline-flex; gap:4px;">
+                    <style>
+                        @@media (min-width: 831px) .pagination {
+                            font-size: 0.85rem;
+                        }
+
+                        .pagination {
+                            color: var(--btn-patinator-text-color);
+                            font-family: 'Lato', sans-serif;
+                        }
+
+                        @@media (min-width: 992px) .pl-lg-2, .px-lg-2 {
+                            padding-left: .5rem !important;
+                        }
+
+                        .mb-5, .my-5 {
+                            margin-bottom: 3rem !important;
+                        }
+
+                        .mt-4, .my-4 {
+                            margin-top: 1.5rem !important;
+                        }
+
+                        .align-items-center {
+                            -ms-flex-align: center !important;
+                            align-items: center !important;
+                        }
+
+                        .pagination {
+                            display: -ms-flexbox;
+                            display: flex;
+                            padding-left: 0;
+                            list-style: none;
+                            border-radius: .25rem;
+                        }
+
+                        dl, ol, ul {
+                            margin-top: 0;
+                            margin-bottom: 1rem;
+                        }
+
+                        *, ::after, ::before {
+                            box-sizing: border-box;
+                        }
+
+                        user agent stylesheet
+                        ul {
+                            display: block;
+                            list-style-type: disc;
+                            margin-block-start: 1em;
+                            margin-block-end: 1em;
+                            margin-inline-start: 0px;
+                            margin-inline-end: 0px;
+                            padding-inline-start: 40px;
+                        }
+
+                        ul .active, .page-link {
+                            color: @SiteInfo.AccentColor;
+                        }
+                    </style>
+                    <ul class="pagination align-items-center mt-4 mb-5 pl-lg-2">
+                        <li @onclick="@PreviousPage" class="page-item">
+                            <a aria-label="previous-page">
+                                <i style="zoom:130%;" class="FontAwesome fa fa-angle-left"></i>
+                            </a>
+                        </li>
+                        @if (ItemsArray != null)
+                        {
+                            /*int starting = pageNumber;
+                            int counter = 1;
+                            int limit = 3;
+                            if(this.ItemsArray.Count() < limit)
+                            {
+                            limit = this.ItemsArray.Count();
+                            }
+                            foreach (var item in ItemsArray)
+                            {
+                            if(counter <= limit)
+                            {
+
+                            if(counter == pageNumber)
+                            {
+                            <li @onclick="@(()=>SelectPage(starting))" class="page-item">
+                            <a style="background-color:@SiteInfo.AccentColor;" class="page-link btn-box-shadow">@starting</a>
+                            </li>
+                            }
+                            else
+                            {
+                            <li @onclick="@(()=>SelectPage(starting))" class="page-item">
+                            <a  class="page-link btn-box-shadow">@starting</a>
+                            </li>
+                            }
+
+                            }
+                            counter++;
+                            starting++;
+                            if (counter >= 3)
+                            break;
+                            }*/
+
+                        }
+                        <li @onclick="@NextPage" class="page-item">
+                            <a aria-label="next-page">
+                                <i style="zoom:130%;" class="FontAwesome fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div></div>
+            </div>
+
+        }
+    </div>
+    <div></div>
+    <div></div>
+
 </div>
 
 @code {
@@ -126,7 +169,7 @@
         };
 
     }
-    int pageNumber = 0;
+    int pageNumber = 1;
     void NextPage()
     {
         this.Items = this.ItemsArray.SkipWhile(x => x != this.Items).Skip(1).DefaultIfEmpty(this.ItemsArray[0]).FirstOrDefault();
@@ -140,5 +183,20 @@
 
         pageNumber = ItemsArray.IndexOf(this.Items) + 1;
         StateHasChanged();
+    }
+    void SelectPage(int page)
+    {
+        pageNumber = page;
+        var p = page - 1;
+        if (p >= 0 && p < this.ItemsArray.Count)
+        {
+            this.Items = ItemsArray[p];
+            StateHasChanged();
+        }
+        if (pageNumber > this.ItemsArray.Count)
+        {
+            pageNumber = 1;
+            StateHasChanged();
+        }
     }
 }

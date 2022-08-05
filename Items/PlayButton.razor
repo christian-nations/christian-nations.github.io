@@ -24,9 +24,9 @@
 <div>
     <h4>WATCH ON YOUTUBE</h4>
     <div style="zoom:80%;" class="vid-wrapper">
-        @{
+       @* @{
             var imgUrl = $"https://img.youtube.com/vi/{@GetId()}/0.jpg";
-        }
+        }*@
         <a href="@this.Item.YoutubeUrl" target="_BLANK">
             <img src="@imgUrl" />
             <i class="play-btn fa fa-youtube-play fa-3x" aria-hidden="true"></i>
@@ -43,12 +43,20 @@
         set
         {
             _item = value;
-            StateHasChanged();
+            RenderAsync();
+
         }
     }
+    string imgUrl = "";
     protected void OnInitialized()
     {
         base.OnInitialized();
+        StateHasChanged();
+    }
+    async void RenderAsync()
+    {
+        var yt = await YTHelper.GetDetailsAsync(Item.YoutubeUrl);
+        imgUrl = yt.thumbnail_url;
         StateHasChanged();
     }
     string GetId()

@@ -218,7 +218,8 @@ namespace Blazor_App.Shared.Servers
         }
         public static void UpdateToServer(LanguageType language, string serialize, string message)
         {
-            CookieManager.PushCookies(language, serialize, message);
+            var path = GetHostUrl(language, false);
+            CookieManager.PushCookies(language, serialize, message, path);
         }
         public static void LoadDeveloperTools()
         {

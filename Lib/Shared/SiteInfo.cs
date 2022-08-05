@@ -10,7 +10,7 @@ namespace Blazor_App.Shared
         public const string SiteUrlShort = "christian-nations";
         public const string SiteUrl = "https://christian-nations.github.io/";
         public const string SiteFullUrl = SiteUrl;
-        public const string Email = "amazingview4@gmail.com";
+        public const string Email = "studioappsupporfeedback2000@outlook.com";
 
         //Social
         public static string Twitter = "https://twitter.com/" + SiteUrlShort.Replace(".com", "");
@@ -55,7 +55,7 @@ namespace Blazor_App.Shared
     public enum LanguageType
     {
         English = 1,
-        Filipino = 2,
+        Tagalog = 2,
         Cebuano = 3,
         French = 4,
         Spanish = 5,

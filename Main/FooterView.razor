@@ -62,7 +62,7 @@
 
                             </div>
                             <p>
-                                Find all the latest Christian songs, from different genre like praises and hymnal christian songs. (Col. 3:1, Eph. 5:19)
+                                Find all the latest Christian songs, from different genre like praises and hymnal christian songs. (Ps. 47:1 Col. 3:1, Eph. 5:19)
                            
                             </p>
                             <p style="color:@SiteInfo.AccentColor;">
@@ -84,7 +84,7 @@
 
                                     <li>
                                         <a target="_blank"
-                                           href="mailto:mailto:studioappsupporfeedback2000@outlook.com">Contact Email</a>
+                                           href="mailto:mailto:@SiteInfo.Email">Contact Email</a>
                                     </li>
                                     <li>
                                         <a @onclick="(()=>{ChristianSongs.Blazor.Shared.MainLayout.Current.ShowPrivacy();})">Privacy</a>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="footer-content">
-                            <h2 style="color:@SiteInfo.TextColor;" class="title">Popular categories</h2>
+                            <h2 style="color:@SiteInfo.TextColor;" class="title">Base on Laguages</h2>
                             <div class="separator-2"></div>
                             <div class="tags-cloud">
                                 @foreach (var item in categoriesFinal)
@@ -153,7 +153,7 @@
 </footer>
 
 @code {
-    List<Category> categoriesFinal = new List<Category>();
+    List<string> categoriesFinal = new List<string>();
     protected override void OnInitialized()
     {
         base.OnInitialized();
@@ -161,7 +161,7 @@
        {
            RenderItems();
        };
-        RenderItems();
+       RenderItems();
     }
     bool rendering = false;
     async void RenderItems()
@@ -174,9 +174,8 @@
         var _snippets = await DataServiceProvider.GetItemsAsync();
         if (_snippets?.Count > 0)
         {
-            var categories = _snippets.Select(x => x.Categories).SelectMany(i => i);
-            var groupedSorted = categories.GroupBy(n => n).OrderByDescending(g => g.Count());
-            categoriesFinal = groupedSorted.Take(10).Select(x => x.FirstOrDefault()).ToList();
+            
+            categoriesFinal = Enum.GetNames(typeof(LanguageType)).ToList();
             StateHasChanged();
         }
         rendering = false;
