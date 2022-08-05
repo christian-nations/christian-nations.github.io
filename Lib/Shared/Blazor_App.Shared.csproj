@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Cookies\CookieManager.cshidden" />
     <None Remove="formatter.json" />
     <None Remove="Helpers\bad_words.txt" />
+    <None Remove="Host\Afrikaans\data.json" />
     <None Remove="Host\Cebuano\data.json" />
     <None Remove="Host\English\data.json" />
     <None Remove="Host\Filipino\data.json" />
@@ -22,16 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Cookies\CookieManager.cshidden" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="formatter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <EmbeddedResource Include="Data\bad_words.txt" />
+    <EmbeddedResource Include="Host\Afrikaans\data.json" />
     <EmbeddedResource Include="Host\Cebuano\data.json" />
   </ItemGroup>
 
