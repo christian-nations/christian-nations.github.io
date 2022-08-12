@@ -137,7 +137,7 @@
             }
 
         }
-        EditorContent = JsonConvert.SerializeObject(LanguageHelper.GetLanguageItems());
+       
         StateHasChanged();
     }
 
@@ -198,6 +198,7 @@
             foreach (var item in Items)
             {
                 item.Categories = Item.Categories.Distinct().ToList();
+                item.Language = SiteInfo.Language;
             }
         }
         var queryItem = Items.Where(p => p.UniqueId == Item.UniqueId).FirstOrDefault();
