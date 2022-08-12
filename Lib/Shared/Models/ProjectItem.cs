@@ -16,7 +16,7 @@ namespace Blazor_App.Shared.Models
         {
 
         }
-        public string Id { get; set; }
+        public string UniqueId { get; set; }
         string title = "";
         public string Title
         {
@@ -69,20 +69,20 @@ namespace Blazor_App.Shared.Models
         }
         void UpdateId()
         {
-            Id = GetId();
-            Id = Uri.EscapeDataString(Id);
+            UniqueId = GetId();
+            UniqueId = Uri.EscapeDataString(UniqueId);
         }
         string GetId()
         {
             if (Artist.IsValidString())
             {
-                Id = Artist + "-" + Title;
+                UniqueId = Artist + "-" + Title;
             }
             else
             {
-                Id = Title;
+                UniqueId = Title;
             }
-            return Id;
+            return UniqueId;
         }
         public string GetEncodedId()
         {

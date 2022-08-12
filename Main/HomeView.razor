@@ -372,7 +372,7 @@
     }
     void SelectSong(string songId)
     {
-        var item = Items.Where(p => p.Id == songId).FirstOrDefault();
+        var item = Items.Where(p => p.UniqueId == songId).FirstOrDefault();
         if (item != null)
         {
 
@@ -385,9 +385,9 @@
         return await Task.FromResult(Items.Where(x => x.GetQueryContent().Contains(searchText.ToLower())).ToList());
     }
 
-    private string ConvertPerson(ProjectItem person) => person?.Id;
+    private string ConvertPerson(ProjectItem person) => person?.UniqueId;
 
-    private ProjectItem LoadSelectedPerson(string id) => Items.FirstOrDefault(p => p.Id == id);
+    private ProjectItem LoadSelectedPerson(string id) => Items.FirstOrDefault(p => p.UniqueId == id);
     #endregion
     public List<ProjectItem> Items = new List<ProjectItem>();
     protected override void OnInitialized()
@@ -434,7 +434,7 @@
                 var items = await DataServiceProvider.GetItemsAsync();
                 //Matt+Redman-10%2c000+Reasons+(Bless+the+Lord)
 
-                var item = items.Where(p => p.Id == Uri.EscapeDataString(SongId)).FirstOrDefault();
+                var item = items.Where(p => p.UniqueId == Uri.EscapeDataString(SongId)).FirstOrDefault();
                 if (item != null)
                 {
                     SelectedItem = item;

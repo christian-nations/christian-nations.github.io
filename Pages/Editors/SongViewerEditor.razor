@@ -118,7 +118,6 @@
     string endSpan = "</span>";
     string spanStyle = "style=\"font-weight:bolder; color:gold; font-style:italic;\"";
     string[] preContent;
-    bool is_int = false;
     public static ProjectItem Item { get; set; } = new ProjectItem();
     public List<ProjectItem> Items = new List<ProjectItem>();
     protected override void OnInitialized()
@@ -194,12 +193,20 @@
             return;
         }
         Items = await DataServiceProvider.GetFromCloudServerAsync();
-        var queryItem = Items.Where(p => p.Id == Item.Id).FirstOrDefault();
+        if (Items != null && Items.Count > 0)
+        {
+            foreach (var item in Items)
+            {
+                item.Categories = Item.Categories.Distinct().ToList();
+            }
+        }
+        var queryItem = Items.Where(p => p.UniqueId == Item.UniqueId).FirstOrDefault();
         if (queryItem == null)
         {
             if (Items == null || Items.Count == 0)
             {
                 Items = await DataServiceProvider.GetItemsAsync();
+                
             }
             if (Items != null)
             {

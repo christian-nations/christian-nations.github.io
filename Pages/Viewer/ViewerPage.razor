@@ -70,7 +70,7 @@
             {
                 var items = await DataServiceProvider.GetItemsAsync();
                
-                var item = items.Where(p => p.Id == Uri.EscapeDataString(SongId)).FirstOrDefault();
+                var item = items.Where(p => p.UniqueId == Uri.EscapeDataString(SongId)).FirstOrDefault();
                 if (item != null)
                 {
                     SelectedItem = item;                 

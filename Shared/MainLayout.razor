@@ -839,7 +839,7 @@
                 if (Blazor.Pages.Editors.SongViewerEditor.Item != null)
                 {
                     var Items = await DataServiceProvider.GetItemsAsync();
-                    var queryItem = Items.Where(p => p.Id == Blazor.Pages.Editors.SongViewerEditor.Item.Id).FirstOrDefault();
+                    var queryItem = Items.Where(p => p.UniqueId == Blazor.Pages.Editors.SongViewerEditor.Item.UniqueId).FirstOrDefault();
                     if (queryItem != null)
                     {
                         Items.Remove(queryItem);
@@ -918,7 +918,7 @@
     public void SelectSong(ProjectItem item)
     {
 
-        Navigation.NavigateTo($"worships/{SiteInfo.Language}/{item.Id}");
+        Navigation.NavigateTo($"worships/{SiteInfo.Language}/{item.UniqueId}");
     }
 
     public async Task CopyTextToClipboard(string elementId)
@@ -928,6 +928,6 @@
     public void NavigateToViewer(ProjectItem item)
     {
         //"/worships/viewer/{language}/{songId}"
-        Navigation.NavigateTo($"worships/viewer/{SiteInfo.Language}/{item.Id}");
+        Navigation.NavigateTo($"worships/viewer/{SiteInfo.Language}/{item.UniqueId}");
     }
 }

@@ -44,7 +44,7 @@ namespace Blazor_App.Shared.Servers
         public static async Task<ProjectItem> GetProjectItemAsync(string slug)
         {
             var items = await GetItemsAsync();
-            return items.Where(p => p.Id == slug).FirstOrDefault();
+            return items.Where(p => p.UniqueId == slug).FirstOrDefault();
         }
         public static async Task<List<ProjectItem>> GetItemsAsync(bool refresh = false)
         {
