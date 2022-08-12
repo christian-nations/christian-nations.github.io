@@ -119,9 +119,12 @@ namespace Blazor_App.Shared.Servers
             });
             processing = false;
         }
-        private static async Task<List<ProjectItem>> GetFromServerAsync(string language)
+        public static async Task<List<ProjectItem>> GetFromServerAsync(string language, bool raw = false)
         {
-           
+            if (raw)
+            {
+                hostedJson = raw;
+            }
             List<ProjectItem> _items = null;           
             if (hostedJson)
             {

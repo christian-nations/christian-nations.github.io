@@ -51,6 +51,8 @@ namespace Blazor_App.Shared.Models
         [JsonIgnore]
         public string Categories { get; set; } = "Love";
         public string SubmittedBy { get; set; }
+
+        [Ignore]
         public List<Comment> Comments { get; set; }
 
         public bool IsValid()
@@ -96,7 +98,7 @@ namespace Blazor_App.Shared.Models
         public string GetArtist()
         {
             if (Artist.IsValidString())
-                return "by " + this.Artist;
+                return "" + this.Artist;
             return "";
         }
         public void CopyDataTo(ProjectItem item)

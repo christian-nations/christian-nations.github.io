@@ -117,13 +117,11 @@
     string spanCenter = ">This is a Word";
     string endSpan = "</span>";
     string spanStyle = "style=\"font-weight:bolder; color:gold; font-style:italic;\"";
-    string[] preContent;
     public static ProjectItem Item { get; set; } = new ProjectItem();
     public List<ProjectItem> Items = new List<ProjectItem>();
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        preContent = DataServiceProvider.GetSamplePreContentArray();
         if (Item == null)
         {
             Item = new ProjectItem();
@@ -192,7 +190,7 @@
             Blazor.Shared.MainLayout.Current.ShowAlert("Check required info! Title, YT and Song HTML 😴...");
             return;
         }
-        Items = await DataServiceProvider.GetFromCloudServerAsync();
+        Items = await DataServiceProvider.GetItemsAsync();
         if (Items != null && Items.Count > 0)
         {
             foreach (var item in Items)
