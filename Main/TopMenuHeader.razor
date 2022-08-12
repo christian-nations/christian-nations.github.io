@@ -94,8 +94,8 @@
                                                 <ul style="position:absolute; color:@SiteInfo.TextColor;" class="dropdown-menu hiddenMenu">
                                                     @foreach (var item in languageItems)
                                                     {
-                                                        <li>
-                                                            <a style="font-weight:bold;" @onclick="@(()=>{GotoLanguage(item);})">@item.Language</a>
+                                                        <li stystyle="color:@SiteInfo.TextColor;">
+                                                            <a style="font-weight:bold; color:@SiteInfo.TextColor;" @onclick="@(()=>{GotoLanguage(item);})">@item.Language</a>
                                                         </li>
                                                     }
                                                 </ul>
@@ -126,6 +126,7 @@
         base.OnInitialized();
         IsMediumSize = ChristianSongs.Blazor.Shared.MainLayout.Current.Mobile;
         languageItems = await LanguageHelper.GetLanguagesAsync();
+        StateHasChanged();
     }
     void GotoLanguage(LanguageItem language)
     {
