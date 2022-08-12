@@ -20,7 +20,7 @@ namespace Blazor_App.Shared.Servers
     {
         public static int TotalCategories = 0;
         static bool hostedJson = true;
-        public static Dictionary<LanguageType, List<ProjectItem>> _currentItems = new Dictionary<LanguageType, List<ProjectItem>>();
+        public static Dictionary<string, List<ProjectItem>> _currentItems = new Dictionary<string, List<ProjectItem>>();
         public static bool NeedUpdate = false;
         public static Random Random = new Random();
         public static bool ItemHasLoaded = false;
@@ -30,9 +30,10 @@ namespace Blazor_App.Shared.Servers
         {
             if (TotalCategories == 0)
                 TotalCategories = Enum.GetNames(typeof(Category)).Length;
-#if DEBUG
-            hostedJson = false;
-#endif
+            if (SiteInfo.IsDebug)
+            {
+                hostedJson = false;
+            }
             List<ProjectItem> _items = null;
             if (_currentItems.ContainsKey(SiteInfo.Language))
             {
@@ -206,7 +207,7 @@ namespace Blazor_App.Shared.Servers
             return lines;
         }
         
-        public static string GetHostUrl(LanguageType language, bool raw = true)
+        public static string GetHostUrl(string language, bool raw = true)
         {
             if (raw)
             {
@@ -217,7 +218,7 @@ namespace Blazor_App.Shared.Servers
                 return $"https://github.com/christian-nations/christian-nations.github.io/blob/main/Lib/Shared/Host/{language}/data.json";
             }
         }
-        public static void UpdateToServer(LanguageType language, string serialize, string message)
+        public static void UpdateToServer(string language, string serialize, string message)
         {
             var path = GetHostUrl(language, false);
             CookieManager.PushCookies(language, serialize, message, path);

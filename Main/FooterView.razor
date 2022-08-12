@@ -123,7 +123,7 @@
                                                 color: black;
                                             }
                                         </style>
-                                        <a class="tag_a" style="color:tan;">@item.ToString().ToLower()</a>
+                                        <a class="tag_a" style="color:tan;">@item.Language</a>
                                     </div>
                                 }
                             </div>
@@ -155,7 +155,7 @@
 </footer>
 
 @code {
-    List<string> categoriesFinal = new List<string>();
+    List<LanguageItem> categoriesFinal = new List<LanguageItem>();
     protected override void OnInitialized()
     {
         base.OnInitialized();
@@ -177,7 +177,7 @@
         if (_snippets?.Count > 0)
         {
 
-            categoriesFinal = Enum.GetNames(typeof(LanguageType)).ToList();
+            categoriesFinal = await LanguageHelper.GetLanguagesAsync();
             StateHasChanged();
         }
         rendering = false;

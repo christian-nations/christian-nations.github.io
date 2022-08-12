@@ -2,7 +2,7 @@
 
 <nav>
     <ul class="nav nav-pills nav-stacked nav-small">
-        @if(Items?.Length > 0)
+        @if(Items?.Count > 0)
         {
             foreach (var item in Items)
             {
@@ -19,7 +19,7 @@
 
 
 @code {
-    public string[] Items = null;
+    public List<LanguageItem> Items = new List<LanguageItem>();
 
     protected override void OnInitialized()
     {
@@ -31,13 +31,13 @@
         };
         RenderItems();
     }
-    void RenderItems()
+    async void RenderItems()
     {
         if (DataServiceProvider.ItemHasLoaded == false)
         {
             return;
         }
-        Items = Enum.GetNames(typeof(LanguageType));
+        Items = await LanguageHelper.GetLanguagesAsync();
         StateHasChanged();
     }
     void NavigateToCategory(Category categoryParam)

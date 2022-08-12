@@ -415,7 +415,7 @@
         processing = true;
         if (Language.IsValidString())
         {
-            var language = RepoHelper.ConvertLanguage(Language);
+            var language = Language;
             if (SiteInfo.Language != language)
             {
                 SiteInfo.Language = language;

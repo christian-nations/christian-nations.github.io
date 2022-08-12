@@ -92,10 +92,10 @@
                                             <li style="position:relative; width:fit-content; font-weight:bolder;" class="">
                                                 <a style="font-weight:bolder;" class="a_item">@_selectedLanguage▾</a><!--!-->
                                                 <ul style="position:absolute; color:@SiteInfo.TextColor;" class="dropdown-menu hiddenMenu">
-                                                    @foreach (var item in Enum.GetNames(typeof(LanguageType)))
+                                                    @foreach (var item in languageItems)
                                                     {
                                                         <li>
-                                                            <a style="font-weight:bold;" @onclick="@(()=>{GotoLanguage(item);})">@item</a>
+                                                            <a style="font-weight:bold;" @onclick="@(()=>{GotoLanguage(item);})">@item.Language</a>
                                                         </li>
                                                     }
                                                 </ul>
@@ -120,16 +120,18 @@
     string showMobileHeader = "display:none;";
     string showDestopHeader = "display:block;";
     bool IsMediumSize = false;
-    protected override void OnInitialized()
+    List<LanguageItem> languageItems = new List<LanguageItem>();
+    protected override async void OnInitialized()
     {
         base.OnInitialized();
         IsMediumSize = ChristianSongs.Blazor.Shared.MainLayout.Current.Mobile;
+        languageItems = await LanguageHelper.GetLanguagesAsync();
     }
-    void GotoLanguage(string language)
+    void GotoLanguage(LanguageItem language)
     {
 
-        _selectedLanguage = language;
-        var languageType = RepoHelper.ConvertLanguage(language);
+        _selectedLanguage = language.Language;
+        var languageType = _selectedLanguage;
         ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(languageType);
         StateHasChanged();
     }

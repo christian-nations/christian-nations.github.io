@@ -43,7 +43,7 @@ namespace Blazor_App.Shared.Models
         public string[] Tags { get; set; } = new string[] { "hillsong" };
         public string YoutubeUrl { get; set; }
         public string ExternalUrl { get; set; }
-        public LanguageType Language { get; set; } = SiteInfo.Language;
+        public string Language { get; set; } = SiteInfo.Language;
         public List<Category> Categories { get; set; } = new List<Category>() { Category.LOVE };
         public string SubmittedBy { get; set; }
         public List<Comment> Comments { get; set; }

@@ -42,19 +42,19 @@ namespace Blazor_App.Shared.Models
             }
             return _category;
         }
-        public static LanguageType ConvertLanguage(string framework)
-        {
-            var _framework = SiteInfo.Language;
-            foreach (var item in Enum.GetNames(typeof(LanguageType)))
-            {
-                if (framework.ToLower() == item.ToLower())
-                {
-                    _framework = (LanguageType)Enum.Parse(typeof(LanguageType), item);
-                    break;
-                }
-            }
-            return _framework;
-        }
+        //public static LanguageType ConvertLanguage(string framework)
+        //{
+        //    var _framework = SiteInfo.Language;
+        //    foreach (var item in Enum.GetNames(typeof(LanguageType)))
+        //    {
+        //        if (framework.ToLower() == item.ToLower())
+        //        {
+        //            _framework = (LanguageType)Enum.Parse(typeof(LanguageType), item);
+        //            break;
+        //        }
+        //    }
+        //    return _framework;
+        //}
         public static Stream GetResourceStreamAsync(Type type, string pathDot)
         {
             var assembly = type.GetTypeInfo().Assembly;
@@ -81,6 +81,26 @@ namespace Blazor_App.Shared.Models
             }
             return false;
         }
-        
+        public static async Task<string> DownloadstringAsync(string txtFileUrl)
+        {
+            string jsonString = null;
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+
+                    var stream = await httpClient.GetStreamAsync(txtFileUrl);
+                    StreamReader reader = new StreamReader(stream);
+                    jsonString = reader.ReadToEnd();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return jsonString;
+        }
     }
 }

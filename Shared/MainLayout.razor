@@ -911,9 +911,9 @@
     {
         Navigation.NavigateTo("worships/");
     }
-    public void SelectLanguage(LanguageType language)
+    public void SelectLanguage(string language)
     {
-        Navigation.NavigateTo($"worships/{language.ToString()}");
+        Navigation.NavigateTo($"worships/{language}");
     }
     public void SelectSong(ProjectItem item)
     {
