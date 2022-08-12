@@ -24,13 +24,14 @@
 <div>
     <h4>WATCH ON YOUTUBE</h4>
     <div style="zoom:80%;" class="vid-wrapper">
-       @* @{
-            var imgUrl = $"https://img.youtube.com/vi/{@GetId()}/0.jpg";
-        }*@
-        <a href="@this.Item.YoutubeUrl" target="_BLANK">
-            <img src="@imgUrl" />
-            <i class="play-btn fa fa-youtube-play fa-3x" aria-hidden="true"></i>
-        </a>
+
+        @if (Item != null && Item.YoutubeUrl.IsValidString())
+        {
+            <a href="@this.Item.YoutubeUrl" target="_BLANK">
+                <img src="@imgUrl" />
+                <i class="play-btn fa fa-youtube-play fa-3x" aria-hidden="true"></i>
+            </a>
+        }
     </div>
 
 </div>
@@ -39,7 +40,7 @@
     [Parameter]
     public ProjectItem Item
     {
-        get{ return _item; }
+        get { return _item; }
         set
         {
             _item = value;
@@ -55,9 +56,19 @@
     }
     async void RenderAsync()
     {
+        if (Item == null)
+            return;
+        if (Item.YoutubeUrl.IsValidString() == false)
+            return;
         var yt = await YTHelper.GetDetailsAsync(Item.YoutubeUrl);
-        imgUrl = yt.thumbnail_url;
-        StateHasChanged();
+        if (yt != null)
+        {
+            if (yt.thumbnail_url != null)
+            {
+                imgUrl = yt.thumbnail_url;
+                StateHasChanged();
+            }
+        }
     }
     string GetId()
     {

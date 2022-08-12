@@ -42,7 +42,7 @@
                     }
                     else
                     {
-                        <div @onclick="@(()=>{ChristianSongs.Blazor.Shared.MainLayout.Current.NavigateToViewer(Item);})" style="margin-left:0px; margin-bottom:15px; cursor:pointer;">
+                        <div @onclick="@(()=>{Shared.MainLayout.Current.NavigateToViewer(Item);})" style="margin-left:0px; margin-bottom:15px; cursor:pointer;">
                             <h3 style="text-align:left; color:@SiteInfo.AccentColor; font-weight:bolder; margin-bottom:0;">@Item.Title ►</h3>
                         </div>
                     }
@@ -69,7 +69,7 @@
         @if (Item.YoutubeUrl.IsValidString())
         {
             <div style="margin-left:10px;">
-                <ChristianSongs.Blazor.Items.PlayButton Item="@Item"></ChristianSongs.Blazor.Items.PlayButton>
+                <PlayButton Item="@Item"></PlayButton>
             </div>
         }
     }
@@ -212,12 +212,12 @@
     }
     async void Print()
     {
-        await JS.InvokeVoidAsync("printDiv", "printer_div");
+        //await JS.InvokeVoidAsync("printDiv", "printer_div");
         //await JS.InvokeVoidAsync("printInvoke");
     }
     public void NavigateToEdit()
     {
-        ChristianSongs.Blazor.Shared.MainLayout.Current.NavigateToSubmitForm(this.Item);
+        Shared.MainLayout.Current.NavigateToSubmitForm(this.Item);
     }
 
 }

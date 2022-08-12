@@ -138,3 +138,6 @@ function resizeListener(dotnethelper) {
         });
     });
 }
+function getEditorContent() {
+    return document.getElementById("editor_text_div").innerHTML;
+}

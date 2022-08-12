@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using ChristianSongs.Blazor
+@inherits LayoutComponentBase
 
 <style>
 
@@ -830,15 +831,15 @@
             if (e)
             {
                 await JS.InvokeVoidAsync("alert", "Summited to " + SiteInfo.Language.ToString() + "😊👍✅");
-                ChristianSongs.Blazor.Pages.Editors.SongViewerEditor.Item = new ProjectItem();
+                Blazor.Pages.Editors.SongViewerEditor.Item = new ProjectItem();
             }
             else
             {
                 await JS.InvokeVoidAsync("alert", "Failed to submit 😌");
-                if (ChristianSongs.Blazor.Pages.Editors.SongViewerEditor.Item != null)
+                if (Blazor.Pages.Editors.SongViewerEditor.Item != null)
                 {
                     var Items = await DataServiceProvider.GetItemsAsync();
-                    var queryItem = Items.Where(p => p.Id == ChristianSongs.Blazor.Pages.Editors.SongViewerEditor.Item.Id).FirstOrDefault();
+                    var queryItem = Items.Where(p => p.Id == Blazor.Pages.Editors.SongViewerEditor.Item.Id).FirstOrDefault();
                     if (queryItem != null)
                     {
                         Items.Remove(queryItem);
@@ -903,7 +904,7 @@
     }
     public void NavigateToSubmitForm(ProjectItem item = null)
     {
-        ChristianSongs.Blazor.Pages.Editors.SongViewerEditor.Item = item;
+        Blazor.Pages.Editors.SongViewerEditor.Item = item;
         Navigation.NavigateTo($"worships/song-editor/{SiteInfo.Language.ToString()}");
     }
     public void NavigateToWorshipSongs()

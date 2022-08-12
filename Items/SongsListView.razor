@@ -9,7 +9,7 @@
                 int counter = 1;
                 foreach (var item in Items)
                 {
-                        <li @onclick="(()=>{ ChristianSongs.Blazor.Shared.MainLayout.Current.SelectSong(item);})" style="color:@SiteInfo.AccentColor; cursor:pointer;">
+                        <li @onclick="(()=>{ Shared.MainLayout.Current.SelectSong(item);})" style="color:@SiteInfo.AccentColor; cursor:pointer;">
                             <span style="color:navajowhite; border-color:@SiteInfo.AccentColor; border: 1px solid @SiteInfo.AccentColor; border-radius:10px; font-size:9px; margin-left:0px; padding:3px;  font-style:italic; background-color:gray; margin-bottom:3px;"> @counter</span>
                             <span style="color:@SiteInfo.AccentColor; font-weight:bold; font-family:Gentium Plus;">
                                 @item.Title
