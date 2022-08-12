@@ -1,81 +1,70 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>disable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Cookies\CookieManager.cshidden" />
-    <None Remove="formatter.json" />
-    <None Remove="Helpers\bad_words.txt" />
-    <None Remove="Host\Afrikaans\data.json" />
-    <None Remove="Host\Cebuano\data.json" />
-    <None Remove="Host\English\data.json" />
-    <None Remove="Host\Filipino\data.json" />
-    <None Remove="Host\Languages.json" />
-    <None Remove="Host\Odia\data.json" />
-    <None Remove="Host\Tagalog\data.json" />
-    <None Remove="Host\Spanish\data.json" />
-    <None Remove="Host\French\data.json" />
-    <None Remove="Host\sample.txt" />
-    <None Remove="Prayers\Host\data.json" />
-    <None Remove="Servers\sample.txt" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="formatter.json" />
+		<None Remove="Helpers\bad_words.txt" />
+		<None Remove="Host\Afrikaans\data.json" />
+		<None Remove="Host\Cebuano\data.json" />
+		<None Remove="Host\English\data.json" />
+		<None Remove="Host\Filipino\data.json" />
+		<None Remove="Host\Languages.json" />
+		<None Remove="Host\Odia\data.json" />
+		<None Remove="Host\Tagalog\data.json" />
+		<None Remove="Host\Spanish\data.json" />
+		<None Remove="Host\French\data.json" />
+		<None Remove="Host\sample.txt" />
+		<None Remove="Prayers\Host\data.json" />
+		<None Remove="Servers\sample.txt" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="Cookies\CookieManager.cshidden" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="formatter.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<EmbeddedResource Include="Data\bad_words.txt" />
+		<EmbeddedResource Include="Host\Afrikaans\data.json" />
+		<EmbeddedResource Include="Host\Cebuano\data.json" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="formatter.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <EmbeddedResource Include="Data\bad_words.txt" />
-    <EmbeddedResource Include="Host\Afrikaans\data.json" />
-    <EmbeddedResource Include="Host\Cebuano\data.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Host\English\data.json" />
+		<EmbeddedResource Include="Host\Filipino\data.json" />
+		<EmbeddedResource Include="Host\Languages.json" />
+		<EmbeddedResource Include="Host\Odia\data.json" />
+		<EmbeddedResource Include="Host\Tagalog\data.json" />
+		<EmbeddedResource Include="Host\Spanish\data.json" />
+		<EmbeddedResource Include="Host\French\data.json" />
+		<EmbeddedResource Include="Host\sample.txt" />
+		<EmbeddedResource Include="Prayers\Host\English\data.json" />
+		<EmbeddedResource Include="Servers\sample.txt" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Host\English\data.json" />
-    <EmbeddedResource Include="Host\Filipino\data.json" />
-    <EmbeddedResource Include="Host\Languages.json" />
-    <EmbeddedResource Include="Host\Odia\data.json" />
-    <EmbeddedResource Include="Host\Tagalog\data.json" />
-    <EmbeddedResource Include="Host\Spanish\data.json" />
-    <EmbeddedResource Include="Host\French\data.json" />
-    <EmbeddedResource Include="Host\sample.txt" />
-    <EmbeddedResource Include="Prayers\Host\English\data.json" />
-    <EmbeddedResource Include="Servers\sample.txt" />
-  </ItemGroup>
+	<ItemGroup>
+		
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Octokit" Version="0.51.0" />
+	<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.6">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.6">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Octokit" Version="0.51.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Hosts\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Hosts\" />
-  </ItemGroup>
-
-  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties />
+		</VisualStudio>
+	</ProjectExtensions>
 </Project>
 
 

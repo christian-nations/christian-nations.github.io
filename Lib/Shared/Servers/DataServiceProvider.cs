@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using System.Text.Json;
 using System.Linq;
 using System.Diagnostics;
 using System.Reflection;
@@ -12,6 +11,7 @@ using System.Text.RegularExpressions;
 using Blazor_App.Shared.Models;
 using Blazor_App.Shared.Enums;
 using Blazor_App.Shared.Extensions;
+using Blazor_App.Shared.Host;
 
 namespace Blazor_App.Shared.Servers
 {
@@ -60,7 +60,7 @@ namespace Blazor_App.Shared.Servers
             if (processing)
                 return _items;
             processing = true;
-            _items = await GetFromServerAsync();
+            _items = await GetFromServerAsync(SiteInfo.Language);
             if (_items != null && _items.Count > 0)
             {
                 _items = _items.Shuffle().ToList();
@@ -119,13 +119,13 @@ namespace Blazor_App.Shared.Servers
             });
             processing = false;
         }
-        private static async Task<List<ProjectItem>> GetFromServerAsync()
+        private static async Task<List<ProjectItem>> GetFromServerAsync(string language)
         {
            
             List<ProjectItem> _items = null;           
             if (hostedJson)
             {
-                var url = GetHostUrl(SiteInfo.Language);
+                var url = GetHostUrl(language);
                 var txt = await CookUpServices.DownloadstringAsync(url);
                 if (string.IsNullOrEmpty(txt) || string.IsNullOrWhiteSpace(txt))
                     return _items;
@@ -133,46 +133,22 @@ namespace Blazor_App.Shared.Servers
 
                 projectItemData.Items = projectItemData.Items.Shuffle().ToList();
                 _items = projectItemData.Items;
+
             }
             else
             {
                 _items = GetProjectItemData().Items;
             }
+            if (_items != null && _items.Count > 0)
+            {
+                _currentItems[language] = _items;
+                ItemsLoaded?.Invoke(_items, _items);
+                cloudItemsSet = true;
+            }
             return _items;
         }
         static bool cloudItemsSet = false;
-        public static async Task<List<ProjectItem>> GetFromCloudServerAsync()
-        {
-
-            
-            List<ProjectItem> _items = null;
-            if (cloudItemsSet)
-            {
-                _items = await GetItemsAsync();
-                if(_items != null && _items.Count > 0)
-                {
-                    return _items;
-                }
-            }
-            var url = GetHostUrl(SiteInfo.Language);
-            var txt = await CookUpServices.DownloadstringAsync(url);
-            if (string.IsNullOrEmpty(txt) || string.IsNullOrWhiteSpace(txt))
-            {
-                _items = await GetItemsAsync();
-            }
-            else
-            {
-                var projectItemData = Newtonsoft.Json.JsonConvert.DeserializeObject<ProjectItemData>(txt);
-                _items = projectItemData.Items;
-                if (_items != null && _items.Count > 0)
-                {
-                    _currentItems[SiteInfo.Language] = _items;
-                    ItemsLoaded?.Invoke(_items, _items);
-                    cloudItemsSet = true;
-                }
-            }
-            return _items;
-        }
+      
         public static ProjectItemData GetProjectItemData()
         {
             ProjectItemData projectItemData = new ProjectItemData();
@@ -188,24 +164,7 @@ namespace Blazor_App.Shared.Servers
             }
             return projectItemData;
         }
-        public static string GetSamplePreContent()
-        {
-            var stream = RepoHelper.GetResourceStreamAsync(typeof(ProjectItemData), "Blazor_App.Shared.Host.sample.txt");
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                string text = reader.ReadToEnd();
-                return text;
-            }
-        }
-        public static string[] GetSamplePreContentArray()
-        {
-            var stream = RepoHelper.GetResourceStreamAsync(typeof(ProjectItemData), "Blazor_App.Shared.Host.sample.txt");
-            var lines = new string[200];
-            using (var reader = new StreamReader(stream))
-                for (var i = 0; i < 200 && !reader.EndOfStream; i++)
-                    lines[i] = reader.ReadLine();
-            return lines;
-        }
+      
         
         public static string GetHostUrl(string language, bool raw = true)
         {
@@ -226,6 +185,27 @@ namespace Blazor_App.Shared.Servers
         public static void LoadDeveloperTools()
         {
            
+        }
+        public static async Task<List<ProjectItem>> GetOnlineAllItemsAsync()
+        {
+            var languageItems = await LanguageHelper.GetLanguagesAsync();
+            var list = new List<ProjectItem>();
+            foreach (var language in languageItems)
+            {
+               
+                var items = await GetFromServerAsync(language.Language);
+                if (items != null && items.Count > 0)
+                {
+                    list.AddRange(items);
+                    _currentItems[language.Language] = items;
+                }
+            }
+            list = list.Shuffle().ToList();
+            if (list.Count > 0)
+            {
+                ItemHasLoaded = true;
+            }
+            return list;
         }
     }
 }

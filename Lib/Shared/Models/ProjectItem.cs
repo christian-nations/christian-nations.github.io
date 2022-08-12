@@ -1,6 +1,7 @@
 ﻿using Blazor_App.Shared.Enums;
 using Blazor_App.Shared.Extensions;
 using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace Blazor_App.Shared.Models
         {
 
         }
+        [JsonIgnore]
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string UniqueId { get; set; }
         string title = "";
         public string Title
@@ -38,13 +42,14 @@ namespace Blazor_App.Shared.Models
             }
         }
         public string Data { get; set; }
-        public string DataLong { get; set; }
         public string Notes { get; set; }
-        public string[] Tags { get; set; } = new string[] { "hillsong" };
+        [JsonIgnore]
+        public string Tags { get; set; } = "hillsong" ;
         public string YoutubeUrl { get; set; }
         public string ExternalUrl { get; set; }
         public string Language { get; set; } = SiteInfo.Language;
-        public List<Category> Categories { get; set; } = new List<Category>() { Category.LOVE };
+        [JsonIgnore]
+        public string Categories { get; set; } = "Love";
         public string SubmittedBy { get; set; }
         public List<Comment> Comments { get; set; }
 
