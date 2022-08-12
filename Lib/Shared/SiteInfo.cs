@@ -23,7 +23,7 @@ namespace Blazor_App.Shared
         public const string BackgroundColor = "white";
         public const string BarBacgroundColor = "#f5f5f5 ";
 
-        public static LanguageType Language = LanguageType.English;
+        public static string Language = "English";
         public static string Title = SiteInfo.Language.ToString() + " Christian Songs";
         public static string ThemeColor = AccentColor;
         //Ads
@@ -52,14 +52,14 @@ namespace Blazor_App.Shared
         public static bool IsDebug = false;
 #endif
     }
-    public enum LanguageType
-    {
-        English = 1,
-        Tagalog = 2,
-        Cebuano = 3,
-        French = 4,
-        Spanish = 5,
-    }
+    //public enum LanguageType
+    //{
+    //    English,
+    //    Tagalog,
+    //    Cebuano,
+    //    French,
+    //    Spanish,
+    //}
 }
 
 

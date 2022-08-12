@@ -14,6 +14,8 @@
     <None Remove="Host\Cebuano\data.json" />
     <None Remove="Host\English\data.json" />
     <None Remove="Host\Filipino\data.json" />
+    <None Remove="Host\Languages.json" />
+    <None Remove="Host\Odia\data.json" />
     <None Remove="Host\Tagalog\data.json" />
     <None Remove="Host\Spanish\data.json" />
     <None Remove="Host\French\data.json" />
@@ -40,6 +42,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Host\English\data.json" />
     <EmbeddedResource Include="Host\Filipino\data.json" />
+    <EmbeddedResource Include="Host\Languages.json" />
+    <EmbeddedResource Include="Host\Odia\data.json" />
     <EmbeddedResource Include="Host\Tagalog\data.json" />
     <EmbeddedResource Include="Host\Spanish\data.json" />
     <EmbeddedResource Include="Host\French\data.json" />
@@ -65,6 +69,10 @@
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Hosts\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>

@@ -1,4 +1,6 @@
-﻿<style>
+﻿@using Blazor_App.Shared.Host
+@using Newtonsoft.Json
+<style>
     .input_data_editor {
         width: 98%;
         margin-left: 8px;
@@ -49,9 +51,14 @@
             <div>
                 <div class="card-body mb-5" style="@showEditor">
                     @*Editor*@
-                    <div  style="width:100%; border-width:1px; @showEditor">
-                        <div id="editor_text_div" contenteditable="true" data-text="HTML worship song Editor..." style="background-color:whitesmoke; padding-left:8px; padding-right:8px; height:auto; min-height:200px; padding-top:4px; padding-bottom:4px;">
+                    <span style="color:gray;" class="input_data_editor_title">Paste Lyrics or HTML Code Here</span>
+                    <div style="width:100%;  @showEditor">
+                        <div id="editor_text_div" contenteditable="true" data-text="HTML worship song Editor..." style="background-color:whitesmoke; padding-left:0px; padding-right:0px; height:auto; min-height:100px; padding-top:0px; padding-bottom:0px; border:1px solid @SiteInfo.TextColor; border-radius:5px;">
+                            <pre data-text="HTML worship song Editor...">
+                                @EditorContent
+                            </pre>
                         </div>
+
                     </div>
                 </div>
                 <div contenteditable="false" class="card-body mb-5" style="@showPreview">
@@ -111,7 +118,7 @@
     string endSpan = "</span>";
     string spanStyle = "style=\"font-weight:bolder; color:gold; font-style:italic;\"";
     string[] preContent;
-
+    bool is_int = false;
     public static ProjectItem Item { get; set; } = new ProjectItem();
     public List<ProjectItem> Items = new List<ProjectItem>();
     protected override void OnInitialized()
@@ -121,7 +128,23 @@
         if (Item == null)
         {
             Item = new ProjectItem();
-
+            Item.Data = @"<span>Alive, alive, alive forevermore</span>
+<span></span>
+<span>Jesus is alive, alive forevermore</span>
+<span></span>
+<span>Alive, alive, alive forevermore</span>
+<span></span>
+<span>Jesus is alive</span>
+<span></span>
+<span>Sing hallelujah, sing hallelujah</span>
+<span></span>
+<span>Jesus is alive forevermore</span>
+<span></span>
+<span>Sing hallelujah, sing hallelujah</span>
+<span></span>
+<span>He is alive forevermore</span>
+<span></span>";
+            //EditorContent = Item.Data;
         }
         else
         {
@@ -132,7 +155,7 @@
             }
 
         }
-        //EditorContent = string.Join("\n", preContent);
+        EditorContent = JsonConvert.SerializeObject(LanguageHelper.GetLanguageItems());
         StateHasChanged();
     }
 
@@ -152,6 +175,11 @@
 
         EditorContent = await JS.InvokeAsync<string>("getEditorContent"); //await QuillHtml.GetText();
         EditorContent = EditorContent.Replace("&lt;", "<").Replace("&gt;", ">");
+        if (EditorContent.Contains("<pre>"))
+        {
+            EditorContent = EditorContent.Replace("<pre>", "").Replace("</pre>", "");
+            EditorContent = $"<pre>{EditorContent}</pre>".Trim();
+        }
         if (EditorContent.IsValidString())
         {
 
@@ -160,7 +188,7 @@
         }
         else
         {
-            preview = (MarkupString)"";
+            preview = (MarkupString)Item.Data;
         }
         if (showEditor == "display:block;")
         {
@@ -176,6 +204,9 @@
     }
     public async void SubmitSong()
     {
+        var content = await JS.InvokeAsync<string>("getEditorContent"); //await QuillHtml.GetText();
+        content = EditorContent.Replace("&lt;", "<").Replace("&gt;", ">");
+        Item.Data = content;
         if (Item.IsValid() == false)
         {
             Blazor.Shared.MainLayout.Current.ShowAlert("Check required info! Title, YT and Song HTML 😴...");

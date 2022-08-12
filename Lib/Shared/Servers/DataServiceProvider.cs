@@ -205,6 +205,7 @@ namespace Blazor_App.Shared.Servers
                     lines[i] = reader.ReadLine();
             return lines;
         }
+        
         public static string GetHostUrl(LanguageType language, bool raw = true)
         {
             if (raw)
