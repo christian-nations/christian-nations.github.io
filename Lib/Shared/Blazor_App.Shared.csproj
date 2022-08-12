@@ -5,6 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Cookies\CookieManager.cshidden" />
 		<None Remove="formatter.json" />
 		<None Remove="Helpers\bad_words.txt" />
 		<None Remove="Host\Afrikaans\data.json" />
@@ -19,6 +20,10 @@
 		<None Remove="Host\sample.txt" />
 		<None Remove="Prayers\Host\data.json" />
 		<None Remove="Servers\sample.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Include="Cookies\CookieManager.cshidden" />
 	</ItemGroup>
 
 	<ItemGroup>
