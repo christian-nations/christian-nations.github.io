@@ -117,7 +117,7 @@
                             <div class="tags-cloud">
                                 @foreach (var item in categoriesFinal)
                                 {
-                                    <div style="cursor:pointer;" class="tag">
+                                    <div @onclick="@(()=>{GotoLanguage(item);})" style="cursor:pointer;" class="tag">
                                         <style>
                                             .tag_a:hover {
                                                 color: black;
@@ -141,10 +141,10 @@
             <div class="subfooter-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="text-center" style="color:gray;">
-                            Copyright &copy; @DateTime.Now.Year <a class="link-light"
-                                                                   href="@SiteInfo.SiteFullUrl">@SiteInfo.SiteName</a>. All
-                            Rights Reserved
+                        <p class="text-center" >
+                            <a class="link-light"  href="@SiteInfo.SiteFullUrl">
+                                <span style="color:gray;">@SiteInfo.SiteName</span> <span style="font-size:medium;color:gray;"> @DateTime.Now.Year </span>
+                            </a>
                         </p>
                     </div>
                 </div>
@@ -182,5 +182,12 @@
         }
         rendering = false;
     }
+    void GotoLanguage(LanguageItem language)
+    {
 
+        var _selectedLanguage = language.Language;
+        var languageType = _selectedLanguage;
+        ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(languageType);
+        StateHasChanged();
+    }
 }
