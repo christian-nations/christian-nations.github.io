@@ -191,13 +191,6 @@
             return;
         }
         Items = await DataServiceProvider.GetItemsAsync();
-        if (Items != null && Items.Count > 0)
-        {
-            foreach (var item in Items)
-            {               
-                item.Language = SiteInfo.Language;
-            }
-        }
         var queryItem = Items.Where(p => p.UniqueId == Item.UniqueId).FirstOrDefault();
         if (queryItem == null)
         {

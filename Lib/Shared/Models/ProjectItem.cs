@@ -43,12 +43,12 @@ namespace Blazor_App.Shared.Models
         }
         public string Data { get; set; }
         public string Notes { get; set; }
-        [JsonIgnore]
+
         public string Tags { get; set; } = "hillsong" ;
         public string YoutubeUrl { get; set; }
         public string ExternalUrl { get; set; }
         public string Language { get; set; } = SiteInfo.Language;
-        [JsonIgnore]
+
         public string Categories { get; set; } = "Love";
         public string SubmittedBy { get; set; }
 
