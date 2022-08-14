@@ -36,6 +36,11 @@
 		<None Remove="Host\Greek\data.json" />
 		<None Remove="Host\Gujarati\data.json" />
 		<None Remove="Host\Haitian Creole\data.json" />
+		<None Remove="Host\Hebrew\data.json" />
+		<None Remove="Host\Hindi\data.json" />
+		<None Remove="Host\Hungarian\data.json" />
+		<None Remove="Host\Icelandic\data.json" />
+		<None Remove="Host\Indonesian\data.json" />
 		<None Remove="Host\Italian\data.json" />
 		<None Remove="Host\Kannada\data.json" />
 		<None Remove="Host\Languages.json" />
@@ -67,6 +72,12 @@
 		<None Remove="Host\Tamil\data.json" />
 		<None Remove="Host\Telugu\data.json" />
 		<None Remove="Host\Thai\data.json" />
+		<None Remove="Host\Turkish\data.json" />
+		<None Remove="Host\Ukrainian\data.json" />
+		<None Remove="Host\Urdu\data.json" />
+		<None Remove="Host\Vietnamese\data.json" />
+		<None Remove="Host\Welsh\data.json" />
+		<None Remove="Host\Yiddish\data.json" />
 		<None Remove="Prayers\Host\data.json" />
 		<None Remove="Servers\sample.txt" />
 	</ItemGroup>
@@ -113,6 +124,11 @@
 		<EmbeddedResource Include="Host\Greek\data.json" />
 		<EmbeddedResource Include="Host\Gujarati\data.json" />
 		<EmbeddedResource Include="Host\Haitian Creole\data.json" />
+		<EmbeddedResource Include="Host\Hebrew\data.json" />
+		<EmbeddedResource Include="Host\Hindi\data.json" />
+		<EmbeddedResource Include="Host\Hungarian\data.json" />
+		<EmbeddedResource Include="Host\Icelandic\data.json" />
+		<EmbeddedResource Include="Host\Indonesian\data.json" />
 		<EmbeddedResource Include="Host\Italian\data.json" />
 		<EmbeddedResource Include="Host\Kannada\data.json" />
 		<EmbeddedResource Include="Host\Languages.json" />
@@ -144,6 +160,12 @@
 		<EmbeddedResource Include="Host\Tamil\data.json" />
 		<EmbeddedResource Include="Host\Telugu\data.json" />
 		<EmbeddedResource Include="Host\Thai\data.json" />
+		<EmbeddedResource Include="Host\Turkish\data.json" />
+		<EmbeddedResource Include="Host\Ukrainian\data.json" />
+		<EmbeddedResource Include="Host\Urdu\data.json" />
+		<EmbeddedResource Include="Host\Vietnamese\data.json" />
+		<EmbeddedResource Include="Host\Welsh\data.json" />
+		<EmbeddedResource Include="Host\Yiddish\data.json" />
 		<EmbeddedResource Include="Prayers\Host\English\data.json" />
 		<EmbeddedResource Include="Servers\sample.txt" />
 	</ItemGroup>
