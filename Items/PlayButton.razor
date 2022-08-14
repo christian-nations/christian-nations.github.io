@@ -49,11 +49,12 @@
         }
     }
     string imgUrl = "";
-    protected void OnInitialized()
+    protected override void OnInitialized()
     {
         base.OnInitialized();
         StateHasChanged();
     }
+
     async void RenderAsync()
     {
         if (Item == null)

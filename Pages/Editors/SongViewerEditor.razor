@@ -51,14 +51,11 @@
             <div>
                 <div class="card-body mb-5" style="@showEditor">
                     @*Editor*@
-                    <span style="color:gray;" class="input_data_editor_title">Paste Lyrics or HTML Code Here</span>
-                    <div style="width:100%;  @showEditor">
-                        <div id="editor_text_div" contenteditable="true" data-text="HTML worship song Editor..." style="background-color:whitesmoke; padding-left:0px; padding-right:0px; height:auto; min-height:100px; padding-top:0px; padding-bottom:0px; border:1px solid @SiteInfo.TextColor; border-radius:5px;">
-                            <pre data-text="HTML worship song Editor...">
-                                @EditorContent
-                            </pre>
+                    <span style="color:@SiteInfo.AccentColor;" class="input_data_editor_title">Paste Lyrics or HTML Code Here</span>
+                    <div style="width:100%; white-space: pre; font-family: monospace;  @showEditor">
+                        <div id="editor_text_div" contenteditable="true" data-text="Lyrics..." style="background-color:whitesmoke; padding-left:8px; padding-right:8px; height:auto; min-height:100px; padding-top:0px; padding-bottom:0px; border:1px solid @SiteInfo.TextColor; border-radius:5px;">
+                            @EditorContent
                         </div>
-
                     </div>
                 </div>
                 <div contenteditable="false" class="card-body mb-5" style="@showPreview">
@@ -135,7 +132,7 @@
             }
 
         }
-       
+
         StateHasChanged();
     }
 
@@ -151,18 +148,14 @@
     private async void ShowOutPutPreview()
     {
 
-        EditorContent = await JS.InvokeAsync<string>("getEditorContent"); //await QuillHtml.GetText();
-        EditorContent = EditorContent.Replace("&lt;", "<").Replace("&gt;", ">");
-        if (EditorContent.Contains("<pre>"))
-        {
-            EditorContent = EditorContent.Replace("<pre>", "").Replace("</pre>", "");
-            EditorContent = $"<pre>{EditorContent}</pre>".Trim();
-        }
-        if (EditorContent.IsValidString())
+        var editorContent = await JS.InvokeAsync<string>("getEditorContent"); //await QuillHtml.GetText();
+        editorContent = editorContent.Replace("&lt;", "<").Replace("&gt;", ">");
+       
+        if (editorContent.IsValidString())
         {
 
-            preview = (MarkupString)EditorContent;
-            Item.Data = EditorContent;
+            preview = (MarkupString)editorContent;
+            Item.Data = editorContent;
         }
         else
         {
@@ -197,11 +190,11 @@
             if (Items == null || Items.Count == 0)
             {
                 Items = await DataServiceProvider.GetItemsAsync();
-                
+
             }
             if (Items != null)
             {
-                
+
                 Items.Add(Item);
                 ProjectItemData projectItemData = new ProjectItemData();
                 projectItemData.Items = Items;
