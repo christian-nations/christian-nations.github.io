@@ -1,5 +1,6 @@
 ﻿@using Blazor_App.Shared.Host
 @using Newtonsoft.Json
+@using System.Net
 <style>
     .input_data_editor {
         width: 98%;
@@ -149,8 +150,9 @@
     {
 
         var editorContent = await JS.InvokeAsync<string>("getEditorContent"); //await QuillHtml.GetText();
-        editorContent = editorContent.Replace("&lt;", "<").Replace("&gt;", ">");
-       
+        //editorContent = editorContent.Replace("&lt;", "<").Replace("&gt;", ">");
+        editorContent = WebUtility.HtmlDecode(editorContent);
+
         if (editorContent.IsValidString())
         {
 
@@ -176,7 +178,7 @@
     public async void SubmitSong()
     {
         var content = await JS.InvokeAsync<string>("getEditorContent"); //await QuillHtml.GetText();
-        content = EditorContent.Replace("&lt;", "<").Replace("&gt;", ">");
+        content = WebUtility.HtmlDecode(content); ;
         Item.Data = content;
         if (Item.IsValid() == false)
         {
