@@ -15,8 +15,10 @@ namespace Blazor_App.Shared.Models
     {
         public ProjectItem()
         {
-
+            if(GuidId == null)
+               GuidId = Guid.NewGuid().ToString(); 
         }
+        public string GuidId { get; set; }  
         [JsonIgnore]
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -78,6 +80,10 @@ namespace Blazor_App.Shared.Models
         {
             UniqueId = GetId();
             UniqueId = Uri.EscapeDataString(UniqueId);
+            if (GuidId == null)
+            {
+                GuidId = Guid.NewGuid().ToString();
+            }
         }
         string GetId()
         {
