@@ -15,31 +15,25 @@
     .navbar-nav li {
         display: inline;
         width: fit-content;
-      
     }
 
         .navbar-nav li .a_item {
-           
             width: fit-content;
             height: fit-content;
-           
             vertical-align: middle;
-                
         }
 
     .a_item {
         width: fit-content;
         height: fit-content;
-        
         vertical-align: middle;
-       
     }
+
     ul {
         width: fit-content;
         text-align: center;
         margin: 0;
         padding: 0;
-       
     }
 
         ul li {
@@ -52,15 +46,15 @@
             }
 </style>
 <div style="z-index:3000; background-color:@SiteInfo.BarBacgroundColor; opacity:10;" class="header-container" b-sqgpggpbft="">
-    
+
     <header class="header fixed clea.dropdown-togglefix" b-sqgpggpbft="">
         <div class="container" b-sqgpggpbft="">
             <div class="row" b-sqgpggpbft="">
-                <div class="col-md-3" b-sqgpggpbft="" >
+                <div class="col-md-3" b-sqgpggpbft="">
                     <div class="header-left clearfix" b-sqgpggpbft="">
                         <!--!--><div id="logo" class="logo" b-sqgpggpbft="">
                             <a href="/" b-sqgpggpbft="">
-                                <div b-sqgpggpbft="" >
+                                <div b-sqgpggpbft="">
                                     <img width="30" height="30" src="/img/codericon.svg" href="~/img/codericon.svg" b-sqgpggpbft="">
                                 </div>
                             </a>
@@ -71,7 +65,7 @@
                         </div>
                     </div>
                 </div><!--!-->
-                <div class="col-md-9" b-sqgpggpbft="" >
+                <div class="col-md-9" b-sqgpggpbft="">
                     <div class="header-right clearfix" b-sqgpggpbft="">
                         <div class="main-navigation  animated" b-sqgpggpbft="">
                             <!--!--><nav class="navbar navbar-default" role="navigation">
@@ -85,17 +79,21 @@
                                         </button>
                                     </div>
                                     @*Expandable*@
-                                    <div  class="collapse navbar-collapse" id="navbar-collapse-1">
+                                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
 
                                         <ul class="nav navbar-nav" style="display:inline;">
                                             <!--!-->
                                             <li style="position:relative; width:fit-content; font-weight:bolder;" class="">
                                                 <a style="font-weight:bolder;" class="a_item">@_selectedLanguage▾</a><!--!-->
-                                                <ul style="position:absolute; overflow-y:auto; margin-top:-20px;  max-height:400px; color:@SiteInfo.TextColor;" class="dropdown-menu hiddenMenu">
+
+                                                <ul style="position:absolute; overflow-y:auto; overflow-x:hidden; margin-top:-20px;  max-height:400px; color:@SiteInfo.TextColor;" class="dropdown-menu hiddenMenu">
+                                                    <li>
+                                                        <input @oninput="OnChanged" style="margin-left:50%; transform:translateX(-50%); margin-top:8px; color:@SiteInfo.TextColor;" placeholder="Search language" />
+                                                    </li>
                                                     @foreach (var item in languageItems)
                                                     {
                                                         <li stystyle="color:@SiteInfo.TextColor;">
-                                                            @if(_selectedLanguage == item.Language)
+                                                            @if (_selectedLanguage == item.Language)
                                                             {
                                                                 <a style="font-weight:bold; color:@SiteInfo.AccentColor;" @onclick="@(()=>{GotoLanguage(item);})">@item.Language</a>
                                                             }
@@ -133,6 +131,20 @@
         base.OnInitialized();
         IsMediumSize = ChristianSongs.Blazor.Shared.MainLayout.Current.Mobile;
         languageItems = await LanguageHelper.GetLanguagesAsync();
+        StateHasChanged();
+    }
+    string query = "";
+    async void OnChanged(ChangeEventArgs e)
+    {
+        query = e.Value.ToString();
+        if (query.IsValidString())
+        {
+            languageItems = languageItems.Where(p => p.Language.ToLower().Contains(query)).ToList();
+        }
+        else
+        {
+            languageItems = await LanguageHelper.GetLanguagesAsync();
+        }
         StateHasChanged();
     }
     void GotoLanguage(LanguageItem language)
