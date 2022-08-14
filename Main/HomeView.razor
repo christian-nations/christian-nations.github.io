@@ -420,6 +420,7 @@
             {
                 SiteInfo.Language = language;
                 Items = await DataServiceProvider.GetItemsAsync();
+                SelectedItem = Items.PickRandom();
             }
 
         }

@@ -10,9 +10,14 @@
 		<None Remove="Helpers\bad_words.txt" />
 		<None Remove="Host\Afrikaans\data.json" />
 		<None Remove="Host\Cebuano\data.json" />
+		<None Remove="Host\Chinese (Simplified)\data.json" />
+		<None Remove="Host\Chinese (Traditional)\data.json" />
 		<None Remove="Host\English\data.json" />
 		<None Remove="Host\Filipino\data.json" />
+		<None Remove="Host\German\data.json" />
 		<None Remove="Host\Languages.json" />
+		<None Remove="Host\Korean\data.json" />
+		<None Remove="Host\Japanese\data.json" />
 		<None Remove="Host\Odia\data.json" />
 		<None Remove="Host\Tagalog\data.json" />
 		<None Remove="Host\Spanish\data.json" />
@@ -35,12 +40,17 @@
 		<EmbeddedResource Include="Data\bad_words.txt" />
 		<EmbeddedResource Include="Host\Afrikaans\data.json" />
 		<EmbeddedResource Include="Host\Cebuano\data.json" />
+		<EmbeddedResource Include="Host\Chinese (Simplified)\data.json" />
+		<EmbeddedResource Include="Host\Chinese (Traditional)\data.json" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Include="Host\English\data.json" />
 		<EmbeddedResource Include="Host\Filipino\data.json" />
+		<EmbeddedResource Include="Host\German\data.json" />
 		<EmbeddedResource Include="Host\Languages.json" />
+		<EmbeddedResource Include="Host\Korean\data.json" />
+		<EmbeddedResource Include="Host\Japanese\data.json" />
 		<EmbeddedResource Include="Host\Odia\data.json" />
 		<EmbeddedResource Include="Host\Tagalog\data.json" />
 		<EmbeddedResource Include="Host\Spanish\data.json" />
