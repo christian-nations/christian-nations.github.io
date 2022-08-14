@@ -68,7 +68,7 @@
                             </p>
                             
                             <p style="color:@SiteInfo.AccentColor;">
-                                RECOMMENDATION
+                                SUGGESTION
                                 <h6>PLEASE NO DISCO LIGHTS IN CHURCHES, SONG LEADERS MUST DRESS MODEST APPAREL &amp; REVIEW THE LYRICS.</h6>
                             </p>
 
@@ -113,7 +113,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="footer-content">
-                            <h2 style="color:@SiteInfo.TextColor;" class="title">Base on Laguages</h2>
+                            <h2 style="color:@SiteInfo.TextColor;" class="title">Popular &amp; Recents</h2>
                             <div class="separator-2"></div>
                             <div class="tags-cloud">
                                 @foreach (var item in categoriesFinal)
@@ -164,6 +164,11 @@
        {
            RenderItems();
        };
+        LanguageHelper.LanguageTotalUpdated += (ss, d) =>
+        {
+            categoriesFinal = d;
+            StateHasChanged();
+        };
         RenderItems();
     }
     bool rendering = false;
@@ -174,13 +179,9 @@
         if (rendering)
             return;
         rendering = true;
-        var _snippets = await DataServiceProvider.GetItemsAsync();
-        if (_snippets?.Count > 0)
-        {
-
-            categoriesFinal = await LanguageHelper.GetLanguagesAsync();
-            StateHasChanged();
-        }
+        categoriesFinal = await LanguageHelper.GetLanguagesAsync();
+        categoriesFinal = categoriesFinal.OrderByDescending(p => p.Total).Take(7).ToList();
+        StateHasChanged();
         rendering = false;
     }
     void GotoLanguage(LanguageItem language)

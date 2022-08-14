@@ -91,17 +91,24 @@
                                             <!--!-->
                                             <li style="position:relative; width:fit-content; font-weight:bolder;" class="">
                                                 <a style="font-weight:bolder;" class="a_item">@_selectedLanguage▾</a><!--!-->
-                                                <ul style="position:absolute; color:@SiteInfo.TextColor;" class="dropdown-menu hiddenMenu">
+                                                <ul style="position:absolute; overflow-y:auto; margin-top:-20px;  max-height:400px; color:@SiteInfo.TextColor;" class="dropdown-menu hiddenMenu">
                                                     @foreach (var item in languageItems)
                                                     {
                                                         <li stystyle="color:@SiteInfo.TextColor;">
-                                                            <a style="font-weight:bold; color:@SiteInfo.TextColor;" @onclick="@(()=>{GotoLanguage(item);})">@item.Language</a>
+                                                            @if(_selectedLanguage == item.Language)
+                                                            {
+                                                                <a style="font-weight:bold; color:@SiteInfo.AccentColor;" @onclick="@(()=>{GotoLanguage(item);})">@item.Language</a>
+                                                            }
+                                                            else
+                                                            {
+                                                                <a style="font-weight:bold; color:@SiteInfo.TextColor;" @onclick="@(()=>{GotoLanguage(item);})">@item.Language</a>
+                                                            }
                                                         </li>
                                                     }
                                                 </ul>
 
                                             </li><!--!-->
-                                            @*<li><a class="a_item" href="/">Home</a></li>*@
+                                            <li><a class="a_item" @onclick="Random">Random</a></li>
                                             <li style="visibility:visible; color:@SiteInfo.AccentColor;">
                                                 <a class="a_item" style="color:@SiteInfo.AccentColor; font-weight:bolder;" @onclick="(()=>{ChristianSongs.Blazor.Shared.MainLayout.Current.NavigateToSubmitForm();})">Submit Worship Song</a>
                                             </li><!--!-->
@@ -134,6 +141,13 @@
         _selectedLanguage = language.Language;
         var languageType = _selectedLanguage;
         ChristianSongs.Blazor.Shared.MainLayout.Current.SelectLanguage(languageType);
+        StateHasChanged();
+    }
+    async void Random()
+    {
+
+        var item = (await DataServiceProvider.GetItemsAsync()).PickRandom();
+        ChristianSongs.Blazor.Shared.MainLayout.Current.SelectSong(item);
         StateHasChanged();
     }
     string _selectedLanguage = SiteInfo.Language.ToString();

@@ -420,6 +420,7 @@
             {
                 SiteInfo.Language = language;
                 Items = await DataServiceProvider.GetItemsAsync();
+                LanguageHelper.SetTotal(Items.Count);
                 SelectedItem = Items.PickRandom();
             }
 
@@ -452,6 +453,7 @@
             else
             {
                 Items = await DataServiceProvider.GetItemsAsync();
+                LanguageHelper.SetTotal(Items.Count);
                 SelectedItem = Items.FirstOrDefault();
                 contentData = (MarkupString)SelectedItem.Data;
             }

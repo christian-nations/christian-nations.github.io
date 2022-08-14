@@ -12,22 +12,17 @@ namespace Blazor_App.Shared.Host
 {
     public class LanguageHelper
     {
-        public static List<LanguageItem> GetLanguageItems()
-        {
-            List<LanguageItem> languageItems = new List<LanguageItem>();
-            languageItems.Add(new LanguageItem()
-            {
-                Language = "English",
-                Link = "",
-            });
-            languageItems.Add(new LanguageItem()
-            {
-                Language = "Cebuano",
-                Link = "",
-            });
-            return languageItems;
-        }
+        
         static List<LanguageItem> list = null;
+        public static event EventHandler<List<LanguageItem>> LanguageTotalUpdated = delegate { };
+        public static async void SetTotal(int count, int take = 7)
+        {
+            var languages = await GetLanguagesAsync();
+            var item = languages.Where(p => p.Language == SiteInfo.Language).FirstOrDefault();
+            item.Total = count;
+            var items = languages.OrderByDescending(p => p.Total).Take(7).ToList();
+            LanguageTotalUpdated?.Invoke(EventArgs.Empty, items);
+        }
         public static async Task<List<LanguageItem>> GetLanguagesAsync()
         {
             if (list != null && list.Count > 0)
@@ -52,12 +47,18 @@ namespace Blazor_App.Shared.Host
                     list = JsonConvert.DeserializeObject<List<LanguageItem>>(text);
                 }
             }
+            if(list!=null && list.Count > 0)
+            {
+                list = list.OrderBy(p => p.Language).ToList();
+            }
             return list;
         }
+        
     }
     public class LanguageItem
     {
         public string Language { get; set; }
         public string Link { get; set; }
+        public int Total { get; set; }
     }
 }
