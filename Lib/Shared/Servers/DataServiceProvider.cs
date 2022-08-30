@@ -189,26 +189,6 @@ namespace Blazor_App.Shared.Servers
         {
            
         }
-        public static async Task<List<ProjectItem>> GetOnlineAllItemsAsync()
-        {
-            var languageItems = await LanguageHelper.GetLanguagesAsync();
-            var list = new List<ProjectItem>();
-            foreach (var language in languageItems)
-            {
-               
-                var items = await GetFromServerAsync(language.Language);
-                if (items != null && items.Count > 0)
-                {
-                    list.AddRange(items);
-                    _currentItems[language.Language] = items;
-                }
-            }
-            list = list.Shuffle().ToList();
-            if (list.Count > 0)
-            {
-                ItemHasLoaded = true;
-            }
-            return list;
-        }
+        
     }
 }

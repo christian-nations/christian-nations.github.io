@@ -17,17 +17,17 @@ namespace Blazor_App.Shared.Host
         public static event EventHandler<List<LanguageItem>> LanguageTotalUpdated = delegate { };
         public static async void SetTotal(int count, int take = 7)
         {
-            var languages = await GetLanguagesAsync();
+            var languages = await GetLanguagesAsync(true);
             var item = languages.Where(p => p.Language == SiteInfo.Language).FirstOrDefault();
             item.Total = count;
             var items = languages.OrderByDescending(p => p.Total).Take(7).ToList();
             LanguageTotalUpdated?.Invoke(EventArgs.Empty, items);
         }
-        public static async Task<List<LanguageItem>> GetLanguagesAsync()
+        public static async Task<List<LanguageItem>> GetLanguagesAsync(bool local)
         {
             if (list != null && list.Count > 0)
                 return list;
-            if (SiteInfo.IsDebug)
+            if (local)
             {
                 var stream = RepoHelper.GetResourceStreamAsync(typeof(LanguageHelper), "Blazor_App.Shared.Host.Languages.json");
                 using (StreamReader reader = new StreamReader(stream))
