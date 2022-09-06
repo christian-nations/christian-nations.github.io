@@ -16,7 +16,15 @@ namespace Blazor_App.Shared.Daily
             if (UniqueId == null)
                 this.UniqueId = Guid.NewGuid().ToString();
         }
+        public void GenerateNewId()
+        {
+            this.UniqueId = Guid.NewGuid().ToString();
+        }
         public string UniqueId { get; set; }
+        public string GetUniqueId()
+        {
+            return this.UniqueId + this.Language;
+        }
 
         [JsonIgnore]
         [PrimaryKey, AutoIncrement]
