@@ -6,6 +6,7 @@
 
 	<ItemGroup>
 		<None Remove="Cookies\CookieManager.cshidden" />
+		<None Remove="Daily\Host\English\data.json" />
 		<None Remove="formatter.json" />
 		<None Remove="Helpers\bad_words.txt" />
 		<None Remove="Host\Afrikaans\data.json" />

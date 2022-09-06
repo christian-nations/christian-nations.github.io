@@ -104,5 +104,23 @@ namespace Blazor_App.Shared.Models
 
             return jsonString;
         }
+        public static async Task<string> DownloadStringAsync2(string txtFileUrl)
+        {
+            string jsonString = null;
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                using (HttpResponseMessage response = await client.GetAsync(txtFileUrl))
+                using (HttpContent content = response.Content)
+                {
+                    jsonString = await content.ReadAsStringAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return jsonString;
+        }
     }
 }
