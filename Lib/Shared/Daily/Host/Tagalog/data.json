@@ -1,15 +1,1 @@
-{
-  "Title": "Prayers",
-  "Items": [
-    {
-      "Type": "Submit Prayer",
-      "Book": "John 6:29",
-      "Words": "Submit prayer for this language.",
-      "Prayer": "",
-      "Inspiration": "",
-      "Language": "Afrikaans",
-      "Likes": 0,
-      "Shares": 0
-    }
-  ]
-}
+{"Title":"Tagalog","Items":[{"UniqueId":"594195fe-e84c-4773-a46a-9533098dd66d","Type":"Submit Prayer","Prayer":"","Inspiration":"","Language":"Afrikaans","Likes":0,"Shares":0,"Book":"John 6:29","IsReadOnly":true,"IsPublic":true},{"UniqueId":"ae5f6b5c-78d1-4cf2-8ae7-af4672d0e60f","Type":"KAY KRISTO PANALO KA HABANG BUHAY","Prayer":"\"Ama, patawad po sa aking mga kasal-anan mula pagkabata hanggang ngayon. Sa aking galit, tampo, habag sa sarili, hinanakit, hindi pagtitiwala sa Iyo ng buong puso, hindi pag-una sa iyo. Patawad po. Panginoong Hesus, pumasok ka sa puso ko. Tinatanggap po kita bilang Messiah, Panginoon, Diyos, Tagapagligtas, Manggagamot ng buhay ko. Ikaw ng tanging sagot sa lahat ng problem ko at pangangailangan ko. Pinapatawad ko na rin ang lahat ng nagkasala sa akin. Salamat sa iyong pagmamahal at kapatawaran. Mamahalin Kita, susundin, paglilingkuran,magtitiwala at manananatili sa Iyo habang panahon Amen\"","Inspiration":"Siya ang nagbayad ng ating kasal-anan. (2 Cor 5:21)\rSiya ang nagpapagaling ng ating mga karamdaman. (Isa 53:4-5)\rSiya ang nagwasak sa gawa ng dyablo sa buhay natin. (1 Juan 3:8)\rSiya ang nag-alis ng kahirapan natin. (2 Cor 8:9)\rSiya ang nagbago ng buhay natin. (2 Cor 5:17)\rSiya ang daan para maging Anak tayo ng Diyos. (Juan 1:12)\rSiya ang nagbibigay sa atin ng buhay na walang hanggan. (Juan 3:16)\r","Language":"Tagalog","Likes":0,"Shares":0,"Book":"John 1:12","IsReadOnly":false,"IsPublic":true}]}
