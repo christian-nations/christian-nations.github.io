@@ -1,15 +1,1 @@
-{
-  "Title": "Prayers",
-  "Items": [
-    {
-      "Type": "Submit Prayer",
-      "Book": "John 6:29",
-      "Words": "Submit prayer for this language.",
-      "Prayer": "",
-      "Inspiration": "",
-      "Language": "Afrikaans",
-      "Likes": 0,
-      "Shares": 0
-    }
-  ]
-}
+{"Title":"Spanish","Items":[{"UniqueId":"4db16ea3-1a9a-43bd-a9f7-3bc9c822e209","Type":"Submit Prayer","Prayer":"","Inspiration":"","Language":"Afrikaans","Likes":0,"Shares":0,"Book":"John 6:29","IsReadOnly":true,"IsPublic":true},{"UniqueId":"a05d26e1-a851-4695-9397-387e323b49af","Type":"morning prayers","Prayer":"prayers","Inspiration":"messages","Language":"Spanish","Likes":0,"Shares":0,"Book":"Heb 12:14","IsReadOnly":true,"IsPublic":true}]}
