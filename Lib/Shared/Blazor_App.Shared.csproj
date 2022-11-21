@@ -150,6 +150,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Include="Cookies\CookieManager.cshidden" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Content Include="formatter.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
