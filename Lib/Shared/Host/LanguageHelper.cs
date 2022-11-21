@@ -23,7 +23,7 @@ namespace Blazor_App.Shared.Host
             var items = languages.OrderByDescending(p => p.Total).Take(7).ToList();
             LanguageTotalUpdated?.Invoke(EventArgs.Empty, items);
         }
-        public static async Task<List<LanguageItem>> GetLanguagesAsync(bool local)
+        public static async Task<List<LanguageItem>> GetLanguagesAsync(bool local = true)
         {
             if (list != null && list.Count > 0)
                 return list;

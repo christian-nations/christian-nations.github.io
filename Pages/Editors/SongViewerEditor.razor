@@ -33,7 +33,7 @@
         <div class="card">
             <div class="card-header">
                 <div style="position:relative; display:grid; grid-template-columns:1fr auto;">
-                    <h5>Worship Song Editor HTML</h5>
+                    <h5>Christian Song Editor HTML</h5>
                     <div style="margin-right:35px; margin-top:-5px; display:inline-flex;">
                         <ChristianSongs.Blazor.Controls.ButtonSvg Path="M8.5,8.64L13.77,12L8.5,15.36V8.64M6.5,5V19L17.5,12" Clicked="ShowOutPutPreview"></ChristianSongs.Blazor.Controls.ButtonSvg>
                     </div>
@@ -66,7 +66,7 @@
         </div>
         <div class="card" style="@showPreview">
             <div class="card-header">
-                Preview of worship song html
+                Preview of Christian song html
             </div>
             <div style="margin-left:8px;">
                 @if (Item.YoutubeUrl.IsValidString())
@@ -82,7 +82,7 @@
             <span class="input_data_editor_title">Youtube</span>
             <input @bind-value="@Item.YoutubeUrl" class="input_data_editor" placeholder="Youtube Url" />
             <div class="card-header">
-                Worship song html editor
+                Christian song html editor
             </div>
         </div>
         <div class="card">
@@ -200,7 +200,7 @@
                 Items.Add(Item);
                 ProjectItemData projectItemData = new ProjectItemData();
                 projectItemData.Items = Items;
-                DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(projectItemData), Item.Title);
+                DataServiceProvider.UpdateToServer(SiteInfo.Language, Newtonsoft.Json.JsonConvert.SerializeObject(projectItemData, Formatting.Indented), Item.Title);
                 Item = new ProjectItem();
                 StateHasChanged();
             }

@@ -1,1 +1,15 @@
-{"Title":"Cebuano","Items":[{"UniqueId":"d676ee46-ae12-4c4d-8c13-119af0752943","Type":"Submit Prayer","Prayer":"","Inspiration":"","Language":"Afrikaans","Likes":0,"Shares":0,"Book":"John 6:29","IsReadOnly":true,"IsPublic":true},{"UniqueId":"839ef01e-fb2a-4315-b104-12bb7df7c56c","Type":"","Prayer":"Follow peace with all men, and holiness, without which no man shall see the Lord:","Inspiration":"","Language":"Cebuano","Likes":0,"Shares":0,"Book":"Heb 12:14","IsReadOnly":true,"IsPublic":true}]}
+{
+  "Title": "Prayers",
+  "Items": [
+    {
+      "Type": "Submit Prayer",
+      "Book": "John 6:29",
+      "Words": "Submit prayer for this language.",
+      "Prayer": "",
+      "Inspiration": "",
+      "Language": "Afrikaans",
+      "Likes": 0,
+      "Shares": 0
+    }
+  ]
+}

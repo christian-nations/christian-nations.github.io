@@ -150,10 +150,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Include="Cookies\CookieManager.cshidden" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Content Include="formatter.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -306,7 +302,7 @@
 	<ItemGroup>
 		
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="Octokit" Version="2.0.1" />
+		<PackageReference Include="Octokit" Version="4.0.1" />
 	<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 	</ItemGroup>
 

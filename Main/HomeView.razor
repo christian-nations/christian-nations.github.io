@@ -2,7 +2,7 @@
 @page "/worships"
 @page "/worships/{Language}"
 @page "/worships/{Language}/{SongId}"
-
+@using Blazor_App.Shared.Extensions
 <style>
     .blazored-typeahead {
         position: relative;
@@ -260,7 +260,7 @@
         }
     }
 </style>
-<PageTitle>Christian Worship Songs</PageTitle>
+<PageTitle>Christian Songs &amp; Hymns </PageTitle>
 <ChristianSongs.Blazor.Shared.ShellView>
     <Content>
         <div>
@@ -268,13 +268,13 @@
                 <div style="display:grid; grid-template-columns:1fr auto 1fr">
                     <div></div>
                     <div style="margin-top:5px;">
-                        <h5 style="text-align:center;">Search @SiteInfo.Language.ToString() Worship Songs</h5>
+                        <div style="text-align:center;"><h5 style="text-align:center; display:inline;">Search @SiteInfo.Language.ToString() Christian Songs &amp; <a target="_blank" href="https://www.hymnal.net/"><h5 style="color:@SiteInfo.AccentColor; display:inline;  cursor:pointer; text-align:center;">Hymns</h5></a></h5></div>
                         <div style="width:400px;">
 
                             <BlazoredTypeahead SearchMethod="GetPeopleLocal"
                                                ConvertMethod="ConvertPerson"
                                                @bind-Value="SelectedSongId"
-                                               placeholder="Search worship songs...">
+                                               placeholder="Search christian songs...">
                                 <SelectedTemplate Context="songId">
                                     @{
                                         var selectedSong = LoadSelectedPerson(songId);
