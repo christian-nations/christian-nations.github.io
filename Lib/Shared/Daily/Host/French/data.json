@@ -1,15 +1,29 @@
 {
-  "Title": "Prayers",
+  "Title": "French",
   "Items": [
     {
+      "UniqueId": "b92c3f1d-7b70-4af4-b864-e9cbeb82ccd1",
       "Type": "Submit Prayer",
-      "Book": "John 6:29",
-      "Words": "Submit prayer for this language.",
       "Prayer": "",
       "Inspiration": "",
       "Language": "Afrikaans",
       "Likes": 0,
-      "Shares": 0
+      "Shares": 0,
+      "Book": "John 6:29",
+      "IsReadOnly": true,
+      "IsPublic": true
+    },
+    {
+      "UniqueId": "a3aab626-02f6-4637-aa9a-85b192cc1bb5",
+      "Type": "Morning Prayer",
+      "Prayer": "Prayer",
+      "Inspiration": "Message",
+      "Language": "French",
+      "Likes": 0,
+      "Shares": 0,
+      "Book": "Ps 19:2-3,5",
+      "IsReadOnly": true,
+      "IsPublic": true
     }
   ]
 }
