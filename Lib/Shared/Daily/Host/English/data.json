@@ -96,6 +96,18 @@
       "Book": "Heb 12:14",
       "IsReadOnly": true,
       "IsPublic": true
+    },
+    {
+      "UniqueId": "25736006-828b-40d4-b3af-bc02ffdaab17",
+      "Type": "Prayer for Courage",
+      "Prayer": "Thank you God for your faithfulness and your goodness. Grant me this day courage and confidence to face all challenges. Amen.",
+      "Inspiration": "Going for a site visit on WT",
+      "Language": "English",
+      "Likes": 0,
+      "Shares": 0,
+      "Book": "2Tim 1:7",
+      "IsReadOnly": true,
+      "IsPublic": true
     }
   ]
 }
