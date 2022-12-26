@@ -26,7 +26,7 @@
       "IsPublic": true
     },
     {
-      "UniqueId": "ec03f119-5793-4aaf-adfc-ac8bb00f3b4c",
+      "UniqueId": "c7eddae5-929b-48d8-83e3-8a5099f2fc5c",
       "Type": "Night Prayer",
       "Prayer": "Dear God almighty, my guiding grace in this world, help me in controlling my earthly desires. Allow me not to succumb to temptation, and righteous path of Your everlasting life should I stray.\rFor I wish to always and forever labor under Your light. Amen.",
       "Inspiration": "",
@@ -34,6 +34,78 @@
       "Likes": 0,
       "Shares": 0,
       "Book": "1Pet 1:11",
+      "IsReadOnly": true,
+      "IsPublic": true
+    },
+    {
+      "UniqueId": "ac77bb33-cf75-4559-b308-57c723ed6d0f",
+      "Type": "",
+      "Prayer": "Dear God almighty, my guiding grace in this world, help me in controlling my earthly desires. Allow me not to succumb to temptation, and righteous path of Your everlasting life should I stray.\rFor I wish to always and forever labor under Your light. Amen.",
+      "Inspiration": "",
+      "Language": "English",
+      "Likes": 0,
+      "Shares": 0,
+      "Book": "1Pet 1:11",
+      "IsReadOnly": true,
+      "IsPublic": true
+    },
+    {
+      "UniqueId": "9c581c80-200d-41bc-9050-6c8495c18429",
+      "Type": "11/19/2022 ",
+      "Prayer": "HEB 12;14 \rFOLLOW PEACE WITH ALL {MEN}{WOMAN} & HOLINESS WITHOUT   NO {MAN}{WOMEN} SHALL SEE THE LORD ALMIGHTY .",
+      "Inspiration": "HEBREWS 12 14",
+      "Language": "English",
+      "Likes": 0,
+      "Shares": 0,
+      "Book": "Heb 12:14",
+      "IsReadOnly": true,
+      "IsPublic": true
+    },
+    {
+      "UniqueId": "239baa3b-8c0b-49fd-9e2b-30cf67f44cd4",
+      "Type": "night prayer",
+      "Prayer": "dear Lord help me in making peace with others as we are waiting for your coming to us 1 timothy 3:14-15\rI believe in your coming in Jesus name we pray AMEN ",
+      "Inspiration": "",
+      "Language": "English",
+      "Likes": 0,
+      "Shares": 0,
+      "Book": "Heb 12:14",
+      "IsReadOnly": true,
+      "IsPublic": true
+    },
+    {
+      "UniqueId": "e1e68946-f83d-444b-9262-08180d41d3f9",
+      "Type": "",
+      "Prayer": "Follow peace with all men, and holiness,                                                          without no man shall see the Lord:",
+      "Inspiration": "The lord says we should have peace with all men",
+      "Language": "English",
+      "Likes": 0,
+      "Shares": 0,
+      "Book": "Heb 12:14",
+      "IsReadOnly": true,
+      "IsPublic": true
+    },
+    {
+      "UniqueId": "e1aa2890-acca-4c8e-bcc4-8208eadbe739",
+      "Type": "",
+      "Prayer": "oh God for the evildoers that take and offend your your children your word says there will be no peace or holiness to follow them. IJN Amen",
+      "Inspiration": "meditate on the good of men and not their destructive and offensive ways ",
+      "Language": "English",
+      "Likes": 0,
+      "Shares": 0,
+      "Book": "Heb 12:14",
+      "IsReadOnly": true,
+      "IsPublic": true
+    },
+    {
+      "UniqueId": "25736006-828b-40d4-b3af-bc02ffdaab17",
+      "Type": "Prayer for Courage",
+      "Prayer": "Thank you God for your faithfulness and your goodness. Grant me this day courage and confidence to face all challenges. Amen.",
+      "Inspiration": "Going for a site visit on WT",
+      "Language": "English",
+      "Likes": 0,
+      "Shares": 0,
+      "Book": "2Tim 1:7",
       "IsReadOnly": true,
       "IsPublic": true
     }
