@@ -37,7 +37,7 @@ namespace Blazor_App.Shared.Extensions
 
             return truncatedContent;
         }
-        public static bool IsValidString(this string txt)
+        internal static bool IsValidString(this string txt)
         {
             if (string.IsNullOrEmpty(txt) || string.IsNullOrWhiteSpace(txt))
                 return false;

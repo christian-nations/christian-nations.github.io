@@ -9,7 +9,7 @@ namespace Blazor_App.Shared.Extensions
 {
     public static class EnumerableListExtension
     {
-        public static T PickRandom<T>(this IEnumerable<T> source)
+        internal static T PickRandom<T>(this IEnumerable<T> source)
         {
             return source.PickRandom(1).Single();
         }
@@ -19,7 +19,7 @@ namespace Blazor_App.Shared.Extensions
             return source.Shuffle().Take(count);
         }
 
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        internal static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
         {
             return source.OrderBy(x => Guid.NewGuid());
         }
