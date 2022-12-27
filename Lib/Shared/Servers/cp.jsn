@@ -1,0 +1,410 @@
+[
+  {
+    "Title": "AFR53, Afrikaans 1933,1953(Afrikaans)",
+    "FileSize": "13.5 MB",
+    "WebUrl": "http://www.biblesociety.co.za/",
+    "Language": "Afrikaans",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/AFR53%2CAfrikaans%201933%2C1953(Afrikaans).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "AFR83, Afrikaans 1983 (Afrikaans)",
+    "FileSize": "13.5 MB",
+    "WebUrl": "http://www.biblesociety.co.za/",
+    "Language": "Afrikaans",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21123&authkey=AA-Tt0lMSppWn-A",
+    "BibleAudios": null
+  },
+  {
+    "Title": "ALAB, Arabic Life Application Bible(Arabic)",
+    "FileSize": "21.7 MB",
+    "WebUrl": null,
+    "Language": "Arabic",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21128&authkey=AKuShy-UYDY8q88",
+    "BibleAudios": null
+  },
+  {
+    "Title": "AVDDV, New Van Dyck Bible Reduced Vocalization with Helps (Arabic)",
+    "FileSize": "16.6 MB",
+    "WebUrl": "https://biblesocietyegypt.com/",
+    "Language": "Arabic",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/AVDDV%2C%20New%20Van%20Dyck%20Bible%20Reduced%20Vocalization%20with%20Helps%20(Arabic).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "ERVAR, Easy-to-Read Version (Arabic)",
+    "FileSize": "23.7 MB",
+    "WebUrl": "https://www.bibleleague.org/",
+    "Language": "Arabic",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/ERVAR%2C%20Easy-to-Read%20Version%20(Arabic).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "NAV, Ketab El Hayat (Arabic)",
+    "FileSize": "21.9 MB",
+    "WebUrl": "https://www.biblica.com/",
+    "Language": "Arabic",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/NAV%2C%20Ketab%20El%20Hayat%20(Arabic).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "BDK, Buuk Do Kinorohingan (Boros Dusun)",
+    "FileSize": "16.8 MB",
+    "WebUrl": "https://biblemalaysia.org/",
+    "Language": "Boros Dusun",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/host_data/bible/pd/BDK%2C%20Buuk%20Do%20Kinorohingan%20(Boros%20Dusun).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "RCPV, Ang Bag-ong Maayong Balita Biblia (Cebuano)",
+    "FileSize": "15.7 MB",
+    "WebUrl": "https://bible.org.ph/",
+    "Language": "Cebuano",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21166&authkey=ADlZde7LdBgOyYc",
+    "BibleAudios": null
+  },
+  {
+    "Title": "CCB, Chinese Contemporary Bible",
+    "FileSize": "11.3 MB",
+    "WebUrl": "https://www.biblica.com/bible/ccb/%E5%88%9B%E4%B8%96%E8%AE%B0/1/",
+    "Language": "Chinese (PRC)",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/CCB%2C%20Chinese%20Contemporary%20Bible.sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "CNVT, 新譯本 (Chinese (Taiwan))",
+    "FileSize": "13 MB",
+    "WebUrl": "https://www.wwbible.org/",
+    "Language": "Chinese (Taiwan)",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/CNVT%2C%20%E6%96%B0%E8%AD%AF%E6%9C%AC%20(Chinese%20(Taiwan)).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "HNZ-RI, Hrvatski Novi Zavjet – Rijeka 2001 (Croatian)",
+    "FileSize": "16.6 MB",
+    "WebUrl": "https://www.lifecenterinternational.org/",
+    "Language": "Croatian",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/HLGN%2C%20Ang%20Pulong%20Sang%20Dios%20(Hiligaynon).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "HTB, Het Boek",
+    "FileSize": "13 MB",
+    "WebUrl": "https://www.biblica.com/",
+    "Language": "Dutch",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/HTB%2C%20Het%20Boek.sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "AMP, Amplified Bible (English)",
+    "FileSize": "18.4 MB",
+    "WebUrl": "https://www.lockman.org/",
+    "Language": "English",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21127&authkey=AOHt1cYMmkCquB8",
+    "BibleAudios": null
+  },
+  {
+    "Title": "NIV, New International Version 2011",
+    "FileSize": "18.4 MB",
+    "WebUrl": "https://www.biblica.com/",
+    "Language": "English",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21179&authkey=AJRsLGS8bJ64-As",
+    "BibleAudios": null
+  },
+  {
+    "Title": "AMPC, Amplified Bible Classic Edition",
+    "FileSize": "17.3 MB",
+    "WebUrl": "https://www.lockman.org/",
+    "Language": "English",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21130&authkey=ABJEk08dgmefW9M",
+    "BibleAudios": null
+  },
+  {
+    "Title": "CEB, Common English Bible (English)",
+    "FileSize": "20.4 MB",
+    "WebUrl": "https://www.commonenglishbible.com/",
+    "Language": "English",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21143&authkey=APZcDdW8gvQrd2s",
+    "BibleAudios": null
+  },
+  {
+    "Title": "CEV, Contemporary English Version (English)",
+    "FileSize": "15.8 MB",
+    "WebUrl": "http://www.americanbible.org/",
+    "Language": "English",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21142&authkey=APTC5N70SVIu13k",
+    "BibleAudios": null
+  },
+  {
+    "Title": "ISV, International Standard Version (English)",
+    "FileSize": "23.8 MB",
+    "WebUrl": "https://www.davidsonpublishing.org/",
+    "Language": "English",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21158&authkey=ALvXHizGxFfaH_Q",
+    "BibleAudios": null
+  },
+  {
+    "Title": "NKJV, New King James Version (English)",
+    "FileSize": "16.8 MB",
+    "WebUrl": "https://www.kingjamesbibleonline.org/",
+    "Language": "English",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21178&authkey=AHpksMM54L2gBGU",
+    "BibleAudios": null
+  },
+  {
+    "Title": "NASB, New American Standard Bible",
+    "FileSize": "39.4 MB",
+    "WebUrl": "https://www.lockman.org/",
+    "Language": "English",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21183&authkey=AIYou4vxIhhcUFk",
+    "BibleAudios": null
+  },
+  {
+    "Title": "BDS, La Bible du Semeur (French)",
+    "FileSize": "18.8 MB",
+    "WebUrl": "https://www.biblica.com/",
+    "Language": "French",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21135&authkey=APQm-IE0cgpmino",
+    "BibleAudios": null
+  },
+  {
+    "Title": "SCH2000, Schlachter 2000 (German)",
+    "FileSize": "17 MB",
+    "WebUrl": "https://www.bibelgesellschaft.com/neu/",
+    "Language": "German",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21170&authkey=AL44mBRclESyC8Q",
+    "BibleAudios": null
+  },
+  {
+    "Title": "HCV, Haitian Creole Version (Haitian Creole)",
+    "FileSize": "13.5 MB",
+    "WebUrl": "http://societebiblique-haiti.org/",
+    "Language": "Haitian Creole",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21148&authkey=ANpY0o1l-db59JA",
+    "BibleAudios": null
+  },
+  {
+    "Title": "HAU, Littafi Mai Tsarki (Hausa)",
+    "FileSize": "12.7 MB",
+    "WebUrl": "http://www.biblesociety-nigeria.org/",
+    "Language": "Hausa",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21147&authkey=ACQQ4lzaHZLuYik",
+    "BibleAudios": null
+  },
+  {
+    "Title": "HHH, Habrit HakhadashaHaderekh (Hebrew)",
+    "FileSize": "3.85 MB",
+    "WebUrl": "https://www.biblica.com/",
+    "Language": "Hebrew",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21149&authkey=AAYCoipsOrhXI54",
+    "BibleAudios": null
+  },
+  {
+    "Title": "HLGN, Ang Pulong Sang Dios (Hiligaynon)",
+    "FileSize": "16.6 MB",
+    "WebUrl": "https://www.biblica.com/",
+    "Language": "Hiligaynon",
+    "Link": "https://www.multcloud.com/action/share!downloadShare?drives.cloudType=woWpz6FpoIJgdVMG2J3LHA%3D%3D&drives.tokenId=5ead50fa78694e81aafe22288c0d9801&drives.fileId=yAmvZs6gxo43YrCpX7BtDA%3D%3D&drives.fileName=HLGN%2C%20Ang%20Pulong%20Sang%20Dios%20(Hiligaynon).sqlite3&drives.fileSize=17392640&shareId=2efbce2d-f252-4071-b5d8-0a632a52eaa9",
+    "BibleAudios": null
+  },
+  {
+    "Title": "ERVHI, Hindi Bible Easy-to-Read Version (Hindi)",
+    "FileSize": "33.55 MB",
+    "WebUrl": "https://www.bibleleague.org/",
+    "Language": "Hindi",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21176&authkey=ADRbypuTBqdjM0s",
+    "BibleAudios": null
+  },
+  {
+    "Title": "IGBOB, Bible Nso (Igbo)",
+    "FileSize": "12.9 MB",
+    "WebUrl": "http://www.biblesociety-nigeria.org/",
+    "Language": "Igbo",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/IGBOB%2C%20Bible%20Nso%20(Igbo).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "RIPV, Ti Baro a Naimbag a Damag Biblia (Iloko)",
+    "FileSize": "15.3 MB",
+    "WebUrl": "https://bible.org.ph/",
+    "Language": "Iloko",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/RIPV%2C%20Ti%20Baro%20a%20Naimbag%20a%20Damag%20Biblia%20(Iloko).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "BIMK, Alkitab dalam Bahasa Indonesia Masa Kini (Indonesian)",
+    "FileSize": "14.2 MB",
+    "WebUrl": "https://www.alkitab.or.id/",
+    "Language": "Indonesian",
+    "Link": "https://onedrive.live.com/embed?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21137&authkey=AI-bI9FVxSrS53E",
+    "BibleAudios": null
+  },
+  {
+    "Title": "NR2006, Nuova Riveduta 2006 (Italian)",
+    "FileSize": "16.8 MB",
+    "WebUrl": "https://www.bible-society.org/",
+    "Language": "Italian",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/NR2006%2C%20Nuova%20Riveduta%202006%20(Italian).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "JNT, Jarai NT (Jarai)",
+    "FileSize": "3.94 MB",
+    "WebUrl": "https://biblesociety.org.nz/vietnams-ethnic-minorities-long-for-the-bible/",
+    "Language": "Jarai",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/JNT%2C%20Jarai%20NT%20(Jarai).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "BYSB, Bibiliya Yera (Kinyarwanda)",
+    "FileSize": "12.2 MB",
+    "WebUrl": "https://biblesociety-rwanda.org/",
+    "Language": "Kinyarwanda",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/BYSB%2C%20Bibiliya%20Yera%20(Kinyarwanda).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "RNKSV, Revised New Korean Standard Version (Korean)",
+    "FileSize": "18 MB",
+    "WebUrl": "http://www.koreanbible.or.kr/koreanbible/",
+    "Language": "Korean",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/RNKSV%2C%20Revised%20New%20Korean%20Standard%20Version%20(Korean).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "OKYB, Ombibeli Iyapuki (Kwanyama)3",
+    "FileSize": "12.8 MB",
+    "WebUrl": "http://www.nambible.org.na/",
+    "Language": "Kwanyama",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/OKYB%2C%20Ombibeli%20Iyapuki%20(Kwanyama).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "BMD, Alkitab Berita Baik",
+    "FileSize": "17.3 MB",
+    "WebUrl": "http://bibles.org",
+    "Language": "Malay",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21180&authkey=AFGwuOY-EArHzF0",
+    "BibleAudios": null
+  },
+  {
+    "Title": "ERVMR, Marathi Bible Easy to Read Version",
+    "FileSize": "32.99 MB",
+    "WebUrl": "https://www.bibleleague.org/",
+    "Language": "Marathi",
+    "Link": "https://onedrive.live.com/download?cid=27AA3488FD31EE95&resid=27AA3488FD31EE95%21100820&authkey=AOmJSiLD7EFcGLg",
+    "BibleAudios": null
+  },
+  {
+    "Title": "KPXNT, Iesu Keliso Hotoe Tumu (Mountain Koiali)",
+    "FileSize": "3.56 MB",
+    "WebUrl": "http://www.wycliffe.org/",
+    "Language": "Mountain Koiali",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/KPXNT%2C%20Iesu%20Keliso%20Hotoe%20Tumu%20(Mountain%20Koiali).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "ONDB, Ombiimbeli Ondjapuki",
+    "FileSize": "12.7 MB",
+    "WebUrl": "http://www.nambible.org.na/",
+    "Language": "Ndonga",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/ONDB%2C%20Ombiimbeli%20Ondjapuki.sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "ERVNE, Nepali Bible Easy to Read Version",
+    "FileSize": "34.7 MB",
+    "WebUrl": "https://www.bibleleague.org/",
+    "Language": "Nepali",
+    "Link": "https://onedrive.live.com/download?cid=27AA3488FD31EE95&resid=27AA3488FD31EE95%21100818&authkey=ALCDSnzfcfws8n0",
+    "BibleAudios": null
+  },
+  {
+    "Title": "NSO00, BIBELE Taba yea Botse",
+    "FileSize": "14.5 MB",
+    "WebUrl": "http://www.biblesociety.co.za/",
+    "Language": "Northern Sotho",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/NSO00%2C%20BIBELE%20Taba%20yea%20Botse.sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "SND12, IsiNdebele 2012 Translation",
+    "FileSize": "14.6 MB",
+    "WebUrl": "https://biblesociety.co.za/",
+    "Language": "Norwegian Bokmål",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21172&authkey=AMzfbXImbYAaufg",
+    "BibleAudios": null
+  },
+  {
+    "Title": "ERVOR, Oriya Bible Easy-to-Read Version",
+    "FileSize": "34.67 MB",
+    "WebUrl": "http://worldcat.org/identities/lccn-n84173729/",
+    "Language": "Oriya",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21181&authkey=AK-0FoTeNUbhDnY",
+    "BibleAudios": null
+  },
+  {
+    "Title": "ARC09, Edição Revista e Corrigida de João Ferreira de Almeida",
+    "FileSize": "12.8 MB",
+    "WebUrl": "https://biblia.sbb.org.br/almeida-revista-e-corrigida",
+    "Language": "Portuguese",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21131&authkey=ACdznMY6Jyt-5GA",
+    "BibleAudios": null
+  },
+  {
+    "Title": "NRT, New Russian Translation",
+    "FileSize": "22.6 MB",
+    "WebUrl": "https://www.biblica.com/",
+    "Language": "Russian",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/NRT%2C%20New%20Russian%20Translation.sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "BL92, Buku Lopatulika 1992 (Spanish)",
+    "FileSize": "12.3 MB",
+    "WebUrl": "http://www.biblesociety-malawi.org/",
+    "Language": "Spanish",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/BL92%2C%20Buku%20Lopatulika%201992%20(Spanish).sqlite3",
+    "BibleAudios": null
+  },
+  {
+    "Title": "RVR60, Biblia Reina Valera 19603",
+    "FileSize": "14.3 MB",
+    "WebUrl": "https://americanbible.org/",
+    "Language": "Spanish",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21175&authkey=AKpSg8e5ydYzSKo",
+    "BibleAudios": null
+  },
+  {
+    "Title": "SUV, Swahili Union Version",
+    "FileSize": "14.1 MB",
+    "WebUrl": "https://biblesociety-kenya.org/",
+    "Language": "Swahili",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21182&authkey=AGTrZykVKPRE8lE",
+    "BibleAudios": null
+  },
+  {
+    "Title": "ERV-TA, Tamil Bible Easy2Read Version",
+    "FileSize": "18.7 MB",
+    "WebUrl": "https://www.bibleleague.org/",
+    "Language": "Tamil",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21184&authkey=AK8FsqEiGaWxTU0",
+    "BibleAudios": null
+  },
+  {
+    "Title": "TSW70, BEIBELE",
+    "FileSize": "15.3 MB",
+    "WebUrl": "http://bibles.org/versions/tsn-TSW70",
+    "Language": "Tswana",
+    "Link": "https://onedrive.live.com/download?cid=5BCED215DFFA6A71&resid=5BCED215DFFA6A71%21185&authkey=ADLmei2ZBbK38Ug",
+    "BibleAudios": null
+  },
+  {
+    "Title": "BPT, Vietnamese Bible Easy-to-Read Version",
+    "FileSize": "18.7 MB",
+    "WebUrl": "https://www.bibleleague.org/",
+    "Language": "Vietnamese",
+    "Link": "https://github.com/nextcodelab/data-base-server/raw/main/bible_data/data/BPT%2C%20Vietnamese%20Bible%20Easy-to-Read%20Version.sqlite3",
+    "BibleAudios": null
+  }
+]
