@@ -52,6 +52,7 @@ namespace Blazor_App.Shared.Models
         public string Language { get; set; } = SiteInfo.Language;
 
         public string Categories { get; set; } = "Love";
+        public string Kind { get; set; } = "Contemporary";
         public string SubmittedBy { get; set; }
 
         [Ignore]
